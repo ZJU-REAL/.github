@@ -11,7 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif"
 EAGLE = 'M44.1474 66.4569L39.1672 58.8578C40.6965 58.0705 40.5071 55.6155 39.197 55.4113C37.7385 55.1828 36.5775 55.1126 35.5542 52.8197H37.9267L37.1984 50.831C34.4838 51.0694 33.93 50.315 32.6429 48.1947L36.0336 48.0786L35.3481 46.3481C31.6532 46.5195 30.6784 45.6136 29.7558 43.5082L34.061 43.3573L33.129 41.2984C28.7201 41.4214 27.7869 41.2966 26.1701 38.3151L31.647 38.2884L30.8746 36.327C25.8826 36.5424 24.6359 36.0538 23.2227 33.5572L34.4435 33.2734C36.0789 33.2318 37.9459 34.3463 38.6339 35.8296L39.9831 38.741L41.403 33.8409C42.1351 31.3164 47.6523 32.2316 49.428 33.9117L46.0907 35.1187L47.7237 39.0949C48.9071 36.3257 50.3569 33.2722 53.4762 33.2722H64.484C63.6371 35.7042 61.5925 36.9168 57.1482 36.1301L56.3671 38.189L61.8564 38.1723C60.5426 41.2351 59.0847 41.6201 55.0018 41.1556L54.1493 43.2145L58.5191 43.3567C57.6784 45.2976 56.1566 46.458 52.7833 46.0545L52.073 48.0593L55.5525 48.0432C54.5553 50.482 53.9115 51.0265 50.74 50.8837L50.0129 52.8718L52.5194 52.8811C51.4658 55.004 51.1535 55.256 48.9046 55.4554C47.5678 55.5739 46.9718 57.7141 48.7519 58.9826L44.1474 66.4569Z'  # ZJU Qiushi eagle, as on the website
 
-W, H = 1120, 772
+W, H = 1120, 706
 CX, CY = 560, 366                 # robot / orbit centre
 RX, RY = 320, 226                 # orbit radii
 ZONES = {                         # centre of each illustration
@@ -31,7 +31,6 @@ FLOW = [  # (from, to, label lines, position on the orbit in degrees, anchor)
     ('R', 'A', ('reasoning becomes', 'digital action'), 135, 'end'),
     ('A', 'L', ('digital action', 'yields experience'), 45, 'start'),
 ]
-FEEDBACK = 'learning from self-generated experience scales reasoning'
 THEMES = {
     'light': dict(bg='#FFFFFF', ink='#0F172A', soft='#475569', mute='#64748B', card='#FFFFFF', line='#DCE5F3',
                   orbit='#9FB2D0', robot='#3B6FE0', robot_fill='#EEF3FF', halo='#8AA3C2', screen='#F9FAFB', eagle='#004EA2'),
@@ -292,7 +291,7 @@ def build(theme):
          '</defs>',
          f'<rect width="{W}" height="{H}" rx="20" fill="{t["bg"]}"/>',
          f'<circle class="halo" cx="{CX}" cy="{CY}" r="225" fill="url(#glow)"/>']
-    # two paths out of R (physical via E, digital via A) converge on L; L feeds back into R underneath
+    # two paths out of R (physical via E, digital via A) converge on L
     deg = {'R': 180, 'E': 270, 'L': 360, 'A': 90}
     pt = lambda a: (CX + RX * math.cos(math.radians(a)), CY + RY * math.sin(math.radians(a)))
     holes = []
@@ -301,9 +300,6 @@ def build(theme):
         ty = zy + TITLE_DY[k]
         tw = len(name) * 11.2 + 8 + len(phrase) * 7.7
         holes.append(f'<rect x="{zx - 100}" y="{ty - 30}" width="{tw + 60:.0f}" height="{46 if k == "A" else 56}" rx="12" fill="#000"/>')
-    fy = 738                                   # feedback channel runs along the bottom
-    fw = len(FEEDBACK) * 7.6
-    holes.append(f'<rect x="{CX - fw / 2 - 16:.0f}" y="{fy - 16}" width="{fw + 32:.0f}" height="32" fill="#000"/>')
     o.append(f'<mask id="titles" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}">'
              f'<rect width="{W}" height="{H}" fill="#fff"/>' + ''.join(holes) + '</mask>')
     defs, paths, marks = [], [], []
@@ -330,18 +326,6 @@ def build(theme):
         ly += -18 if my < CY else 6
         marks.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anchor}" font-size="15" font-style="italic" fill="{t["soft"]}">'
                      + ''.join(f'<tspan x="{lx:.0f}" dy="{0 if i == 0 else 19}">{escape(line)}</tspan>' for i, line in enumerate(lines)) + '</text>')
-    # feedback: out of L's right edge, along the bottom, into R's left edge
-    (lx0, ly0), (rx0, ry0) = (ZONES['L'][0] + 128, ZONES['L'][1]), (ZONES['R'][0] - 128, ZONES['R'][1])
-    fb = (f'M {lx0} {ly0} C {lx0 + 64} {ly0}, {lx0 + 72} {fy}, {lx0 - 150} {fy} L {rx0 + 150} {fy} '
-          f'C {rx0 - 72} {fy}, {rx0 - 64} {ry0}, {rx0} {ry0}')
-    defs.append(f'<linearGradient id="fb" gradientUnits="userSpaceOnUse" x1="{lx0 + 40}" y1="0" x2="{rx0 - 40}" y2="0">'
-                f'<stop offset="0.1" stop-color="{col("L", theme)}"/><stop offset="0.9" stop-color="{col("R", theme)}"/></linearGradient>')
-    paths.append(f'<path class="orbit" d="{fb}" fill="none" stroke="url(#fb)" stroke-width="2.4" stroke-linecap="round"/>')
-    for delay in (0, -3.5):
-        paths.append(f'<circle r="5" fill="{col("L", theme)}"><animateMotion dur="7s" begin="{delay}s" repeatCount="indefinite" path="{fb}"/></circle>')
-    for x, c in ((CX + fw / 2 + 40, col('L', theme)), (CX - fw / 2 - 40, col('R', theme))):
-        marks.append(f'<path d="M 5 -6 L -3 0 L 5 6" transform="translate({x:.0f},{fy})" fill="none" stroke="{c}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
-    marks.append(f'<text x="{CX}" y="{fy + 5}" text-anchor="middle" font-size="15" font-style="italic" fill="{t["soft"]}">{escape(FEEDBACK)}</text>')
     o.append('<defs>' + ''.join(defs) + '</defs>')
     o.append('<g mask="url(#titles)">' + ''.join(paths) + '</g>')
     o.extend(marks)
@@ -354,8 +338,6 @@ def build(theme):
         p = f'M {sx:.0f} {sy:.0f} L {ex:.0f} {ey:.0f}'
         c = col(k, theme)
         o.append(f'<path d="{p}" stroke="{c}" stroke-opacity="0.35" stroke-width="1.4" stroke-dasharray="3 5" fill="none"/>')
-        o.append(f'<circle r="3.6" fill="{c}"><animateMotion dur="3s" repeatCount="indefinite" path="{p}"/></circle>')
-        o.append(f'<circle r="3.6" fill="{c}" opacity="0.5"><animateMotion dur="3s" begin="-1.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear" path="{p}"/></circle>')
     # zones
     scenes = {'R': scene_reasoning, 'E': scene_embodied, 'L': scene_lifelong}
     for k, (zx, zy) in ZONES.items():
