@@ -44,9 +44,9 @@ We study one question from four sides: **what does it take for AI to work in the
 <sub>An open-source social-media agent: discover trends, create posts, audio, and video, publish across platforms, and learn what actually works.</sub>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/ZJU-REAL/EasySteer"><img src="assets/covers/easysteer.jpg" alt="EasySteer" width="100%"></a>
-<b><a href="https://github.com/ZJU-REAL/EasySteer">EasySteer</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/EasySteer?style=social" alt="stars"><br>
-<sub>High-throughput LLM activation steering on vLLM, 10.8–22.3× faster than prior frameworks.</sub>
+<a href="https://github.com/ZJU-REAL/ClawGUI"><img src="assets/covers/clawgui.jpg" alt="ClawGUI" width="100%"></a>
+<b><a href="https://github.com/ZJU-REAL/ClawGUI">ClawGUI</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/ClawGUI?style=social" alt="stars"><br>
+<sub>Train, evaluate, and deploy GUI agents in one framework: online RL across parallel emulators and real Android, HarmonyOS, and iOS devices.</sub>
 </td>
 </tr>
 </table>
