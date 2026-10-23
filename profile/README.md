@@ -9,7 +9,7 @@
 <p>
   <a href="https://zju-real.github.io"><img alt="Website" src="https://img.shields.io/badge/Website-zju--real.github.io-1D4ED8?style=flat-square&logo=googlechrome&logoColor=white"></a>
   <a href="https://scholar.google.com/citations?user=UT3NzFAAAAAJ"><img alt="Google Scholar" src="https://img.shields.io/badge/Google%20Scholar-Publications-4285F4?style=flat-square&logo=googlescholar&logoColor=white"></a>
-  <a href="https://huggingface.co/ZJU-REAL"><img alt="Hugging Face" src="https://img.shields.io/badge/Hugging%20Face-ZJU--REAL-FFD21E?style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPGVsbGlwc2UgY3g9IjQuOCIgY3k9IjE3LjYiIHJ4PSIzLjIiIHJ5PSIyLjYiIGZpbGw9IiNGRkQyMUUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48ZWxsaXBzZSBjeD0iMTkuMiIgY3k9IjE3LjYiIHJ4PSIzLjIiIHJ5PSIyLjYiIGZpbGw9IiNGRkQyMUUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjEwLjYiIHI9IjkiIGZpbGw9IiNGRkQyMUUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48Y2lyY2xlIGN4PSI4LjciIGN5PSI5LjIiIHI9IjEuNDUiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxNS4zIiBjeT0iOS4yIiByPSIxLjQ1IiBmaWxsPSIjZmZmIi8%2BPHBhdGggZD0iTTguMiAxMi42IFExMiAxNi44IDE1LjggMTIuNiBaIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg%3D%3D"></a>
+  <a href="https://huggingface.co/ZJU-REAL"><img alt="Hugging Face" src="assets/badge-huggingface.svg"></a>
   <br>
   <a href="https://github.com/ZJU-REAL"><img alt="Total stars" src="https://img.shields.io/github/stars/ZJU-REAL?style=social&label=Stars"></a>
   &nbsp;
