@@ -20,7 +20,7 @@ ZONES = {                         # centre of each illustration
 PILLAR = {
     'R': ('Reasoning', 'reasons reliably', '#2563EB', '#7AB0FF'),
     'E': ('Embodied', 'inhabits a body', '#0891B2', '#3FD6EE'),
-    'A': ('Agentic', 'acts autonomously', '#4F46E5', '#9199FF'),
+    'A': ('Agentic', 'acts autonomously', '#D97706', '#F6B33F'),
     'L': ('Lifelong', 'learns continuously', '#059669', '#4ADE9E'),
 }
 TITLE_DY = {'R': -94, 'E': -92, 'L': -94, 'A': 100}   # title baseline relative to the card centre

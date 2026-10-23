@@ -13,6 +13,6 @@
 <line class="s" x1="646" y1="14" x2="846" y2="14" stroke="#4ADE9E" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="10 38"/>
 <circle class="d d0" cx="573.0" cy="14" r="4.2" fill="#7AB0FF"/>
 <circle class="d d1" cx="591.0" cy="14" r="4.2" fill="#3FD6EE"/>
-<circle class="d d2" cx="609.0" cy="14" r="4.2" fill="#9199FF"/>
+<circle class="d d2" cx="609.0" cy="14" r="4.2" fill="#F6B33F"/>
 <circle class="d d3" cx="627.0" cy="14" r="4.2" fill="#4ADE9E"/>
 </svg>

@@ -31,7 +31,7 @@ THEMES = {
 LAYER = {  # brand-derived hues per pillar
     'R': ('#2563EB', '#DBEAFE', '#1E3A8A'),
     'E': ('#0891B2', '#CFFAFE', '#164E63'),
-    'A': ('#4F46E5', '#E0E7FF', '#312E81'),
+    'A': ('#D97706', '#FEF3C7', '#78350F'),
     'L': ('#059669', '#D1FAE5', '#064E3B'),
 }
 
@@ -105,7 +105,7 @@ BANDS = [  # top (growth) to bottom (foundation)
         ('Leaner', ['Self-Braking', 'LAPO']),
         ('Verified', ['VerifyBench', 'CoVerRL'])]]),
 ]
-BRIGHT = {'R': '#7AB0FF', 'E': '#3FD6EE', 'A': '#9199FF', 'L': '#4ADE9E'}
+BRIGHT = {'R': '#7AB0FF', 'E': '#3FD6EE', 'A': '#F6B33F', 'L': '#4ADE9E'}
 ROW_TAGS = {'A': ['COMPUTER-USE AGENTS', 'RESEARCH & CREATION AGENTS']}
 LINKS = {  # what each layer hands to the one above it
     ('E', 'L'): None,
