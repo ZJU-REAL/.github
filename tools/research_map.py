@@ -60,80 +60,65 @@ def scene_reasoning(c):
     return ''.join(o)
 
 
-def _first_person(c):
-    # a camera explores a 3D scene: the view pans and pushes in, near objects move faster than the far layer
-    def cube(x, y, k=1.0):
-        pts = lambda ps: ' '.join(f'{x + px * k:.1f},{y + py * k:.1f}' for px, py in ps)
-        return (f'<polygon points="{pts([(0, -22), (22, -11), (0, 0), (-22, -11)])}" fill="{c}" fill-opacity="0.9"/>'
-                f'<polygon points="{pts([(-22, -11), (0, 0), (0, 24), (-22, 13)])}" fill="{c}" fill-opacity="0.55"/>'
-                f'<polygon points="{pts([(0, 0), (22, -11), (22, 13), (0, 24)])}" fill="{c}" fill-opacity="0.75"/>')
-    far = (f'<line x1="-220" y1="-30" x2="220" y2="-30" stroke="{c}" stroke-opacity="0.25" stroke-width="1.2"/>'
-           f'<path d="M -200 -30 L -150 -52 L -110 -38 L -70 -60 L -20 -34 L 30 -50 L 80 -36 L 130 -56 L 200 -30 Z" '
-           f'fill="{c}" fill-opacity="0.10"/>')
-    floor = [f'<polygon points="0,-26 190,46 0,118 -190,46" fill="{c}" fill-opacity="0.13"/>']
-    for k in range(1, 6):
-        t = k / 6
-        floor.append(f'<line x1="{-190 + 190 * t:.1f}" y1="{46 - 72 * t:.1f}" x2="{190 * t:.1f}" y2="{118 - 72 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 4"/>')
-        floor.append(f'<line x1="{-190 + 190 * t:.1f}" y1="{46 + 72 * t:.1f}" x2="{190 * t:.1f}" y2="{-26 + 72 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 4"/>')
-    objs = (cube(-62, 26) +
-            f'<rect x="12" y="-6" width="28" height="30" fill="{c}" fill-opacity="0.6"/>'
-            f'<ellipse cx="26" cy="24" rx="14" ry="6" fill="{c}" fill-opacity="0.6"/>'
-            f'<ellipse cx="26" cy="-6" rx="14" ry="6" fill="{c}" fill-opacity="0.9"/>'
-            f'<circle cx="96" cy="40" r="14" fill="{c}" fill-opacity="0.75"/>'
-            f'<circle cx="91" cy="35" r="4.5" fill="#FFFFFF" fill-opacity="0.45"/>'
-            f'<polygon points="-128,34 -142,58 -128,66" fill="{c}" fill-opacity="0.55"/>'
-            f'<polygon points="-128,34 -128,66 -114,58" fill="{c}" fill-opacity="0.85"/>'
-            + cube(150, 30, 0.8))
-    hud = (''.join(f'<path d="M {sx * 104} {sy * 46} L {sx * 104} {sy * 60} L {sx * 90} {sy * 60}" '
-                   f'stroke="{c}" stroke-width="2.4" fill="none" stroke-linecap="round"/>'
-                   for sx in (-1, 1) for sy in (-1, 1))
-           + f'<line x1="-38" y1="-68" x2="-38" y2="68" stroke="{c}" stroke-opacity="0.12"/>'
-           + f'<line x1="38" y1="-68" x2="38" y2="68" stroke="{c}" stroke-opacity="0.12"/>'
-           + f'<rect class="e-focus" x="-14" y="-12" width="28" height="24" rx="3" fill="none" stroke="{c}" stroke-width="1.8"/>'
-           + f'<line x1="-5" y1="0" x2="5" y2="0" stroke="{c}" stroke-width="1.4"/><line x1="0" y1="-5" x2="0" y2="5" stroke="{c}" stroke-width="1.4"/>'
-           + '<circle class="e-rec" cx="-92" cy="-48" r="3.6" fill="#E5484D"/>'
-           + f'<text x="-84" y="-44.5" font-size="9.5" font-weight="700" letter-spacing="1" fill="{c}">REC</text>')
-    return far, ''.join(floor) + objs
+def _cube(c, x, y, k=1.0):
+    pts = lambda ps: ' '.join(f'{x + px * k:.1f},{y + py * k:.1f}' for px, py in ps)
+    return (f'<polygon points="{pts([(0, -22), (22, -11), (0, 0), (-22, -11)])}" fill="{c}" fill-opacity="0.9"/>'
+            f'<polygon points="{pts([(-22, -11), (0, 0), (0, 24), (-22, 13)])}" fill="{c}" fill-opacity="0.55"/>'
+            f'<polygon points="{pts([(0, 0), (22, -11), (22, 13), (0, 24)])}" fill="{c}" fill-opacity="0.75"/>')
 
 
+def _cylinder(c, x, y, k=1.0):
+    rx, h, ry = 14 * k, 30 * k, 6 * k
+    return (f'<rect x="{x - rx:.1f}" y="{y - h:.1f}" width="{2 * rx:.1f}" height="{h:.1f}" fill="{c}" fill-opacity="0.6"/>'
+            f'<ellipse cx="{x}" cy="{y:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="{c}" fill-opacity="0.6"/>'
+            f'<ellipse cx="{x}" cy="{y - h:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="{c}" fill-opacity="0.9"/>')
+
+
+def _sphere(c, x, y, k=1.0):
+    r = 14 * k
+    return (f'<circle cx="{x}" cy="{y - r:.1f}" r="{r:.1f}" fill="{c}" fill-opacity="0.75"/>'
+            f'<circle cx="{x - r * 0.35:.1f}" cy="{y - r * 1.35:.1f}" r="{r * 0.32:.1f}" fill="#FFFFFF" fill-opacity="0.45"/>')
+
+
+def _row(c, xs, y, k):
+    # the same three objects, left to right: cylinder, cube, sphere
+    return _cylinder(c, xs[0], y, k) + _cube(c, xs[1], y - 24 * k, k) + _sphere(c, xs[2], y, k)
 
 
 def scene_embodied(c):
-    # left: third-person, a small robot roams the scene with its view cone; right: what that robot sees
+    # left: a robot walks along the front of the scene; right: exactly what it sees, on the same timeline
     W2, H2 = 56, 56
     o = [f'<defs><clipPath id="e3"><rect x="{-W2}" y="{-H2}" width="{2 * W2}" height="{2 * H2}" rx="9"/></clipPath>'
          f'<clipPath id="e1"><rect x="{-W2}" y="{-H2}" width="{2 * W2}" height="{2 * H2}" rx="9"/></clipPath></defs>']
-    # ---- third person (left panel, centred at -62,0)
-    floor = [f'<polygon points="0,-18 54,8 0,34 -54,8" fill="{c}" fill-opacity="0.14"/>']
+    # ---- third person
+    floor = [f'<polygon points="0,-24 56,4 0,32 -56,4" fill="{c}" fill-opacity="0.14"/>']
     for k in range(1, 4):
         t = k / 4
-        floor.append(f'<line x1="{-54 + 54 * t:.1f}" y1="{8 - 26 * t:.1f}" x2="{54 * t:.1f}" y2="{34 - 26 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 3"/>')
-        floor.append(f'<line x1="{-54 + 54 * t:.1f}" y1="{8 + 26 * t:.1f}" x2="{54 * t:.1f}" y2="{-18 + 26 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 3"/>')
-    props = (f'<polygon points="20,-12 31,-6.5 20,-1 9,-6.5" fill="{c}" fill-opacity="0.9"/>'
-             f'<polygon points="9,-6.5 20,-1 20,11 9,5.5" fill="{c}" fill-opacity="0.55"/>'
-             f'<polygon points="20,-1 31,-6.5 31,5.5 20,11" fill="{c}" fill-opacity="0.75"/>'
-             f'<rect x="-30" y="-2" width="14" height="14" fill="{c}" fill-opacity="0.6"/>'
-             f'<ellipse cx="-23" cy="12" rx="7" ry="3" fill="{c}" fill-opacity="0.6"/>'
-             f'<ellipse cx="-23" cy="-2" rx="7" ry="3" fill="{c}" fill-opacity="0.9"/>'
-             f'<circle cx="34" cy="20" r="6.5" fill="{c}" fill-opacity="0.75"/>')
-    route = 'M -20 27 C -12 21, 10 21, 18 27 S -8 32, -20 27 Z'
-    third = (''.join(floor) + props
-             + f'<path d="{route}" fill="none" stroke="{c}" stroke-opacity="0.35" stroke-dasharray="3 3"/>'
-             + f'<path d="M 0 0 L 30 -11 A 32 32 0 0 1 30 11 Z" fill="{c}" fill-opacity="0.2">'
-               f'<animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="{route}"/></path>'
-             + '<g><g transform="scale(0.82)">'
-               f'<ellipse cx="0" cy="3" rx="6" ry="2.4" fill="{c}" fill-opacity="0.3"/>'
-               f'<rect x="-5" y="-11" width="10" height="12" rx="3" fill="{c}"/>'
-               f'<circle cx="0" cy="-14" r="4.2" fill="{c}"/>'
-               f'<circle cx="1.6" cy="-14.6" r="1.2" fill="#FFFFFF"/>'
-               '</g>'
-               f'<animateMotion dur="9s" repeatCount="indefinite" path="{route}"/></g>')
+        floor.append(f'<line x1="{-56 + 56 * t:.1f}" y1="{4 - 28 * t:.1f}" x2="{56 * t:.1f}" y2="{32 - 28 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 3"/>')
+        floor.append(f'<line x1="{-56 + 56 * t:.1f}" y1="{4 + 28 * t:.1f}" x2="{56 * t:.1f}" y2="{-24 + 28 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 3"/>')
+    walker = ('<g class="e-walk">'
+              f'<path d="M 0 -12 L -14 -40 A 30 30 0 0 1 14 -40 Z" fill="{c}" fill-opacity="0.2"/>'
+              f'<ellipse cx="0" cy="2" rx="5" ry="2" fill="{c}" fill-opacity="0.3"/>'
+              f'<rect x="-4" y="-9" width="8" height="10" rx="2.5" fill="{c}"/>'
+              f'<circle cx="0" cy="-12" r="3.6" fill="{c}"/>'
+              '</g>')
+    third = (''.join(floor)
+             + f'<line x1="-26" y1="22" x2="26" y2="22" stroke="{c}" stroke-opacity="0.35" stroke-dasharray="3 3"/>'
+             + _row(c, (-26, 0, 26), 6, 0.5)
+             + f'<g transform="translate(0,22)">{walker}</g>')
     o.append('<g transform="translate(-62,0)">'
-             f'<g clip-path="url(#e3)"><g transform="translate(0,-10)">{third}</g></g>'
+             f'<g clip-path="url(#e3)"><g transform="translate(0,-2)">{third}</g></g>'
              f'<text x="0" y="{H2 + 16}" text-anchor="middle" font-size="9.5" font-weight="600" letter-spacing=".6" fill="{c}" fill-opacity="0.85">third-person</text>'
              '</g>')
-    # ---- first person (right panel, centred at 62,0): the current camera view, scaled to fit
-    far, near = _first_person(c)
+    # ---- first person: the same row, seen from the robot, panning with its walk
+    far = (f'<line x1="-220" y1="-34" x2="220" y2="-34" stroke="{c}" stroke-opacity="0.25" stroke-width="1.2"/>'
+           f'<path d="M -220 -34 L -170 -54 L -120 -40 L -70 -60 L -20 -38 L 30 -54 L 80 -38 L 130 -58 L 180 -40 L 220 -34 Z" fill="{c}" fill-opacity="0.10"/>')
+    ground = [f'<rect x="-240" y="-34" width="480" height="140" fill="{c}" fill-opacity="0.11"/>']
+    for gx in range(-240, 241, 40):
+        ground.append(f'<line x1="{gx}" y1="-34" x2="{gx * 1.8}" y2="106" stroke="{c}" stroke-opacity="0.2" stroke-dasharray="2 4"/>')
+    for gy in (-10, 22, 64):
+        ground.append(f'<line x1="-240" y1="{gy}" x2="240" y2="{gy}" stroke="{c}" stroke-opacity="0.18" stroke-dasharray="2 4"/>')
+    near = ''.join(ground) + _row(c, (-80, 0, 80), 34, 1.25)
     hud = (''.join(f'<path d="M {sx * 48} {sy * 36} L {sx * 48} {sy * 46} L {sx * 38} {sy * 46}" '
                    f'stroke="{c}" stroke-width="2" fill="none" stroke-linecap="round"/>'
                    for sx in (-1, 1) for sy in (-1, 1))
@@ -142,7 +127,7 @@ def scene_embodied(c):
            + '<circle class="e-rec" cx="-41" cy="-36" r="3" fill="#E5484D"/>'
            + f'<text x="-34" y="-33" font-size="8" font-weight="700" letter-spacing=".8" fill="{c}">REC</text>')
     o.append('<g transform="translate(62,0)">'
-             f'<g clip-path="url(#e1)"><g transform="translate(0,-4) scale(0.6)"><g class="e-far">{far}</g><g class="e-near">{near}</g></g></g>'
+             f'<g clip-path="url(#e1)"><g transform="translate(0,-2) scale(0.6)"><g class="e-far">{far}</g><g class="e-pan">{near}</g></g></g>'
              + hud
              + f'<text x="0" y="{H2 + 16}" text-anchor="middle" font-size="9.5" font-weight="600" letter-spacing=".6" fill="{c}" fill-opacity="0.85">first-person</text>'
              '</g>')
@@ -256,11 +241,13 @@ STYLE = """
 @keyframes goal{0%,60%,100%{transform:scale(1);opacity:.75}72%{transform:scale(1.25);opacity:.25}}
 .r-check{transform-box:fill-box;transform-origin:center;animation:check 4.2s ease-out infinite}
 @keyframes check{0%,58%,100%{transform:scale(1)}66%{transform:scale(1.25)}}
-.e-near{animation:dolly 11s ease-in-out infinite alternate}
-@keyframes dolly{from{transform:translate(58px,-4px) scale(1)}to{transform:translate(-64px,-12px) scale(1.14)}}
-.e-far{animation:drift 11s ease-in-out infinite alternate}
-@keyframes drift{from{transform:translateX(16px)}to{transform:translateX(-16px)}}
-.e-focus{transform-box:fill-box;transform-origin:center;animation:focus 2.75s ease-in-out infinite}
+.e-walk{animation:walk 14s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-26px)}to{transform:translateX(26px)}}
+.e-pan{animation:pan 14s ease-in-out infinite alternate}
+@keyframes pan{from{transform:translateX(80px)}to{transform:translateX(-80px)}}
+.e-far{animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translateX(26px)}to{transform:translateX(-26px)}}
+.e-focus{transform-box:fill-box;transform-origin:center;animation:focus 4s ease-in-out infinite}
 @keyframes focus{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(.8);opacity:.55}}
 .e-rec{animation:rec 1.2s step-end infinite}
 @keyframes rec{0%,50%{opacity:1}51%,100%{opacity:.15}}
