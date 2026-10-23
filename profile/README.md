@@ -15,12 +15,19 @@
   <a href="https://github.com/ZJU-REAL"><img alt="Follow ZJU-REAL" src="https://img.shields.io/github/followers/ZJU-REAL?style=social&label=Follow"></a>
 </p>
 
-**浙江大学 REAL 实验室** · 推理 · 具身 · 智能体 · RSI
+**浙江大学 REAL Lab** · 推理 · 具身 · 智能体 · RSI
 
 </div>
 
-**REAL Lab** at Zhejiang University builds AI systems that **reason reliably**, **inhabit physical bodies**, **act autonomously** as agents, and **learn continuously** throughout their lifetime, bridging the gap between virtual intelligence and the real world.
+**REAL Lab** at Zhejiang University builds AI systems that **reason reliably**, **inhabit physical bodies**, **act autonomously** as agents, and **learn continuously** throughout their lifetime, bridging the gap between virtual intelligence and physical intelligence.
 
+
+## Research map
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/research-map-dark.svg">
+  <img alt="REAL research map: how Reasoning, Embodied, Agentic, and Lifelong-learning AI connect" src="assets/research-map-light.svg" width="100%">
+</picture>
 
 ## Open-source systems
 
@@ -53,76 +60,56 @@
 
 <p align="center"><a href="https://zju-real.github.io/projects.html"><b>More projects →</b></a></p>
 
-## Research map
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/research-map-dark.svg">
-  <img alt="REAL research map: how Reasoning, Embodied, Agentic, and Lifelong-learning AI connect" src="assets/research-map-light.svg" width="100%">
-</picture>
-
 ## Research lines
 
-### R · Reasoning: think longer, leaner, and verifiably
+### R · Reasoning: reason reliably
 
-> **Frontier question.** How can a model reason over arbitrarily long horizons without drowning in its own context, stop once further thought stops paying off, and know when its answer is actually right?
+Models that can reason for as long as a problem requires, spend only the thinking it needs, and know when an answer is right.
 
-| Step | Work | What it contributes |
+| Direction | Focus | Representative work |
 | :-- | :-- | :-- |
-| **Longer** | [InftyThink](https://github.com/ZJU-REAL/InftyThink) → [InftyThink+](https://github.com/ZJU-REAL/InftyThink-Plus) | Interleaving reasoning with periodic summarization breaks the context-length ceiling; reinforcement learning then makes infinite-horizon reasoning effective and efficient. |
-| **Leaner** | [Self-Braking Tuning](https://github.com/ZJU-REAL/Self-Braking-Tuning) · [LAPO](https://github.com/ZJU-REAL/LAPO) · [Mind the Gap](https://github.com/ZJU-REAL/Mind-the-Gap) | Models learn to brake their own overthinking and fit reasoning length to difficulty, while bridged CoT data removes the thought leaps that make tuning brittle. |
-| **Verified** | [VerifyBench](https://github.com/ZJU-REAL/VerifyBench) → [CoVerRL](https://github.com/ZJU-REAL/CoVerRL) · [Pause or Fabricate?](https://github.com/ZJU-REAL/GRIL) | Measure how reliable reward verifiers really are, then co-evolve generator and verifier so label-free training does not collapse into consensus, and teach models to stop instead of fabricate. |
+| **Long-horizon reasoning** | Break the context-length ceiling so reasoning can continue as long as the problem demands. | [InftyThink](https://github.com/ZJU-REAL/InftyThink) · [InftyThink+](https://github.com/ZJU-REAL/InftyThink-Plus) |
+| **Efficient reasoning** | Fit the amount of thinking to the difficulty of the problem and stop overthinking. | [Self-Braking Tuning](https://github.com/ZJU-REAL/Self-Braking-Tuning) · [LAPO](https://github.com/ZJU-REAL/LAPO) · [Mind the Gap](https://github.com/ZJU-REAL/Mind-the-Gap) |
+| **Verifiable reasoning** | Verifiers and rewards that can be trusted, and models that pause instead of fabricate. | [VerifyBench](https://github.com/ZJU-REAL/VerifyBench) · [CoVerRL](https://github.com/ZJU-REAL/CoVerRL) · [Pause or Fabricate?](https://github.com/ZJU-REAL/GRIL) |
 
-**Hands up to the next layers:** verifiers and verifiable rewards become the training signal for spatial reasoning and agentic RL.
+### E · Embodied: inhabit physical bodies
 
-### E · Embodied: sense, predict, and act in the physical world
+Taking intelligence off the screen: understanding 3D space, anticipating how the world changes, and acting through a body.
 
-> **Frontier question.** How does intelligence leave the screen? A model has to perceive 3D space from any viewpoint, keep improving that perception without human labels, anticipate how the world will change, and turn all of it into reliable physical action.
-
-| Step | Work | What it contributes |
+| Direction | Focus | Representative work |
 | :-- | :-- | :-- |
-| **Perceive** | [ViewSpatial-Bench](https://github.com/ZJU-REAL/ViewSpatial-Bench) · [SpatialLadder](https://github.com/ZJU-REAL/SpatialLadder) · [GPD](https://github.com/ZJU-REAL/GPD) | Measure and teach the 3D spatial understanding that 2D pretraining lacks, including reasoning from viewpoints other than the camera's. |
-| **Self-evolve** | [SpatialEvo](https://github.com/ZJU-REAL/SpatialEvo) · [Spatial-Interactor](https://arxiv.org/abs/2609.23038) | Geometric environments and interaction with the physical world generate their own supervision, so spatial skill keeps improving without human labels. |
-| **Predict** | [SpaceCast-Bench](https://github.com/ZJU-REAL/SpaceCast-Bench) · [WorldMemBench](https://github.com/ZJU-REAL/WorldMemBench) | From the current scene to what happens next: predictive spatial reasoning and the memory of video world models. |
-| **Act** | [VLA-Corrector](https://arxiv.org/abs/2607.01804) · [OmniEmbodied](https://github.com/ZJU-REAL/OmniEmbodied) | Close the loop to action: vision-language-action policies that detect and correct their own mistakes at inference time, and embodied agents that coordinate physical interaction and tool use. |
+| **Spatial perception** | Measure and teach the 3D understanding that 2D pretraining lacks, including viewpoints other than the camera's. | [ViewSpatial-Bench](https://github.com/ZJU-REAL/ViewSpatial-Bench) · [SpatialLadder](https://github.com/ZJU-REAL/SpatialLadder) · [GPD](https://github.com/ZJU-REAL/GPD) |
+| **Self-evolving spatial intelligence** | Let geometry and physical interaction supply their own supervision, without human labels. | [SpatialEvo](https://github.com/ZJU-REAL/SpatialEvo) · [Spatial-Interactor](https://arxiv.org/abs/2609.23038) |
+| **Prediction and world models** | Reason about what happens next and keep a memory of the world over time. | [SpaceCast-Bench](https://github.com/ZJU-REAL/SpaceCast-Bench) · [WorldMemBench](https://github.com/ZJU-REAL/WorldMemBench) |
+| **Embodied action** | Turn perception into reliable physical action and coordinated embodied behavior. | [VLA-Corrector](https://arxiv.org/abs/2607.01804) · [OmniEmbodied](https://github.com/ZJU-REAL/OmniEmbodied) |
 
-**Hands up:** grounding in the physical world is what lets agents act reliably beyond the screen.
+### A · Agentic: act autonomously as agents
 
-### A · Agentic I: computer-use agents
+Agents that plan, use tools, and carry long-horizon tasks through to completion across screens, software, and the open web.
 
-> **Frontier question.** How do we get from "click the right pixel" to agents that operate real devices over long horizons, mix GUI and command line, and keep improving while they work?
-
-| Step | Work | What it contributes |
+| Direction | Focus | Representative work |
 | :-- | :-- | :-- |
-| **Ground** | [GUI-G²](https://github.com/ZJU-REAL/GUI-G2) → [GUI-RCPO](https://github.com/ZJU-REAL/GUI-RCPO) · [Reliable Negatives](https://github.com/ZJU-REAL/CANL) · [UI-Zoomer](https://github.com/ZJU-REAL/UI-Zoomer) | Gaussian rewards, test-time RL, confidence-anchored adaptation, and uncertainty-driven zoom make grounding precise, even without labels. |
-| **Act** | [UI-S1](https://github.com/X-PLUG/MobileAgent/tree/main/UI-S1) · [EMPO](https://aclanthology.org/2026.acl-long.428/) · [UI-Copilot](https://github.com/ZJU-REAL/UI-Copilot) | Semi-online and experience-driven multi-turn RL, plus tool-integrated policy optimization for long-horizon tasks. |
-| **Beyond the GUI** | [HybridCUA](https://github.com/ZJU-REAL/HybridCUA) · [ComputerSD](https://github.com/ZJU-REAL/ComputerSD) · [Reflect, Revise, Reuse](https://arxiv.org/abs/2609.17653) | Orchestrate GUI and CLI together, self-distill online from real-time feedback, and evolve skills without retraining. |
-| **Evaluate & deploy** | [KnowU-Bench](https://github.com/ZJU-REAL/KnowU-Bench) · **[ageval](https://github.com/ZJU-REAL/ageval)** → **[ClawGUI](https://github.com/ZJU-REAL/ClawGUI)** | Interactive, proactive, personalized evaluation, a plug-in harness that runs any agent on any environment, and one framework to train, evaluate, and deploy agents on real phones. |
+| **GUI grounding** | Locate exactly where to act on a screen, with dense rewards, test-time learning, and adaptive zoom. | [GUI-G²](https://github.com/ZJU-REAL/GUI-G2) · [GUI-RCPO](https://github.com/ZJU-REAL/GUI-RCPO) · [Reliable Negatives](https://github.com/ZJU-REAL/CANL) · [UI-Zoomer](https://github.com/ZJU-REAL/UI-Zoomer) |
+| **Computer-use agents** | Long-horizon control of real devices through multi-turn RL, GUI plus command line, and online self-improvement. | [UI-S1](https://github.com/X-PLUG/MobileAgent/tree/main/UI-S1) · [EMPO](https://aclanthology.org/2026.acl-long.428/) · [UI-Copilot](https://github.com/ZJU-REAL/UI-Copilot) · [HybridCUA](https://github.com/ZJU-REAL/HybridCUA) · [ComputerSD](https://github.com/ZJU-REAL/ComputerSD) · [Reflect, Revise, Reuse](https://arxiv.org/abs/2609.17653) · **[ClawGUI](https://github.com/ZJU-REAL/ClawGUI)** |
+| **Deep research agents** | Search the open web, synthesize evidence, and carry a project from literature to a reviewed paper. | [IterSynth](https://arxiv.org/abs/2609.29444) · [BrowserForge](https://arxiv.org/abs/2608.24848) · [EviNote-RAG](https://arxiv.org/abs/2509.00877) · [PaperGym](https://github.com/ZJU-REAL/PaperGym) · **[Polaris](https://github.com/ZJU-REAL/Polaris)** |
+| **Code agents** | Code and tests that co-evolve adversarially through reinforcement learning. | [Code-A1](https://github.com/ZJU-REAL/Code-A1) |
+| **Creation agents** | Agents that discover, create, publish across platforms, and learn what actually works. | **[Easel](https://github.com/ZJU-REAL/Easel)** |
+| **Tool orchestration** | LLMs as controllers that plan, call expert models and tools, and compose the result. | **[HuggingGPT](https://github.com/microsoft/JARVIS)** · [TaskBench](https://github.com/microsoft/JARVIS/tree/main/taskbench) |
+| **Agent evaluation** | Interactive, personalized benchmarks and a plug-in harness that evaluates any agent in any environment. | [KnowU-Bench](https://github.com/ZJU-REAL/KnowU-Bench) · **[ageval](https://github.com/ZJU-REAL/ageval)** |
 
-### A · Agentic II: research and creation agents
+### L · Lifelong: learn continuously throughout their lifetime
 
-> **Frontier question.** Can an agent carry knowledge work end to end: search the open web, synthesize evidence, plan research, run the experiments, write it up, and learn from how its output lands?
+Deployment is where learning continues: agents turn their own experience into guidance, skills, and better weights.
 
-| Step | Work | What it contributes |
+| Direction | Focus | Representative work |
 | :-- | :-- | :-- |
-| **Orchestrate** | **[HuggingGPT](https://github.com/microsoft/JARVIS)** · [TaskBench](https://github.com/microsoft/JARVIS/tree/main/taskbench) | An LLM as controller that plans, calls expert models and tools, and composes the result, plus a benchmark for task automation: where our agent line began. |
-| **Search & synthesize** | [IterSynth](https://arxiv.org/abs/2609.29444) · [BrowserForge](https://arxiv.org/abs/2608.24848) · [EviNote-RAG](https://arxiv.org/abs/2509.00877) | Role-decoupled deep search, parallel browser sandboxes that scale web episodes, and evidence notes for faithful retrieval-augmented answers. |
-| **Build** | [Code-A1](https://github.com/ZJU-REAL/Code-A1) | A code LLM and a test LLM co-evolve adversarially through reinforcement learning. |
-| **Plan & discover** | [PaperGym](https://github.com/ZJU-REAL/PaperGym) → **[Polaris](https://github.com/ZJU-REAL/Polaris)** | Rubric-centered research planning, then an autonomous platform that goes from literature to a reviewed paper. |
-| **Create & learn** | **[Easel](https://github.com/ZJU-REAL/Easel)** | A creator agent that discovers, plans, produces, publishes, and feeds performance back into its account profile. |
+| **Guided exploration** | Densify the sparse rewards of long-horizon agentic RL with adaptive hints and milestones. | [Agent-G²](https://github.com/ZJU-REAL/Agent-G2) · [BEACON](https://github.com/ZJU-REAL/BEACON) |
+| **Skill internalization** | Discover skills in context, then internalize them into the policy across tasks and modalities. | [SKILL0](https://github.com/ZJU-REAL/SkillZero) · [ViSkill](https://github.com/ZJU-REAL/ViSkill) · [SkillRise](https://arxiv.org/abs/2607.26784) |
+| **Self-distillation** | Agentic RL with on-policy self-distillation, and the family of methods built on it. | [SDAR](https://github.com/ZJU-REAL/SDAR) · [AgentOPSD](https://arxiv.org/abs/2608.05987) · [Pass the Baton](https://github.com/ZJU-REAL/Relay-OPD) · [RetireOPD](https://arxiv.org/abs/2609.20784) |
+| **Post-deployment steering** | Adjust a deployed model's behavior at inference time without retraining. | **[EasySteer](https://github.com/ZJU-REAL/EasySteer)** |
+| **Self-evolving systems** | Memory, skills, and orchestration that evolve with use, with every step attributable and reversible. | **[HugAgentOS](https://github.com/ZJU-REAL/HugAgentOS)** |
 
-**Hands up:** every trajectory these agents produce becomes experience for the lifelong layer.
-
-### L · Lifelong: from experience to skills to weights
-
-> **Frontier question.** How should an agent turn its own experience into lasting capability, first as guidance, then as reusable skills, and finally as updated weights, while keeping every change reliable and auditable?
-
-| Step | Work | What it contributes |
-| :-- | :-- | :-- |
-| **Guide** | [Agent-G²](https://github.com/ZJU-REAL/Agent-G2) · [BEACON](https://github.com/ZJU-REAL/BEACON) | Gaussian guidance over hint depth and milestone-guided learning densify the sparse rewards of long-horizon agentic RL. |
-| **Internalize** | [SKILL0](https://github.com/ZJU-REAL/SkillZero) · [ViSkill](https://github.com/ZJU-REAL/ViSkill) · [SkillRise](https://arxiv.org/abs/2607.26784) | Skills discovered in context are internalized into the policy, made visual-native, and carried across tasks. |
-| **Distill** | [SDAR](https://github.com/ZJU-REAL/SDAR) → [AgentOPSD](https://arxiv.org/abs/2608.05987) · [Pass the Baton](https://github.com/ZJU-REAL/Relay-OPD) · [RetireOPD](https://arxiv.org/abs/2609.20784) | The first open-source framework that unifies agentic RL with on-policy self-distillation, and the family of methods built on it. |
-| **Steer** | **[EasySteer](https://github.com/ZJU-REAL/EasySteer)** | Adjust a deployed model's behavior at inference time without retraining, through high-throughput activation steering. |
-| **Operate** | **[HugAgentOS](https://github.com/ZJU-REAL/HugAgentOS)** | Lifelong learning as a running system: memory, skills, and orchestration evolve with use, and each step can be attributed, replayed, and rolled back. |
+<sub>Bold entries are open-source systems.</sub>
 
 <div align="center">
 <br>
