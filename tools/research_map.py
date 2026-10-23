@@ -26,10 +26,10 @@ PILLAR = {
 TITLE_DY = {'R': -94, 'E': -92, 'L': -94, 'A': 100}   # title baseline relative to the card centre
 CENTRE = {'R': (-4, 0), 'E': (0, -6), 'A': (7, 2), 'L': (8, 15)}   # nudge each scene to its card centre
 FLOW = [  # (from, to, label lines, position on the orbit in degrees, anchor)
-    ('R', 'E', ('reasoning becomes', 'physical action'), 225, 'end'),
-    ('E', 'L', ('physical action', 'yields experience'), 315, 'start'),
-    ('R', 'A', ('reasoning becomes', 'digital action'), 135, 'end'),
-    ('A', 'L', ('digital action', 'yields experience'), 45, 'start'),
+    ('R', 'E', ('physical grounding',), 225, 'end'),
+    ('E', 'L', ('embodied experience',), 315, 'start'),
+    ('R', 'A', ('digital agency',), 135, 'end'),
+    ('A', 'L', ('digital experience',), 45, 'start'),
 ]
 THEMES = {
     'light': dict(bg='#FFFFFF', ink='#0F172A', soft='#475569', mute='#64748B', card='#FFFFFF', line='#DCE5F3',
@@ -322,7 +322,7 @@ def build(theme):
         cm = col(b, theme) if b == 'L' else col(a, theme)
         marks.append(f'<path d="M -5 -6 L 3 0 L -5 6" transform="translate({mx:.1f},{my:.1f}) rotate({ang:.1f})" fill="none" stroke="{cm}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
         lx, ly = CX + RX * 1.08 * math.cos(th), CY + RY * 1.1 * math.sin(th)
-        ly += -18 if my < CY else 6
+        ly += (-18 if my < CY else 6) + 19 * (2 - len(lines)) / 2   # centre the block where two lines would sit
         lx += (-1 if anchor == 'end' else 1) * max(map(len, lines)) * 7.3 / 2   # keep the block in place, centre its lines
         marks.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="middle" font-size="15" font-style="italic" fill="{t["soft"]}">'
                      + ''.join(f'<tspan x="{lx:.0f}" dy="{0 if i == 0 else 19}">{escape(line)}</tspan>' for i, line in enumerate(lines)) + '</text>')
