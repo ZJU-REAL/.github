@@ -15,32 +15,18 @@
 <text x="72" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="25" font-weight="650" fill="#1D4ED8">Reasoning · Embodied · Agentic · Lifelong-learning AI</text>
 <text x="72" y="262" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" fill="#475569">Toward AI that thinks, acts, and grows in the real world.</text>
 <text x="72" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="3" font-weight="600" fill="#64748B">ZHEJIANG UNIVERSITY</text>
-<polygon points="788,284 912,318 912,330 788,296" fill="#164030" opacity="0.9"/>
-<polygon points="912,318 1036,284 1036,296 912,330" fill="#164030" opacity="0.7"/>
-<polygon points="912,250 1036,284 912,318 788,284" fill="#2E7D5B"/>
-<polygon points="912,250 1036,284 912,318 788,284" fill="#FFFFFF" opacity="0.10"/>
-<text x="912" y="308" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" font-weight="800" fill="#FFFFFF">L</text>
-<line x1="1046" y1="284" x2="1066" y2="284" stroke="#94A3B8" stroke-width="1.5"/>
-<text x="1074" y="290" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#475569">learns continuously</text>
-<polygon points="788,208 912,242 912,254 788,220" fill="#1E3A5F" opacity="0.9"/>
-<polygon points="912,242 1036,208 1036,220 912,254" fill="#1E3A5F" opacity="0.7"/>
-<polygon points="912,174 1036,208 912,242 788,208" fill="#4A6FA5"/>
-<polygon points="912,174 1036,208 912,242 788,208" fill="#FFFFFF" opacity="0.10"/>
-<text x="912" y="232" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" font-weight="800" fill="#FFFFFF">A</text>
-<line x1="1046" y1="208" x2="1066" y2="208" stroke="#94A3B8" stroke-width="1.5"/>
-<text x="1074" y="214" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#475569">acts autonomously</text>
-<polygon points="788,132 912,166 912,178 788,144" fill="#0A454C" opacity="0.9"/>
-<polygon points="912,166 1036,132 1036,144 912,178" fill="#0A454C" opacity="0.7"/>
-<polygon points="912,98 1036,132 912,166 788,132" fill="#13808C"/>
-<polygon points="912,98 1036,132 912,166 788,132" fill="#FFFFFF" opacity="0.10"/>
-<text x="912" y="156" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" font-weight="800" fill="#FFFFFF">E</text>
-<line x1="1046" y1="132" x2="1066" y2="132" stroke="#94A3B8" stroke-width="1.5"/>
-<text x="1074" y="138" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#475569">explores the world</text>
-<polygon points="788,56 912,90 912,102 788,68" fill="#002B5C" opacity="0.9"/>
-<polygon points="912,90 1036,56 1036,68 912,102" fill="#002B5C" opacity="0.7"/>
-<polygon points="912,22 1036,56 912,90 788,56" fill="#004EA2"/>
-<polygon points="912,22 1036,56 912,90 788,56" fill="#FFFFFF" opacity="0.10"/>
-<text x="912" y="80" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" font-weight="800" fill="#FFFFFF">R</text>
-<line x1="1046" y1="56" x2="1066" y2="56" stroke="#94A3B8" stroke-width="1.5"/>
-<text x="1074" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#475569">reasons reliably</text>
+<defs><linearGradient id="spine" x1="0" y1="0" x2="0" y2="1"><stop offset="0.00" stop-color="#004EA2"/><stop offset="0.33" stop-color="#13808C"/><stop offset="0.67" stop-color="#4A6FA5"/><stop offset="1.00" stop-color="#2E7D5B"/></linearGradient></defs>
+<rect x="878.5" y="74" width="3" height="210" rx="1.5" fill="url(#spine)" opacity="0.6"/>
+<circle cx="880" cy="74" r="20" fill="#004EA2" stroke="#F7FAFF" stroke-width="4"/>
+<text x="880" y="81" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#FFFFFF">R</text>
+<text x="916" y="81" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="750" fill="#0F172A">Reasoning<tspan dx="10" font-size="16" font-weight="400" fill="#475569">reasons reliably</tspan></text>
+<circle cx="880" cy="144" r="20" fill="#13808C" stroke="#F7FAFF" stroke-width="4"/>
+<text x="880" y="151" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#FFFFFF">E</text>
+<text x="916" y="151" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="750" fill="#0F172A">Embodied<tspan dx="10" font-size="16" font-weight="400" fill="#475569">explores the world</tspan></text>
+<circle cx="880" cy="214" r="20" fill="#4A6FA5" stroke="#F7FAFF" stroke-width="4"/>
+<text x="880" y="221" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#FFFFFF">A</text>
+<text x="916" y="221" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="750" fill="#0F172A">Agentic<tspan dx="10" font-size="16" font-weight="400" fill="#475569">acts autonomously</tspan></text>
+<circle cx="880" cy="284" r="20" fill="#2E7D5B" stroke="#F7FAFF" stroke-width="4"/>
+<text x="880" y="291" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#FFFFFF">L</text>
+<text x="916" y="291" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="750" fill="#0F172A">Lifelong<tspan dx="10" font-size="16" font-weight="400" fill="#475569">learns continuously</tspan></text>
 </svg>

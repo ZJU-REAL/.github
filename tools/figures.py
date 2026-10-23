@@ -61,24 +61,23 @@ def banner(theme):
          'Toward AI that thinks, acts, and grows in the real world.</text>',
          f'<text x="72" y="312" font-family="{FONT}" font-size="13" letter-spacing="3" font-weight="600" fill="{t["mute"]}">'
          'ZHEJIANG UNIVERSITY</text>']
-    # isometric R/E/A/L stack: foundation at the bottom, growth at the top
-    cx, half, depth, thick, gap = 912, 124, 34, 12, 76
-    rows = [('R', 'reasons reliably'), ('E', 'explores the world'), ('A', 'acts autonomously'), ('L', 'learns continuously')]
-    top0 = 22
-    for k, (letter, verb) in reversed(list(enumerate(rows))):   # paint back-to-front
-        y = top0 + k * gap
-        base, light, darkc = LAYER[letter]
-        top = f'{cx},{y} {cx + half},{y + depth} {cx},{y + 2 * depth} {cx - half},{y + depth}'
-        left = f'{cx - half},{y + depth} {cx},{y + 2 * depth} {cx},{y + 2 * depth + thick} {cx - half},{y + depth + thick}'
-        right = f'{cx},{y + 2 * depth} {cx + half},{y + depth} {cx + half},{y + depth + thick} {cx},{y + 2 * depth + thick}'
-        o.append(f'<polygon points="{left}" fill="{darkc}" opacity="0.9"/>')
-        o.append(f'<polygon points="{right}" fill="{darkc}" opacity="0.7"/>')
-        o.append(f'<polygon points="{top}" fill="{base}"/>')
-        o.append(f'<polygon points="{top}" fill="#FFFFFF" opacity="0.10"/>')
-        o.append(f'<text x="{cx}" y="{y + depth + 24}" text-anchor="middle" font-family="{FONT}" font-size="26" '
-                 f'font-weight="800" fill="#FFFFFF">{letter}</text>')
-        o.append(f'<line x1="{cx + half + 10}" y1="{y + depth}" x2="{cx + half + 30}" y2="{y + depth}" stroke="{t["arrow"]}" stroke-width="1.5"/>')
-        o.append(f'<text x="{cx + half + 38}" y="{y + depth + 6}" font-family="{FONT}" font-size="16" font-weight="600" fill="{t["soft"]}">{verb}</text>')
+
+    rows = [('R', 'Reasoning', 'reasons reliably'), ('E', 'Embodied', 'explores the world'),
+            ('A', 'Agentic', 'acts autonomously'), ('L', 'Lifelong', 'learns continuously')]
+    col = lambda k: LAYER[k][0] if theme == 'light' else BRIGHT[k]
+    on = '#FFFFFF' if theme == 'light' else '#0D1117'
+
+    x, y0, gap = 880, 74, 70
+    o.append(f'<defs><linearGradient id="spine" x1="0" y1="0" x2="0" y2="1">'
+             + ''.join(f'<stop offset="{i / 3:.2f}" stop-color="{col(k)}"/>' for i, (k, _, _) in enumerate(rows)) + '</linearGradient></defs>')
+    o.append(f'<rect x="{x - 1.5}" y="{y0}" width="3" height="{3 * gap}" rx="1.5" fill="url(#spine)" opacity="0.6"/>')
+    for i, (letter, name, verb) in enumerate(rows):
+        y = y0 + i * gap
+        c = col(letter)
+        o.append(f'<circle cx="{x}" cy="{y}" r="20" fill="{c}" stroke="{t["bg0"]}" stroke-width="4"/>')
+        o.append(f'<text x="{x}" y="{y + 7}" text-anchor="middle" font-family="{FONT}" font-size="19" font-weight="800" fill="{on}">{letter}</text>')
+        o.append(f'<text x="{x + 36}" y="{y + 7}" font-family="{FONT}" font-size="21" font-weight="750" fill="{t["ink"]}">{name}'
+                 f'<tspan dx="10" font-size="16" font-weight="400" fill="{t["soft"]}">{verb}</tspan></text>')
     o.append('</svg>')
     return '\n'.join(o)
 
