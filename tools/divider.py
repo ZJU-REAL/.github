@@ -3,8 +3,8 @@ import os
 
 HERE = 'profile/assets'  # run from the repository root
 W, H, CX, CY = 1200, 28, 600, 14
-DOTS = {'light': ['#2563EB', '#0891B2', '#7C3AED', '#059669'],
-        'dark': ['#7AB0FF', '#3FD6EE', '#B79CFF', '#4ADE9E']}
+DOTS = {'light': ['#2563EB', '#0891B2', '#4F46E5', '#059669'],
+        'dark': ['#7AB0FF', '#3FD6EE', '#9199FF', '#4ADE9E']}
 LINE = {'light': '#B9C7DD', 'dark': '#3A4A66'}
 STYLE = """.d{transform-box:fill-box;transform-origin:center;animation:b 3.2s ease-in-out infinite}
 .d1{animation-delay:.4s}.d2{animation-delay:.8s}.d3{animation-delay:1.2s}
