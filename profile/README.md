@@ -16,7 +16,7 @@
   <a href="https://github.com/ZJU-REAL"><img alt="Follow ZJU-REAL" src="https://img.shields.io/github/followers/ZJU-REAL?style=social&label=Follow"></a>
 </p>
 
-**浙江大学 REAL 实验室** · 推理 · 具身 · 智能体 · 终身学习
+**浙江大学 REAL 实验室** · 推理 · 具身 · 智能体 · RSI
 
 </div>
 
