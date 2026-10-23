@@ -220,7 +220,7 @@ def research_map(theme):
     ry = sp_bot + 26
     o.append(f'<rect x="{X0}" y="{ry}" width="{W - 2 * X0}" height="40" rx="12" fill="{t["panel"]}" stroke="{t["panel_line"]}" stroke-width="1.2"/>')
     o.append(f'<text x="{X0 + 18}" y="{ry + 26}" font-size="12.5" font-weight="700" letter-spacing="2" fill="{t["mute"]}">ROOTS</text>')
-    o.append(f'<text x="{X0 + 92}" y="{ry + 26}" font-size="15" fill="{t["soft"]}"><tspan font-weight="700" fill="{t["ink"]}">HuggingGPT</tspan> (NeurIPS ’23) and <tspan font-weight="700" fill="{t["ink"]}">TaskBench</tspan> (NeurIPS ’24): LLMs as controllers of models and tools, where our agent line began</text>')
+    o.append(f'<text x="{X0 + 92}" y="{ry + 26}" font-size="15" fill="{t["soft"]}"><tspan font-weight="700" fill="{t["ink"]}">HuggingGPT</tspan> and <tspan font-weight="700" fill="{t["ink"]}">TaskBench</tspan>: LLMs as controllers of models and tools, where our agent line began</text>')
     o.append('</svg>')
     return '\n'.join(o)
 

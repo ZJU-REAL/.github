@@ -137,5 +137,5 @@
 <text x="92" y="690.0" font-size="14" font-style="italic" fill="#475569">reasoning grounded in what the model sees</text>
 <rect x="24" y="870" width="1152" height="40" rx="12" fill="#FFFFFF" stroke="#DCE5F3" stroke-width="1.2"/>
 <text x="42" y="896" font-size="12.5" font-weight="700" letter-spacing="2" fill="#64748B">ROOTS</text>
-<text x="116" y="896" font-size="15" fill="#475569"><tspan font-weight="700" fill="#0F172A">HuggingGPT</tspan> (NeurIPS ’23) and <tspan font-weight="700" fill="#0F172A">TaskBench</tspan> (NeurIPS ’24): LLMs as controllers of models and tools, where our agent line began</text>
+<text x="116" y="896" font-size="15" fill="#475569"><tspan font-weight="700" fill="#0F172A">HuggingGPT</tspan> and <tspan font-weight="700" fill="#0F172A">TaskBench</tspan>: LLMs as controllers of models and tools, where our agent line began</text>
 </svg>
