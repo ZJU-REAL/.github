@@ -4,7 +4,7 @@ Edit BANDS / LINKS / ENGINE below when the research map changes, then run:
     python3 tools/figures.py
 Requires Pillow (for text-width measurement) and macOS Helvetica; any similar font path works.
 """
-import base64, os
+import base64, math, os
 from xml.sax.saxutils import escape
 from PIL import ImageFont
 
@@ -62,24 +62,101 @@ def banner(theme):
          f'<text x="72" y="312" font-family="{FONT}" font-size="13" letter-spacing="3" font-weight="600" fill="{t["mute"]}">'
          'ZHEJIANG UNIVERSITY</text>']
 
-    rows = [('R', 'Reasoning', 'reasons reliably'), ('E', 'Embodied', 'explores the world'),
-            ('A', 'Agentic', 'acts autonomously'), ('L', 'Lifelong', 'learns continuously')]
-    col = lambda k: LAYER[k][0] if theme == 'light' else BRIGHT[k]
-    on = '#FFFFFF' if theme == 'light' else '#0D1117'
-
-    x, y0, gap = 880, 74, 70
-    o.append(f'<defs><linearGradient id="spine" x1="0" y1="0" x2="0" y2="1">'
-             + ''.join(f'<stop offset="{i / 3:.2f}" stop-color="{col(k)}"/>' for i, (k, _, _) in enumerate(rows)) + '</linearGradient></defs>')
-    o.append(f'<rect x="{x - 1.5}" y="{y0}" width="3" height="{3 * gap}" rx="1.5" fill="url(#spine)" opacity="0.6"/>')
-    for i, (letter, name, verb) in enumerate(rows):
-        y = y0 + i * gap
-        c = col(letter)
-        o.append(f'<circle cx="{x}" cy="{y}" r="20" fill="{c}" stroke="{t["bg0"]}" stroke-width="4"/>')
-        o.append(f'<text x="{x}" y="{y + 7}" text-anchor="middle" font-family="{FONT}" font-size="19" font-weight="800" fill="{on}">{letter}</text>')
-        o.append(f'<text x="{x + 36}" y="{y + 7}" font-family="{FONT}" font-size="21" font-weight="750" fill="{t["ink"]}">{name}'
-                 f'<tspan dx="10" font-size="16" font-weight="400" fill="{t["soft"]}">{verb}</tspan></text>')
+    o.append(tower(theme))
     o.append('</svg>')
     return '\n'.join(o)
+
+
+# --------------------------------------------------------------------------- 灿若星辰 light tower (ZJU Zijingang)
+def _icosphere(freq=2):
+    p = (1 + 5 ** .5) / 2
+    V = [(-1, p, 0), (1, p, 0), (-1, -p, 0), (1, -p, 0), (0, -1, p), (0, 1, p), (0, -1, -p), (0, 1, -p),
+         (p, 0, -1), (p, 0, 1), (-p, 0, -1), (-p, 0, 1)]
+    F = [(0, 11, 5), (0, 5, 1), (0, 1, 7), (0, 7, 10), (0, 10, 11), (1, 5, 9), (5, 11, 4), (11, 10, 2), (10, 7, 6), (7, 1, 8),
+         (3, 9, 4), (3, 4, 2), (3, 2, 6), (3, 6, 8), (3, 8, 9), (4, 9, 5), (2, 4, 11), (6, 2, 10), (8, 6, 7), (9, 8, 1)]
+    norm = lambda v: tuple(c / math.sqrt(sum(x * x for x in v)) for c in v)
+    V = [norm(v) for v in V]
+    for _ in range(freq):
+        cache, nf = {}, []
+        def mid(a, b):
+            key = (min(a, b), max(a, b))
+            if key not in cache:
+                V.append(norm(tuple((V[a][i] + V[b][i]) / 2 for i in range(3))))
+                cache[key] = len(V) - 1
+            return cache[key]
+        for a, b, c in F:
+            ab, bc, ca = mid(a, b), mid(b, c), mid(c, a)
+            nf += [(a, ab, ca), (b, bc, ab), (c, ca, bc), (ab, bc, ca)]
+        F = nf
+    E = set()
+    for a, b, c in F:
+        for x, y in ((a, b), (b, c), (c, a)):
+            E.add((min(x, y), max(x, y)))
+    return V, E
+
+
+TOWER = {  # light: blue line art; dark: the tower lit at night
+    'light': dict(bulb='#FFFFFF', ring='#2F7FD6', rod='#004EA2', rod_front=.42, rod_back=.13, glow='#9CC3F5', glow_op=.45, pole='#004EA2'),
+    'dark': dict(bulb='#FFF6DC', ring='#FFC94D', rod='#C9A866', rod_front=.55, rod_back=.18, glow='#FFD978', glow_op=.30, pole='#C9D6EA'),
+}
+
+
+def tower(theme, cx=1012, base=372, length=212, rad=96, tilt=7):
+    """The tower rising from below the banner: pole into a geodesic sphere of lamps, collar at the entry, spire fading out."""
+    c = TOWER[theme]
+    V, E = _icosphere(2)
+    t = math.radians(-16)                                  # looking slightly up at the sphere
+    P = []
+    for x, y, z in V:
+        y2, z2 = y * math.cos(t) - z * math.sin(t), y * math.sin(t) + z * math.cos(t)
+        P.append((x * rad, -length - y2 * rad, z2))
+    cy = -length
+    ye, yx = cy + rad * math.cos(t), cy - rad * math.cos(t)
+    tip = yx - rad * 1.4
+    o = [f'<defs>'
+         f'<linearGradient id="tw-pole" x1="0" x2="1"><stop offset="0" stop-color="{c["pole"]}" stop-opacity=".55"/>'
+         f'<stop offset=".45" stop-color="{c["pole"]}" stop-opacity=".22"/><stop offset="1" stop-color="{c["pole"]}" stop-opacity=".6"/></linearGradient>'
+         f'<linearGradient id="tw-col" gradientUnits="userSpaceOnUse" x1="0" y1="{ye:.1f}" x2="0" y2="{yx:.1f}">'
+         f'<stop offset="0" stop-color="{c["ring"]}" stop-opacity=".8"/><stop offset=".22" stop-color="{c["pole"]}" stop-opacity=".2"/>'
+         f'<stop offset=".5" stop-color="{c["pole"]}" stop-opacity=".08"/><stop offset=".78" stop-color="{c["pole"]}" stop-opacity=".2"/>'
+         f'<stop offset="1" stop-color="{c["ring"]}" stop-opacity=".8"/></linearGradient>'
+         f'<linearGradient id="tw-spire" gradientUnits="userSpaceOnUse" x1="0" y1="{yx:.1f}" x2="0" y2="{tip:.1f}">'
+         f'<stop offset="0" stop-color="{c["ring"]}" stop-opacity=".85"/><stop offset=".4" stop-color="{c["pole"]}" stop-opacity=".45"/>'
+         f'<stop offset="1" stop-color="{c["pole"]}" stop-opacity="0"/></linearGradient>'
+         f'<radialGradient id="tw-glow"><stop offset="0" stop-color="{c["glow"]}" stop-opacity="{c["glow_op"]}"/>'
+         f'<stop offset=".65" stop-color="{c["glow"]}" stop-opacity="{c["glow_op"] / 4:.2f}"/><stop offset="1" stop-color="{c["glow"]}" stop-opacity="0"/></radialGradient>'
+         f'<radialGradient id="tw-spot"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="{c["glow"]}" stop-opacity=".9"/>'
+         f'<stop offset="1" stop-color="{c["glow"]}" stop-opacity="0"/></radialGradient>'
+         f'</defs>',
+         '<style>.tw-l{animation:tw 3.2s ease-in-out infinite}@keyframes tw{50%{opacity:.35}}'
+         '@media (prefers-reduced-motion: reduce){.tw-l{animation:none}}</style>',
+         f'<g transform="translate({cx},{base}) rotate({tilt})">',
+         f'<circle cx="0" cy="{cy}" r="{rad * 1.45:.0f}" fill="url(#tw-glow)"/>',
+         f'<path d="M -3.6 {yx + 2:.1f} L 0 {tip:.1f} L 3.6 {yx + 2:.1f} Z" fill="url(#tw-spire)"/>']
+    for i, j in E:
+        if (P[i][2] + P[j][2]) / 2 <= 0:
+            o.append(f'<line x1="{P[i][0]:.1f}" y1="{P[i][1]:.1f}" x2="{P[j][0]:.1f}" y2="{P[j][1]:.1f}" stroke="{c["rod"]}" '
+                     f'stroke-opacity="{c["rod_back"]}" stroke-width=".9"/>')
+    o.append(f'<path d="M -6 {ye:.1f} L -4.5 {yx:.1f} L 4.5 {yx:.1f} L 6 {ye:.1f} Z" fill="url(#tw-col)"/>')
+    o.append(f'<ellipse cx="0" cy="{yx:.1f}" rx="16" ry="10" fill="url(#tw-spot)"/>')
+    o.append(f'<path d="M -10 {ye + 4:.1f} L -19 0 L 19 0 L 10 {ye + 4:.1f} Z" fill="url(#tw-pole)"/>')
+    cr = rad * .24
+    o.append(f'<ellipse cx="0" cy="{ye + 2:.1f}" rx="{cr:.1f}" ry="{cr * .36:.1f}" fill="{c["rod"]}" fill-opacity=".4"/>')
+    o += [f'<circle cx="{cr * .9 * math.cos(a):.1f}" cy="{ye + 2 + cr * .36 * .9 * math.sin(a):.1f}" r="1.7" fill="{c["bulb"]}" stroke="{c["ring"]}" stroke-width=".9"/>'
+          for a in [k * math.pi / 8 for k in range(16)]]
+    o.append(f'<ellipse cx="0" cy="{ye:.1f}" rx="20" ry="11" fill="url(#tw-spot)"/>')
+    for i, j in E:
+        if (P[i][2] + P[j][2]) / 2 > 0:
+            o.append(f'<line x1="{P[i][0]:.1f}" y1="{P[i][1]:.1f}" x2="{P[j][0]:.1f}" y2="{P[j][1]:.1f}" stroke="{c["rod"]}" '
+                     f'stroke-opacity="{c["rod_front"]}" stroke-width="1.2"/>')
+    for k, (x, y, z) in sorted(enumerate(P), key=lambda e: e[1][2]):
+        front = z > 0
+        r = 2.2 + 1.8 * max(z, 0)
+        tw = f' class="tw-l" style="animation-delay:{(k % 13) * .3:.2f}s"' if k % 5 == 0 else ''
+        o.append(f'<circle{tw} cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" fill="{c["bulb"]}" fill-opacity="{.95 if front else .45}" '
+                 f'stroke="{c["ring"]}" stroke-width="{1.3 if front else .6}"/>')
+    o.append('</g>')
+    return ''.join(o)
 
 
 # --------------------------------------------------------------------------- research map
