@@ -19,7 +19,7 @@
 
 </div>
 
-We study one question from four sides: **what does it take for AI to work in the real world?** It has to **reason** well enough to plan and check its own work, **act** as an agent across screens, software, and open-ended tasks, carry that ability **into the physical world**, and **keep improving** from everything it experiences along the way. These capabilities feed one another rather than standing alone.
+We study one question from four sides: **what does it take for AI to work in the real world?** It has to **reason reliably**, **inhabit physical bodies**, **act autonomously** as agents, and **learn continuously** throughout its lifetime. These capabilities feed one another rather than standing alone.
 
 
 ## Open-source systems

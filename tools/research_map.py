@@ -17,7 +17,7 @@ ZONES = {                         # centre of each illustration
     'R': (210, 410), 'E': (600, 148), 'A': (990, 410), 'L': (600, 672),
 }
 PILLAR = {
-    'R': ('Reasoning', 'reasons deeply', '#2563EB', '#7AB0FF'),
+    'R': ('Reasoning', 'reasons reliably', '#2563EB', '#7AB0FF'),
     'E': ('Embodied', 'inhabits a body', '#0891B2', '#3FD6EE'),
     'A': ('Agentic', 'acts autonomously', '#7C3AED', '#B79CFF'),
     'L': ('Lifelong', 'learns continuously', '#059669', '#4ADE9E'),
@@ -29,7 +29,7 @@ FLOW = [  # clockwise hand-offs, label position on the orbit (degrees, SVG angle
     ('experience becomes a better model', 135, 'end'),
 ]
 THEMES = {
-    'light': dict(bg='#F7FAFF', ink='#0F172A', soft='#475569', mute='#64748B', card='#FFFFFF', line='#DCE5F3',
+    'light': dict(bg='#FFFFFF', ink='#0F172A', soft='#475569', mute='#64748B', card='#FFFFFF', line='#DCE5F3',
                   orbit='#9FB2D0', robot='#1D4ED8', halo='#8AA3C2', screen='#F9FAFB', eagle='#004EA2'),
     'dark': dict(bg='#0D1117', ink='#E6EDF3', soft='#B6C2D2', mute='#8B98AB', card='#121A27', line='#24324A',
                  orbit='#4A5C7A', robot='#5B8DFF', halo='#3B5B8C', screen='#1B2536', eagle='#7AA7FF'),
@@ -43,14 +43,14 @@ def col(k, theme):
 # --------------------------------------------------------------------------- zone scenes (local coords, centred on 0,0)
 def scene_reasoning(c):
     # a small thought tree: nodes light up in order, then a check mark confirms the answer
-    nodes = [(-78, 0), (-30, -36), (-30, 36), (18, -52), (18, -12), (18, 30), (66, -12)]
+    nodes = [(-78, 0), (-30, -36), (-30, 36), (18, -52), (18, -12), (18, 30), (49, -12)]
     edges = [(0, 1), (0, 2), (1, 3), (1, 4), (2, 5), (4, 6)]
     o = []
     for i, (a, b) in enumerate(edges):
         (x1, y1), (x2, y2) = nodes[a], nodes[b]
         o.append(f'<line class="r-edge" x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{c}"/>')
         o.append(f'<line class="r-sig" style="animation-delay:{-0.35 * i:.2f}s" x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{c}" stroke-linecap="round"/>')
-    for i, (x, y) in enumerate(nodes):
+    for i, (x, y) in enumerate(nodes[:-1]):
         dim = ' r-dead' if i in (3, 5) else ''
         o.append(f'<circle class="r-node{dim}" style="animation-delay:{0.35 * i:.2f}s" cx="{x}" cy="{y}" r="8" fill="{c}"/>')
     o.append(f'<circle class="r-goal" cx="66" cy="-12" r="17" fill="none" stroke="{c}" stroke-width="2"/>')

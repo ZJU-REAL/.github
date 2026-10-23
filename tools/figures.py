@@ -63,7 +63,7 @@ def banner(theme):
          'ZHEJIANG UNIVERSITY  ·  HANGZHOU, CHINA</text>']
     # isometric R/E/A/L stack: foundation at the bottom, growth at the top
     cx, half, depth, thick, gap = 912, 132, 37, 13, 63
-    rows = [('L', 'learns continuously'), ('A', 'acts autonomously'), ('E', 'inhabits a body'), ('R', 'reasons deeply')]
+    rows = [('L', 'learns continuously'), ('A', 'acts autonomously'), ('E', 'inhabits a body'), ('R', 'reasons reliably')]
     top0 = 30
     for k, (letter, verb) in reversed(list(enumerate(rows))):   # paint back-to-front
         y = top0 + k * gap

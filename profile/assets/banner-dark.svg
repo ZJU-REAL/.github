@@ -21,7 +21,7 @@
 <polygon points="912,219 1044,256 912,293 780,256" fill="#FFFFFF" opacity="0.10"/>
 <text x="912" y="280" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" font-weight="800" fill="#FFFFFF">R</text>
 <line x1="1054" y1="256" x2="1074" y2="256" stroke="#5B6B85" stroke-width="1.5"/>
-<text x="1082" y="262" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#B6C2D2">reasons deeply</text>
+<text x="1082" y="262" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#B6C2D2">reasons reliably</text>
 <polygon points="780,193 912,230 912,243 780,206" fill="#164E63" opacity="0.9"/>
 <polygon points="912,230 1044,193 1044,206 912,243" fill="#164E63" opacity="0.7"/>
 <polygon points="912,156 1044,193 912,230 780,193" fill="#0891B2"/>
