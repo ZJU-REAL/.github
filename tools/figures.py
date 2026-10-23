@@ -62,8 +62,8 @@ def banner(theme):
          f'<text x="72" y="312" font-family="{FONT}" font-size="13" letter-spacing="3" font-weight="600" fill="{t["mute"]}">'
          'ZHEJIANG UNIVERSITY  ·  HANGZHOU, CHINA</text>']
     # isometric R/E/A/L stack: foundation at the bottom, growth at the top
-    cx, half, depth, thick, gap = 978, 132, 37, 13, 63
-    rows = [('L', 'grows'), ('A', 'acts'), ('E', 'sees &amp; moves'), ('R', 'thinks')]
+    cx, half, depth, thick, gap = 912, 132, 37, 13, 63
+    rows = [('L', 'learns continuously'), ('A', 'acts autonomously'), ('E', 'inhabits a body'), ('R', 'reasons deeply')]
     top0 = 30
     for k, (letter, verb) in reversed(list(enumerate(rows))):   # paint back-to-front
         y = top0 + k * gap
@@ -78,7 +78,7 @@ def banner(theme):
         o.append(f'<text x="{cx}" y="{y + depth + 24}" text-anchor="middle" font-family="{FONT}" font-size="26" '
                  f'font-weight="800" fill="#FFFFFF">{letter}</text>')
         o.append(f'<line x1="{cx + half + 10}" y1="{y + depth}" x2="{cx + half + 30}" y2="{y + depth}" stroke="{t["arrow"]}" stroke-width="1.5"/>')
-        o.append(f'<text x="{cx + half + 38}" y="{y + depth + 6}" font-family="{FONT}" font-size="17" font-weight="600" fill="{t["soft"]}">{verb}</text>')
+        o.append(f'<text x="{cx + half + 38}" y="{y + depth + 6}" font-family="{FONT}" font-size="16" font-weight="600" fill="{t["soft"]}">{verb}</text>')
     o.append('</svg>')
     return '\n'.join(o)
 

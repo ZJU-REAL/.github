@@ -19,7 +19,7 @@
 
 </div>
 
-We study one question from four sides: **what does it take for AI to work in the real world?** It has to **reason** well enough to plan and check its own work, **act** as an agent across screens, software, and open-ended tasks, carry that ability **into the physical world**, and **keep improving** from everything it experiences along the way. These capabilities feed one another rather than standing alone, and a shared engine of agentic RL, self-distillation, and verifiable rewards runs through all of them.
+We study one question from four sides: **what does it take for AI to work in the real world?** It has to **reason** well enough to plan and check its own work, **act** as an agent across screens, software, and open-ended tasks, carry that ability **into the physical world**, and **keep improving** from everything it experiences along the way. These capabilities feed one another rather than standing alone.
 
 
 ## Open-source systems
@@ -57,10 +57,8 @@ We study one question from four sides: **what does it take for AI to work in the
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/research-map-dark.svg">
-  <img alt="REAL research map: Reasoning, Embodied, Agentic, and Lifelong layers with a shared engine" src="assets/research-map-light.svg" width="100%">
+  <img alt="REAL research map: how Reasoning, Embodied, Agentic, and Lifelong-learning AI connect" src="assets/research-map-light.svg" width="100%">
 </picture>
-
-<sub>Read it bottom-up. Each layer builds on the one below it; filled boxes are open-source systems; the engine on the right is reused across all four layers.</sub>
 
 ## Research lines
 
@@ -98,7 +96,7 @@ We study one question from four sides: **what does it take for AI to work in the
 | **Ground** | [GUI-G²](https://github.com/ZJU-REAL/GUI-G2) → [GUI-RCPO](https://github.com/ZJU-REAL/GUI-RCPO) · [Reliable Negatives](https://github.com/ZJU-REAL/CANL) · [UI-Zoomer](https://github.com/ZJU-REAL/UI-Zoomer) | Gaussian rewards, test-time RL, confidence-anchored adaptation, and uncertainty-driven zoom make grounding precise, even without labels. |
 | **Act** | [UI-S1](https://github.com/X-PLUG/MobileAgent/tree/main/UI-S1) · [EMPO](https://aclanthology.org/2026.acl-long.428/) · [UI-Copilot](https://github.com/ZJU-REAL/UI-Copilot) | Semi-online and experience-driven multi-turn RL, plus tool-integrated policy optimization for long-horizon tasks. |
 | **Beyond the GUI** | [HybridCUA](https://github.com/ZJU-REAL/HybridCUA) · [ComputerSD](https://github.com/ZJU-REAL/ComputerSD) · [Reflect, Revise, Reuse](https://arxiv.org/abs/2609.17653) | Orchestrate GUI and CLI together, self-distill online from real-time feedback, and evolve skills without retraining. |
-| **Evaluate & deploy** | [KnowU-Bench](https://github.com/ZJU-REAL/KnowU-Bench) → **[ClawGUI](https://github.com/ZJU-REAL/ClawGUI)** | Interactive, proactive, personalized evaluation, and one framework to train, evaluate, and deploy agents on real phones. |
+| **Evaluate & deploy** | [KnowU-Bench](https://github.com/ZJU-REAL/KnowU-Bench) · **[ageval](https://github.com/ZJU-REAL/ageval)** → **[ClawGUI](https://github.com/ZJU-REAL/ClawGUI)** | Interactive, proactive, personalized evaluation, a plug-in harness that runs any agent on any environment, and one framework to train, evaluate, and deploy agents on real phones. |
 
 ### A · Agentic II: research and creation agents
 
@@ -106,6 +104,7 @@ We study one question from four sides: **what does it take for AI to work in the
 
 | Step | Work | What it contributes |
 | :-- | :-- | :-- |
+| **Orchestrate** | **[HuggingGPT](https://github.com/microsoft/JARVIS)** · [TaskBench](https://github.com/microsoft/JARVIS/tree/main/taskbench) | An LLM as controller that plans, calls expert models and tools, and composes the result, plus a benchmark for task automation: where our agent line began. |
 | **Search & synthesize** | [IterSynth](https://arxiv.org/abs/2609.29444) · [BrowserForge](https://arxiv.org/abs/2608.24848) · [EviNote-RAG](https://arxiv.org/abs/2509.00877) | Role-decoupled deep search, parallel browser sandboxes that scale web episodes, and evidence notes for faithful retrieval-augmented answers. |
 | **Build** | [Code-A1](https://github.com/ZJU-REAL/Code-A1) | A code LLM and a test LLM co-evolve adversarially through reinforcement learning. |
 | **Plan & discover** | [PaperGym](https://github.com/ZJU-REAL/PaperGym) → **[Polaris](https://github.com/ZJU-REAL/Polaris)** | Rubric-centered research planning, then an autonomous platform that goes from literature to a reviewed paper. |
@@ -122,18 +121,8 @@ We study one question from four sides: **what does it take for AI to work in the
 | **Guide** | [Agent-G²](https://github.com/ZJU-REAL/Agent-G2) · [BEACON](https://github.com/ZJU-REAL/BEACON) | Gaussian guidance over hint depth and milestone-guided learning densify the sparse rewards of long-horizon agentic RL. |
 | **Internalize** | [SKILL0](https://github.com/ZJU-REAL/SkillZero) · [ViSkill](https://github.com/ZJU-REAL/ViSkill) · [SkillRise](https://arxiv.org/abs/2607.26784) | Skills discovered in context are internalized into the policy, made visual-native, and carried across tasks. |
 | **Distill** | [SDAR](https://github.com/ZJU-REAL/SDAR) → [AgentOPSD](https://arxiv.org/abs/2608.05987) · [Pass the Baton](https://github.com/ZJU-REAL/Relay-OPD) · [RetireOPD](https://arxiv.org/abs/2609.20784) | The first open-source framework that unifies agentic RL with on-policy self-distillation, and the family of methods built on it. |
+| **Steer** | **[EasySteer](https://github.com/ZJU-REAL/EasySteer)** | Adjust a deployed model's behavior at inference time without retraining, through high-throughput activation steering. |
 | **Operate** | **[HugAgentOS](https://github.com/ZJU-REAL/HugAgentOS)** | Lifelong learning as a running system: memory, skills, and orchestration evolve with use, and each step can be attributed, replayed, and rolled back. |
-
-### Shared engine
-
-One toolkit runs through all four layers, so a gain in one place compounds everywhere else.
-
-- **Agentic RL and self-distillation:** SDAR and its family, ComputerSD, Code-A1
-- **Verifiable rewards:** VerifyBench, CoVerRL, GUI-G²
-- **Test-time learning:** [TTPO](https://github.com/ZJU-REAL/TTPO), GUI-RCPO
-- **Evaluation:** [ageval](https://github.com/ZJU-REAL/ageval), KnowU-Bench, ViewSpatial-Bench
-- **Steering:** [EasySteer](https://github.com/ZJU-REAL/EasySteer)
-- **Roots:** [HuggingGPT](https://github.com/microsoft/JARVIS) and [TaskBench](https://github.com/microsoft/JARVIS/tree/main/taskbench), where our agent line began with LLMs as controllers of models and tools
 
 <div align="center">
 <br>
