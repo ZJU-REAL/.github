@@ -19,7 +19,7 @@
 
 </div>
 
-We study one question from four sides: **what does it take for AI to work in the real world?** It has to **reason reliably**, **inhabit physical bodies**, **act autonomously** as agents, and **learn continuously** throughout its lifetime. These capabilities feed one another rather than standing alone.
+**REAL Lab** at Zhejiang University builds AI systems that **reason reliably**, **inhabit physical bodies**, **act autonomously** as agents, and **learn continuously** throughout their lifetime, bridging the gap between virtual intelligence and the real world.
 
 
 ## Open-source systems
@@ -59,8 +59,6 @@ We study one question from four sides: **what does it take for AI to work in the
   <source media="(prefers-color-scheme: dark)" srcset="assets/research-map-dark.svg">
   <img alt="REAL research map: how Reasoning, Embodied, Agentic, and Lifelong-learning AI connect" src="assets/research-map-light.svg" width="100%">
 </picture>
-
-<sub>Four capabilities, one loop around the real world: each hands something to the next, and every interaction flows back into a better model.</sub>
 
 ## Research lines
 
