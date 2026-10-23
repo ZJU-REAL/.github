@@ -27,53 +27,31 @@ We study one question from four sides: **what does it take for AI to work in the
 <table>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/ZJU-REAL/HugAgentOS"><img src="assets/covers/hugagentos.jpg" alt="HugAgentOS" width="100%"></a>
-<b><a href="https://github.com/ZJU-REAL/HugAgentOS">HugAgentOS</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/HugAgentOS?style=social" alt="stars"><br>
-<sub>A self-evolving AgentOS. Memory, skills, and orchestration improve with every task, and each evolution step is attributable, replayable, and reversible.</sub>
-</td>
-<td width="50%" valign="top">
-<a href="https://github.com/ZJU-REAL/Easel"><img src="assets/covers/easel.jpg" alt="Easel" width="100%"></a>
-<b><a href="https://github.com/ZJU-REAL/Easel">Easel</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/Easel?style=social" alt="stars"><br>
-<sub>An open-source social-media agent: discover trends, create posts, audio, and video, publish across platforms, and learn what actually works.</sub>
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
 <a href="https://github.com/microsoft/JARVIS"><img src="assets/covers/hugginggpt.jpg" alt="HuggingGPT" width="100%"></a>
 <b><a href="https://github.com/microsoft/JARVIS">HuggingGPT</a></b> &nbsp; <img src="https://img.shields.io/github/stars/microsoft/JARVIS?style=social" alt="stars"><br>
 <sub>An LLM as controller and the Hugging Face hub as executors: plan, pick expert models, run them, and compose the answer.</sub>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/ZJU-REAL/ageval"><img src="assets/covers/ageval.jpg" alt="ageval" width="100%"></a>
-<b><a href="https://github.com/ZJU-REAL/ageval">ageval</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/ageval?style=social" alt="stars"><br>
-<sub>Agent evaluation on one stable core. Swap the agent under test and its environment through plugins, and run the same dataset anywhere.</sub>
+<a href="https://github.com/ZJU-REAL/HugAgentOS"><img src="assets/covers/hugagentos.jpg" alt="HugAgentOS" width="100%"></a>
+<b><a href="https://github.com/ZJU-REAL/HugAgentOS">HugAgentOS</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/HugAgentOS?style=social" alt="stars"><br>
+<sub>A self-evolving AgentOS. Memory, skills, and orchestration improve with every task, and each evolution step is attributable, replayable, and reversible.</sub>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/ZJU-REAL/Polaris"><img src="assets/covers/polaris.jpg" alt="Polaris" width="100%"></a>
-<b><a href="https://github.com/ZJU-REAL/Polaris">Polaris</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/Polaris?style=social" alt="stars"><br>
-<sub>Autonomous end-to-end research: literature survey, ideas, experiments on real GPUs, paper writing, and review, as resumable human-gated runs.</sub>
+<a href="https://github.com/ZJU-REAL/Easel"><img src="assets/covers/easel.jpg" alt="Easel" width="100%"></a>
+<b><a href="https://github.com/ZJU-REAL/Easel">Easel</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/Easel?style=social" alt="stars"><br>
+<sub>An open-source social-media agent: discover trends, create posts, audio, and video, publish across platforms, and learn what actually works.</sub>
 </td>
-<td width="50%" valign="top">
-<a href="https://github.com/ZJU-REAL/ClawGUI"><img src="assets/covers/clawgui.jpg" alt="ClawGUI" width="100%"></a>
-<b><a href="https://github.com/ZJU-REAL/ClawGUI">ClawGUI</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/ClawGUI?style=social" alt="stars"><br>
-<sub>Train, evaluate, and deploy GUI agents in one framework: online RL in parallel emulators and real Android, HarmonyOS, and iOS devices.</sub>
-</td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 <a href="https://github.com/ZJU-REAL/EasySteer"><img src="assets/covers/easysteer.jpg" alt="EasySteer" width="100%"></a>
 <b><a href="https://github.com/ZJU-REAL/EasySteer">EasySteer</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/EasySteer?style=social" alt="stars"><br>
 <sub>High-throughput LLM activation steering on vLLM, 10.8–22.3× faster than prior frameworks.</sub>
 </td>
-<td width="50%" valign="top">
-<a href="https://github.com/ZJU-REAL/Awesome-GUI-Agents"><img src="assets/covers/awesome-gui-agents.jpg" alt="Awesome-GUI-Agents" width="100%"></a>
-<b><a href="https://github.com/ZJU-REAL/Awesome-GUI-Agents">Awesome-GUI-Agents</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/Awesome-GUI-Agents?style=social" alt="stars"><br>
-<sub>A curated map of GUI-agent research: training, grounding, datasets, and benchmarks, refreshed every conference cycle.</sub>
-</td>
 </tr>
 </table>
+
+<p align="center"><a href="https://zju-real.github.io/projects.html"><b>More projects →</b></a></p>
 
 ## Research map
 
