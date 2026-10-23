@@ -4,6 +4,7 @@
   <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
   <img alt="REAL Lab: Reasoning, Embodied, Agentic, and Lifelong-learning AI at Zhejiang University" src="assets/banner-light.svg" width="100%">
 </picture>
+<br>
 
 <p>
   <a href="https://zju-real.github.io"><img alt="Website" src="https://img.shields.io/badge/Website-zju--real.github.io-1D4ED8?style=flat-square&logo=googlechrome&logoColor=white"></a>

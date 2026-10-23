@@ -62,9 +62,9 @@ def banner(theme):
          f'<text x="72" y="312" font-family="{FONT}" font-size="13" letter-spacing="3" font-weight="600" fill="{t["mute"]}">'
          'ZHEJIANG UNIVERSITY  ·  HANGZHOU, CHINA</text>']
     # isometric R/E/A/L stack: foundation at the bottom, growth at the top
-    cx, half, depth, thick, gap = 912, 132, 37, 13, 63
+    cx, half, depth, thick, gap = 912, 124, 34, 12, 76
     rows = [('L', 'learns continuously'), ('A', 'acts autonomously'), ('E', 'inhabits a body'), ('R', 'reasons reliably')]
-    top0 = 30
+    top0 = 22
     for k, (letter, verb) in reversed(list(enumerate(rows))):   # paint back-to-front
         y = top0 + k * gap
         base, light, darkc = LAYER[letter]
