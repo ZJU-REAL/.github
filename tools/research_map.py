@@ -128,7 +128,12 @@ def scene_lifelong(c):
     for i, h in enumerate([26, 40, 56, 74]):
         o.append(f'<rect class="l-bar" style="animation-delay:{0.4 * i:.2f}s" x="{-96 + 26 * i}" y="{30 - h}" width="17" height="{h}" rx="4" fill="{c}" fill-opacity="{0.35 + 0.18 * i:.2f}"/>')
     o.append(f'<line x1="-104" y1="31" x2="6" y2="31" stroke="{c}" stroke-opacity="0.35" stroke-width="1.5"/>')
-    o.append(f'<path d="M -96 6 C -70 -2, -44 -18, -10 -50" fill="none" stroke="{c}" stroke-width="2" stroke-dasharray="4 4" class="l-trend"/>')
+    pts = [(-87.5, -8), (-61.5, -22), (-35.5, -38), (-9.5, -56)]
+    o.append(f'<path class="l-trend" d="M -87.5 -8 C -78 -12, -70 -17, -61.5 -22 S -44 -32, -35.5 -38 S -18 -50, -9.5 -56" '
+             f'fill="none" stroke="{c}" stroke-width="2.2" stroke-linecap="round"/>')
+    for i, (x, y) in enumerate(pts):
+        o.append(f'<circle class="l-dot" style="animation-delay:{0.4 * i:.2f}s" cx="{x}" cy="{y}" r="3.2" fill="{c}"/>')
+    o.append(f'<path class="l-head" d="M -15.5 -57 L -6 -60 L -9.5 -50.5" fill="none" stroke="{c}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>')
     o.append(f'<g transform="translate(62,-6)"><g class="l-loop">'
              f'<path d="M 26 0 A 26 26 0 1 1 18.4 -18.4" fill="none" stroke="{c}" stroke-width="3" stroke-linecap="round"/>'
              f'<path d="M 18.4 -18.4 L 10 -24 M 18.4 -18.4 L 24 -10" stroke="{c}" stroke-width="3" stroke-linecap="round"/></g>'
@@ -208,8 +213,12 @@ STYLE = """
 @keyframes tap{0%{transform:scale(.3);opacity:.9}60%,100%{transform:scale(1.9);opacity:0}}
 .l-bar{transform-box:fill-box;transform-origin:center bottom;animation:grow 4.8s ease-out infinite}
 @keyframes grow{0%,4%{transform:scaleY(.12)}26%,86%{transform:scaleY(1)}100%{transform:scaleY(.12)}}
-.l-trend{stroke-dashoffset:0;animation:trend 2.4s linear infinite}
-@keyframes trend{to{stroke-dashoffset:-16}}
+.l-trend{stroke-dasharray:110;stroke-dashoffset:110;animation:draw 4.8s ease-out infinite}
+@keyframes draw{0%,22%{stroke-dashoffset:110}48%,86%{stroke-dashoffset:0}100%{stroke-dashoffset:110}}
+.l-head{opacity:0;animation:head 4.8s ease-out infinite}
+@keyframes head{0%,44%{opacity:0}50%,86%{opacity:1}100%{opacity:0}}
+.l-dot{transform-box:fill-box;transform-origin:center;opacity:0;animation:dot 4.8s ease-out infinite}
+@keyframes dot{0%,20%{opacity:0;transform:scale(.4)}30%,86%{opacity:1;transform:scale(1)}100%{opacity:0}}
 .l-loop{transform-origin:0 0;animation:spin 6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .l-sprout{transform-origin:0 12px;animation:sprout 4.8s ease-in-out infinite}
