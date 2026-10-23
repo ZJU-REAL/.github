@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="28" viewBox="0 0 1200 28">
+<style>.d{transform-box:fill-box;transform-origin:center;animation:b 3.2s ease-in-out infinite}
+.d1{animation-delay:.4s}.d2{animation-delay:.8s}.d3{animation-delay:1.2s}
+@keyframes b{0%,60%,100%{transform:scale(1);opacity:.85}20%{transform:scale(1.6);opacity:1}}
+.s{animation:s 6s linear infinite}@keyframes s{from{stroke-dashoffset:0}to{stroke-dashoffset:-48}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><defs>
+<linearGradient id="l" x1="0" x2="1"><stop offset="0" stop-color="#3A4A66" stop-opacity="0"/><stop offset="1" stop-color="#3A4A66"/></linearGradient>
+<linearGradient id="r" x1="0" x2="1"><stop offset="0" stop-color="#3A4A66"/><stop offset="1" stop-color="#3A4A66" stop-opacity="0"/></linearGradient>
+</defs>
+<rect x="60" y="13.25" width="494" height="1.5" fill="url(#l)"/>
+<rect x="646" y="13.25" width="494" height="1.5" fill="url(#r)"/>
+<line class="s" x1="354" y1="14" x2="554" y2="14" stroke="#7AB0FF" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="10 38" style="animation-direction:reverse"/>
+<line class="s" x1="646" y1="14" x2="846" y2="14" stroke="#4ADE9E" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="10 38"/>
+<circle class="d d0" cx="573.0" cy="14" r="4.2" fill="#7AB0FF"/>
+<circle class="d d1" cx="591.0" cy="14" r="4.2" fill="#3FD6EE"/>
+<circle class="d d2" cx="609.0" cy="14" r="4.2" fill="#B79CFF"/>
+<circle class="d d3" cx="627.0" cy="14" r="4.2" fill="#4ADE9E"/>
+</svg>

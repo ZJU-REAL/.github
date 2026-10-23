@@ -107,6 +107,10 @@ Deployment is where learning continues: agents turn their own experience into gu
 | **Post-deployment steering** | Adjust a deployed model's behavior at inference time without retraining. | **[EasySteer](https://github.com/ZJU-REAL/EasySteer)** |
 | **Self-evolving systems** | Memory, skills, and orchestration that evolve with use, with every step attributable and reversible. | **[HugAgentOS](https://github.com/ZJU-REAL/HugAgentOS)** |
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/divider-dark.svg">
+  <img alt="" src="assets/divider-light.svg" width="100%">
+</picture>
 
 <div align="center">
 <br>
