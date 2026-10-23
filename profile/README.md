@@ -8,14 +8,13 @@
 </p>
 
 <p>
-  <a href="https://zju-real.github.io"><img alt="Website" src="https://img.shields.io/badge/Website-zju--real.github.io-1D4ED8?style=flat-square&logo=googlechrome&logoColor=white"></a>
-  <a href="https://scholar.google.com/citations?user=UT3NzFAAAAAJ"><img alt="Google Scholar" src="https://img.shields.io/badge/Google%20Scholar-Publications-4285F4?style=flat-square&logo=googlescholar&logoColor=white"></a>
-  <a href="https://huggingface.co/ZJU-REAL"><img alt="Hugging Face" src="assets/badge-huggingface.svg"></a>
-</p>
-<p>
-  <a href="https://github.com/ZJU-REAL"><img alt="Total stars" src="https://img.shields.io/github/stars/ZJU-REAL?style=social&label=Stars"></a>
+  <a href="https://zju-real.github.io"><img alt="Website" src="https://img.shields.io/badge/Website-zju--real.github.io-1D4ED8?style=flat-square&logo=googlechrome&logoColor=white" align="top"></a>
+  <a href="https://scholar.google.com/citations?user=UT3NzFAAAAAJ"><img alt="Google Scholar" src="https://img.shields.io/badge/Google%20Scholar-Publications-4285F4?style=flat-square&logo=googlescholar&logoColor=white" align="top"></a>
+  <a href="https://huggingface.co/ZJU-REAL"><img alt="Hugging Face" src="assets/badge-huggingface.svg" align="top"></a>
+  <br>
+  <a href="https://github.com/ZJU-REAL"><img alt="Total stars" src="https://img.shields.io/github/stars/ZJU-REAL?style=social&label=Stars" align="absbottom"></a>
   &nbsp;
-  <a href="https://github.com/ZJU-REAL"><img alt="Follow ZJU-REAL" src="https://img.shields.io/github/followers/ZJU-REAL?style=social&label=Follow"></a>
+  <a href="https://github.com/ZJU-REAL"><img alt="Follow ZJU-REAL" src="https://img.shields.io/github/followers/ZJU-REAL?style=social&label=Follow" align="absbottom"></a>
 </p>
 
 **浙江大学 REAL Lab** · 推理 · 具身 · 智能体 · RSI

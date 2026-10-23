@@ -60,7 +60,7 @@ def banner(theme):
          f'<text x="72" y="262" font-family="{FONT}" font-size="20" fill="{t["soft"]}">'
          'Toward AI that thinks, acts, and grows in the real world.</text>',
          f'<text x="72" y="312" font-family="{FONT}" font-size="13" letter-spacing="3" font-weight="600" fill="{t["mute"]}">'
-         'ZHEJIANG UNIVERSITY  ·  HANGZHOU, CHINA</text>']
+         'ZHEJIANG UNIVERSITY</text>']
     # isometric R/E/A/L stack: foundation at the bottom, growth at the top
     cx, half, depth, thick, gap = 912, 124, 34, 12, 76
     rows = [('L', 'learns continuously'), ('A', 'acts autonomously'), ('E', 'inhabits a body'), ('R', 'reasons reliably')]

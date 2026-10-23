@@ -10,11 +10,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif"
 EAGLE = 'M44.1474 66.4569L39.1672 58.8578C40.6965 58.0705 40.5071 55.6155 39.197 55.4113C37.7385 55.1828 36.5775 55.1126 35.5542 52.8197H37.9267L37.1984 50.831C34.4838 51.0694 33.93 50.315 32.6429 48.1947L36.0336 48.0786L35.3481 46.3481C31.6532 46.5195 30.6784 45.6136 29.7558 43.5082L34.061 43.3573L33.129 41.2984C28.7201 41.4214 27.7869 41.2966 26.1701 38.3151L31.647 38.2884L30.8746 36.327C25.8826 36.5424 24.6359 36.0538 23.2227 33.5572L34.4435 33.2734C36.0789 33.2318 37.9459 34.3463 38.6339 35.8296L39.9831 38.741L41.403 33.8409C42.1351 31.3164 47.6523 32.2316 49.428 33.9117L46.0907 35.1187L47.7237 39.0949C48.9071 36.3257 50.3569 33.2722 53.4762 33.2722H64.484C63.6371 35.7042 61.5925 36.9168 57.1482 36.1301L56.3671 38.189L61.8564 38.1723C60.5426 41.2351 59.0847 41.6201 55.0018 41.1556L54.1493 43.2145L58.5191 43.3567C57.6784 45.2976 56.1566 46.458 52.7833 46.0545L52.073 48.0593L55.5525 48.0432C54.5553 50.482 53.9115 51.0265 50.74 50.8837L50.0129 52.8718L52.5194 52.8811C51.4658 55.004 51.1535 55.256 48.9046 55.4554C47.5678 55.5739 46.9718 57.7141 48.7519 58.9826L44.1474 66.4569Z'  # ZJU Qiushi eagle, as on the website
 
-W, H = 1120, 742
-CX, CY = 560, 378                 # robot / orbit centre
-RX, RY = 320, 238                 # orbit radii
+W, H = 1120, 706
+CX, CY = 560, 366                 # robot / orbit centre
+RX, RY = 320, 226                 # orbit radii
 ZONES = {                         # centre of each illustration
-    'R': (240, 378), 'E': (560, 133), 'A': (880, 378), 'L': (560, 610),
+    'R': (240, 366), 'E': (560, 133), 'A': (880, 366), 'L': (560, 584),
 }
 PILLAR = {
     'R': ('Reasoning', 'reasons reliably', '#2563EB', '#7AB0FF'),
@@ -87,7 +87,7 @@ def _row(c, xs, y, k):
 
 def scene_embodied(c):
     # left: a robot walks along the front of the scene; right: exactly what it sees, on the same timeline
-    W2, H2 = 56, 56
+    W2, H2 = 56, 46
     o = [f'<defs><clipPath id="e3"><rect x="{-W2}" y="{-H2}" width="{2 * W2}" height="{2 * H2}" rx="9"/></clipPath>'
          f'<clipPath id="e1"><rect x="{-W2}" y="{-H2}" width="{2 * W2}" height="{2 * H2}" rx="9"/></clipPath></defs>']
     # ---- third person
@@ -107,8 +107,8 @@ def scene_embodied(c):
              + _row(c, (-26, 0, 26), 6, 0.5)
              + f'<g transform="translate(0,22)">{walker}</g>')
     o.append('<g transform="translate(-62,0)">'
-             f'<g clip-path="url(#e3)"><g transform="translate(0,9)">{third}</g></g>'
-             f'<text x="0" y="{H2 + 16}" text-anchor="middle" font-size="9.5" font-weight="600" letter-spacing=".6" fill="{c}" fill-opacity="0.85">third-person</text>'
+             f'<g clip-path="url(#e3)"><g transform="translate(0,4)">{third}</g></g>'
+             f'<text x="0" y="{H2 + 14}" text-anchor="middle" font-size="9.5" font-weight="600" letter-spacing=".6" fill="{c}" fill-opacity="0.85">third-person</text>'
              '</g>')
     # ---- first person: the same row, seen from the robot, panning with its walk
     far = (f'<line x1="-220" y1="-34" x2="220" y2="-34" stroke="{c}" stroke-opacity="0.25" stroke-width="1.2"/>'
@@ -119,19 +119,19 @@ def scene_embodied(c):
     for gy in (-10, 22, 64):
         ground.append(f'<line x1="-240" y1="{gy}" x2="240" y2="{gy}" stroke="{c}" stroke-opacity="0.18" stroke-dasharray="2 4"/>')
     near = ''.join(ground) + _row(c, (-80, 0, 80), 34, 1.25)
-    hud = (''.join(f'<path d="M {sx * 48} {sy * 36} L {sx * 48} {sy * 46} L {sx * 38} {sy * 46}" '
+    hud = (''.join(f'<path d="M {sx * 48} {sy * 28} L {sx * 48} {sy * 38} L {sx * 38} {sy * 38}" '
                    f'stroke="{c}" stroke-width="2" fill="none" stroke-linecap="round"/>'
                    for sx in (-1, 1) for sy in (-1, 1))
            + f'<rect class="e-focus" x="-9" y="-8" width="18" height="16" rx="2.5" fill="none" stroke="{c}" stroke-width="1.6"/>'
            + f'<line x1="-3.5" y1="0" x2="3.5" y2="0" stroke="{c}" stroke-width="1.2"/><line x1="0" y1="-3.5" x2="0" y2="3.5" stroke="{c}" stroke-width="1.2"/>'
-           + '<circle class="e-rec" cx="-41" cy="-36" r="3" fill="#E5484D"/>'
-           + f'<text x="-34" y="-33" font-size="8" font-weight="700" letter-spacing=".8" fill="{c}">REC</text>')
+           + '<circle class="e-rec" cx="-41" cy="-28" r="3" fill="#E5484D"/>'
+           + f'<text x="-34" y="-25" font-size="8" font-weight="700" letter-spacing=".8" fill="{c}">REC</text>')
     o.append('<g transform="translate(62,0)">'
              f'<g clip-path="url(#e1)"><g transform="translate(0,-2) scale(0.6)"><g class="e-far">{far}</g><g class="e-pan">{near}</g></g></g>'
              + hud
-             + f'<text x="0" y="{H2 + 16}" text-anchor="middle" font-size="9.5" font-weight="600" letter-spacing=".6" fill="{c}" fill-opacity="0.85">first-person</text>'
+             + f'<text x="0" y="{H2 + 14}" text-anchor="middle" font-size="9.5" font-weight="600" letter-spacing=".6" fill="{c}" fill-opacity="0.85">first-person</text>'
              '</g>')
-    o.append(f'<line x1="0" y1="-58" x2="0" y2="72" stroke="{c}" stroke-opacity="0.25" stroke-width="1.2"/>')
+    o.append(f'<line x1="0" y1="-50" x2="0" y2="62" stroke="{c}" stroke-opacity="0.25" stroke-width="1.2"/>')
     return ''.join(o)
 
 
@@ -283,13 +283,13 @@ def build(theme):
          f'<radialGradient id="glow"><stop offset="0" stop-color="{t["halo"]}" stop-opacity="0.22"/><stop offset="1" stop-color="{t["halo"]}" stop-opacity="0"/></radialGradient>',
          '</defs>',
          f'<rect width="{W}" height="{H}" rx="20" fill="{t["bg"]}"/>',
-         f'<circle class="halo" cx="{CX}" cy="{CY}" r="250" fill="url(#glow)"/>']
+         f'<circle class="halo" cx="{CX}" cy="{CY}" r="225" fill="url(#glow)"/>']
     # clockwise orbit (starts at R, passes E, A, L)
     orbit = f'M {CX - RX} {CY} A {RX} {RY} 0 1 1 {CX + RX} {CY} A {RX} {RY} 0 1 1 {CX - RX} {CY}'
     holes = []
     for k, (zx, zy) in ZONES.items():
         name, phrase = PILLAR[k][0], PILLAR[k][1]
-        ty = {'E': zy - 104, 'L': zy + 112, 'R': zy - 106, 'A': zy - 106}[k]
+        ty = {'E': zy - 92, 'L': zy + 100, 'R': zy - 94, 'A': zy - 94}[k]
         tw = len(name) * 11.2 + 8 + len(phrase) * 7.7
         holes.append(f'<rect x="{zx - 100}" y="{ty - 30}" width="{tw + 60:.0f}" height="46" rx="12" fill="#000"/>')
     o.append(f'<mask id="titles" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}">'
@@ -310,8 +310,8 @@ def build(theme):
         dx, dy = zx - CX, zy - CY
         import math as m
         d = m.hypot(dx, dy)
-        sx, sy = CX + dx / d * 96, CY + dy / d * (114 if k == 'E' else 86)
-        ex, ey = zx - dx / d * 118, zy - dy / d * (88 if k == 'E' else 84)
+        sx, sy = CX + dx / d * 80, CY + dy / d * (100 if k == 'E' else 74)
+        ex, ey = zx - dx / d * 118, zy - dy / d * (76 if k == 'E' else 72)
         p = f'M {sx:.0f} {sy:.0f} L {ex:.0f} {ey:.0f}'
         c = col(k, theme)
         o.append(f'<path d="{p}" stroke="{c}" stroke-opacity="0.35" stroke-width="1.4" stroke-dasharray="3 5" fill="none"/>')
@@ -322,16 +322,16 @@ def build(theme):
     for k, (zx, zy) in ZONES.items():
         name, phrase, _, _ = PILLAR[k]
         c = col(k, theme)
-        o.append(f'<rect x="{zx - 128}" y="{zy - 82}" width="256" height="164" rx="22" fill="{t["card"]}" stroke="{c}" stroke-opacity="0.35" stroke-width="1.4"/>')
+        o.append(f'<rect x="{zx - 128}" y="{zy - 70}" width="256" height="140" rx="20" fill="{t["card"]}" stroke="{c}" stroke-opacity="0.35" stroke-width="1.4"/>')
         body = scene_agentic(c, t) if k == 'A' else (scene_lifelong(c, theme) if k == 'L' else scenes[k](c))
         o.append(f'<g transform="translate({zx},{zy})"><g class="zone">{body}</g></g>')
         # title block: above for E, below for L, above the card for R and A
-        ty = {'E': zy - 104, 'L': zy + 112, 'R': zy - 106, 'A': zy - 106}[k]
+        ty = {'E': zy - 92, 'L': zy + 100, 'R': zy - 94, 'A': zy - 94}[k]
         o.append(f'<circle cx="{zx - 74}" cy="{ty - 7}" r="15" fill="{c}"/>')
         o.append(f'<text x="{zx - 74}" y="{ty - 1}" text-anchor="middle" font-size="16" font-weight="800" fill="{'#FFFFFF' if theme == 'light' else '#0D1117'}">{k}</text>')
         o.append(f'<text x="{zx - 51}" y="{ty - 1}" font-size="19" font-weight="750" fill="{t["ink"]}">{name}<tspan font-size="14.5" font-weight="400" fill="{t["soft"]}" dx="8">{phrase}</tspan></text>')
     # robot at the centre
-    o.append(f'<g transform="translate({CX},{CY + 6}) scale(0.85)">{robot(t)}</g>')
+    o.append(f'<g transform="translate({CX},{CY + 5}) scale(0.72)">{robot(t)}</g>')
     o.append('</svg>')
     return '\n'.join(o)
 
