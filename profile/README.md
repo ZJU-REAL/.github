@@ -12,6 +12,7 @@
   <a href="https://scholar.google.com/citations?user=UT3NzFAAAAAJ"><img alt="Google Scholar" src="https://img.shields.io/badge/Google%20Scholar-Publications-34A853?style=flat-square&logo=googlescholar&logoColor=white" align="top"></a>
   <a href="https://huggingface.co/ZJU-REAL"><img alt="Hugging Face" src="assets/badge-huggingface.svg" align="top"></a>
   <a href="https://x.com/zjureal"><img alt="X" src="https://img.shields.io/badge/Follow-%40zjureal-000000?style=flat-square&logo=x&logoColor=white" align="top"></a>
+  <a href="https://www.xiaohongshu.com/user/profile/67d84bef000000000d008f18"><img alt="RedNote" src="https://img.shields.io/badge/RedNote-REAL%20Lab-FF2442?style=flat-square&logo=xiaohongshu&logoColor=white" align="top"></a>
   <img alt="" src="assets/spacer.svg" width="1" height="30" align="top">
   <br>
   <a href="https://github.com/ZJU-REAL"><img alt="Total stars" src="https://img.shields.io/github/stars/ZJU-REAL?style=social&label=Stars" align="absbottom"></a>
