@@ -3,6 +3,7 @@
 Run from the repository root:  python3 tools/research_map.py
 Writes profile/assets/research-map-light.svg and research-map-dark.svg.
 """
+import math
 import os
 from xml.sax.saxutils import escape
 
@@ -10,11 +11,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif"
 EAGLE = 'M44.1474 66.4569L39.1672 58.8578C40.6965 58.0705 40.5071 55.6155 39.197 55.4113C37.7385 55.1828 36.5775 55.1126 35.5542 52.8197H37.9267L37.1984 50.831C34.4838 51.0694 33.93 50.315 32.6429 48.1947L36.0336 48.0786L35.3481 46.3481C31.6532 46.5195 30.6784 45.6136 29.7558 43.5082L34.061 43.3573L33.129 41.2984C28.7201 41.4214 27.7869 41.2966 26.1701 38.3151L31.647 38.2884L30.8746 36.327C25.8826 36.5424 24.6359 36.0538 23.2227 33.5572L34.4435 33.2734C36.0789 33.2318 37.9459 34.3463 38.6339 35.8296L39.9831 38.741L41.403 33.8409C42.1351 31.3164 47.6523 32.2316 49.428 33.9117L46.0907 35.1187L47.7237 39.0949C48.9071 36.3257 50.3569 33.2722 53.4762 33.2722H64.484C63.6371 35.7042 61.5925 36.9168 57.1482 36.1301L56.3671 38.189L61.8564 38.1723C60.5426 41.2351 59.0847 41.6201 55.0018 41.1556L54.1493 43.2145L58.5191 43.3567C57.6784 45.2976 56.1566 46.458 52.7833 46.0545L52.073 48.0593L55.5525 48.0432C54.5553 50.482 53.9115 51.0265 50.74 50.8837L50.0129 52.8718L52.5194 52.8811C51.4658 55.004 51.1535 55.256 48.9046 55.4554C47.5678 55.5739 46.9718 57.7141 48.7519 58.9826L44.1474 66.4569Z'  # ZJU Qiushi eagle, as on the website
 
-W, H = 1120, 706
+W, H = 1120, 772
 CX, CY = 560, 366                 # robot / orbit centre
 RX, RY = 320, 226                 # orbit radii
 ZONES = {                         # centre of each illustration
-    'R': (240, 366), 'E': (560, 133), 'A': (880, 366), 'L': (560, 584),
+    'R': (240, 366), 'E': (560, 133), 'L': (880, 366), 'A': (560, 584),
 }
 PILLAR = {
     'R': ('Reasoning', 'reasons reliably', '#2563EB', '#7AB0FF'),
@@ -22,13 +23,15 @@ PILLAR = {
     'A': ('Agentic', 'acts autonomously', '#7C3AED', '#B79CFF'),
     'L': ('Lifelong', 'learns continuously', '#059669', '#4ADE9E'),
 }
+TITLE_DY = {'R': -94, 'E': -92, 'L': -94, 'A': 100}   # title baseline relative to the card centre
 CENTRE = {'R': (-4, 0), 'E': (0, -6), 'A': (7, 2), 'L': (8, 15)}   # nudge each scene to its card centre
-FLOW = [  # clockwise hand-offs, label position on the orbit (degrees, SVG angle)
-    ('reasoning meets the physical world', 225, 'end'),
-    ('physical interaction becomes autonomy', 315, 'start'),
-    ('agents generate their own experience', 45, 'start'),
-    ('learning from experience scales reasoning', 135, 'end'),
+FLOW = [  # (from, to, label lines, position on the orbit in degrees, anchor)
+    ('R', 'E', ('reasoning becomes', 'physical action'), 225, 'end'),
+    ('E', 'L', ('physical action', 'yields experience'), 315, 'start'),
+    ('R', 'A', ('reasoning becomes', 'digital action'), 135, 'end'),
+    ('A', 'L', ('digital action', 'yields experience'), 45, 'start'),
 ]
+FEEDBACK = 'learning from self-generated experience scales reasoning'
 THEMES = {
     'light': dict(bg='#FFFFFF', ink='#0F172A', soft='#475569', mute='#64748B', card='#FFFFFF', line='#DCE5F3',
                   orbit='#9FB2D0', robot='#3B6FE0', robot_fill='#EEF3FF', halo='#8AA3C2', screen='#F9FAFB', eagle='#004EA2'),
@@ -289,32 +292,63 @@ def build(theme):
          '</defs>',
          f'<rect width="{W}" height="{H}" rx="20" fill="{t["bg"]}"/>',
          f'<circle class="halo" cx="{CX}" cy="{CY}" r="225" fill="url(#glow)"/>']
-    # clockwise orbit (starts at R, passes E, A, L)
-    orbit = f'M {CX - RX} {CY} A {RX} {RY} 0 1 1 {CX + RX} {CY} A {RX} {RY} 0 1 1 {CX - RX} {CY}'
+    # two paths out of R (physical via E, digital via A) converge on L; L feeds back into R underneath
+    deg = {'R': 180, 'E': 270, 'L': 360, 'A': 90}
+    pt = lambda a: (CX + RX * math.cos(math.radians(a)), CY + RY * math.sin(math.radians(a)))
     holes = []
     for k, (zx, zy) in ZONES.items():
         name, phrase = PILLAR[k][0], PILLAR[k][1]
-        ty = {'E': zy - 92, 'L': zy + 100, 'R': zy - 94, 'A': zy - 94}[k]
+        ty = zy + TITLE_DY[k]
         tw = len(name) * 11.2 + 8 + len(phrase) * 7.7
-        holes.append(f'<rect x="{zx - 100}" y="{ty - 30}" width="{tw + 60:.0f}" height="46" rx="12" fill="#000"/>')
+        holes.append(f'<rect x="{zx - 100}" y="{ty - 30}" width="{tw + 60:.0f}" height="{46 if k == "A" else 56}" rx="12" fill="#000"/>')
+    fy = 738                                   # feedback channel runs along the bottom
+    fw = len(FEEDBACK) * 7.6
+    holes.append(f'<rect x="{CX - fw / 2 - 16:.0f}" y="{fy - 16}" width="{fw + 32:.0f}" height="32" fill="#000"/>')
     o.append(f'<mask id="titles" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}">'
              f'<rect width="{W}" height="{H}" fill="#fff"/>' + ''.join(holes) + '</mask>')
-    o.append('<g mask="url(#titles)">')
-    o.append(f'<path class="orbit" d="{orbit}" fill="none" stroke="{t["orbit"]}" stroke-width="2.2" stroke-linecap="round"/>')
-    for k, delay in zip('REAL', (-1.75, -5.25, -8.75, -12.25)):
-        o.append(f'<circle r="5.5" fill="{col(k, theme)}"><animateMotion dur="14s" begin="{delay}s" repeatCount="indefinite" path="{orbit}"/></circle>')
-    o.append('</g>')
-    # hand-off labels on the orbit
-    import math
-    for text, deg, anchor in FLOW:
-        th = math.radians(deg)
-        x, y = CX + RX * 1.08 * math.cos(th), CY + RY * 1.1 * math.sin(th)
-        o.append(f'<text x="{x:.0f}" y="{y:.0f}" text-anchor="{anchor}" font-size="15" font-style="italic" fill="{t["soft"]}">{escape(text)}</text>')
+    defs, paths, marks = [], [], []
+    for n, (a, b, lines, mid, anchor) in enumerate(FLOW):
+        a0, a1 = deg[a], deg[b]
+        if a1 - a0 > 180:                      # take the short way round (A at 90 deg reaches L at 0 deg)
+            a1 -= 360
+        (x0, y0), (x1, y1) = pt(a0), pt(a1)
+        sweep = 1 if a1 > a0 else 0
+        d = f'M {x0:.1f} {y0:.1f} A {RX} {RY} 0 0 {sweep} {x1:.1f} {y1:.1f}'
+        defs.append(f'<linearGradient id="f{n}" gradientUnits="userSpaceOnUse" x1="{x0:.0f}" y1="{y0:.0f}" x2="{x1:.0f}" y2="{y1:.0f}">'
+                    f'<stop offset="0.15" stop-color="{col(a, theme)}"/><stop offset="0.85" stop-color="{col(b, theme)}"/></linearGradient>')
+        paths.append(f'<path class="orbit" d="{d}" fill="none" stroke="url(#f{n})" stroke-width="2.4" stroke-linecap="round"/>')
+        for delay in (0, -2.5):
+            paths.append(f'<circle r="5" fill="{col(a, theme)}"><animateMotion dur="5s" begin="{delay}s" repeatCount="indefinite" path="{d}"/></circle>')
+        # chevron at the midpoint, pointing along the flow
+        th = math.radians(mid)
+        mx, my = pt(mid)
+        sgn = 1 if sweep else -1
+        ang = math.degrees(math.atan2(sgn * RY * math.cos(th), -sgn * RX * math.sin(th)))
+        cm = col(b, theme) if b == 'L' else col(a, theme)
+        marks.append(f'<path d="M -5 -6 L 3 0 L -5 6" transform="translate({mx:.1f},{my:.1f}) rotate({ang:.1f})" fill="none" stroke="{cm}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
+        lx, ly = CX + RX * 1.08 * math.cos(th), CY + RY * 1.1 * math.sin(th)
+        ly += -18 if my < CY else 6
+        marks.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anchor}" font-size="15" font-style="italic" fill="{t["soft"]}">'
+                     + ''.join(f'<tspan x="{lx:.0f}" dy="{0 if i == 0 else 19}">{escape(line)}</tspan>' for i, line in enumerate(lines)) + '</text>')
+    # feedback: out of L's right edge, along the bottom, into R's left edge
+    (lx0, ly0), (rx0, ry0) = (ZONES['L'][0] + 128, ZONES['L'][1]), (ZONES['R'][0] - 128, ZONES['R'][1])
+    fb = (f'M {lx0} {ly0} C {lx0 + 64} {ly0}, {lx0 + 72} {fy}, {lx0 - 150} {fy} L {rx0 + 150} {fy} '
+          f'C {rx0 - 72} {fy}, {rx0 - 64} {ry0}, {rx0} {ry0}')
+    defs.append(f'<linearGradient id="fb" gradientUnits="userSpaceOnUse" x1="{lx0 + 40}" y1="0" x2="{rx0 - 40}" y2="0">'
+                f'<stop offset="0.1" stop-color="{col("L", theme)}"/><stop offset="0.9" stop-color="{col("R", theme)}"/></linearGradient>')
+    paths.append(f'<path class="orbit" d="{fb}" fill="none" stroke="url(#fb)" stroke-width="2.4" stroke-linecap="round"/>')
+    for delay in (0, -3.5):
+        paths.append(f'<circle r="5" fill="{col("L", theme)}"><animateMotion dur="7s" begin="{delay}s" repeatCount="indefinite" path="{fb}"/></circle>')
+    for x, c in ((CX + fw / 2 + 40, col('L', theme)), (CX - fw / 2 - 40, col('R', theme))):
+        marks.append(f'<path d="M 5 -6 L -3 0 L 5 6" transform="translate({x:.0f},{fy})" fill="none" stroke="{c}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
+    marks.append(f'<text x="{CX}" y="{fy + 5}" text-anchor="middle" font-size="15" font-style="italic" fill="{t["soft"]}">{escape(FEEDBACK)}</text>')
+    o.append('<defs>' + ''.join(defs) + '</defs>')
+    o.append('<g mask="url(#titles)">' + ''.join(paths) + '</g>')
+    o.extend(marks)
     # spokes: the agent exchanges with every pillar
     for k, (zx, zy) in ZONES.items():
         dx, dy = zx - CX, zy - CY
-        import math as m
-        d = m.hypot(dx, dy)
+        d = math.hypot(dx, dy)
         sx, sy = CX + dx / d * 70, CY + dy / d * (88 if k == 'E' else 66)
         ex, ey = zx - dx / d * 118, zy - dy / d * (76 if k == 'E' else 72)
         p = f'M {sx:.0f} {sy:.0f} L {ex:.0f} {ey:.0f}'
@@ -331,8 +365,8 @@ def build(theme):
         body = scene_agentic(c, t) if k == 'A' else (scene_lifelong(c, theme) if k == 'L' else scenes[k](c))
         ox, oy = CENTRE[k]
         o.append(f'<g transform="translate({zx + ox},{zy + oy})"><g class="zone">{body}</g></g>')
-        # title block: above for E, below for L, above the card for R and A
-        ty = {'E': zy - 92, 'L': zy + 100, 'R': zy - 94, 'A': zy - 94}[k]
+        # title block: below the card for A, above it for R, E and L
+        ty = zy + TITLE_DY[k]
         o.append(f'<circle cx="{zx - 74}" cy="{ty - 7}" r="15" fill="{c}"/>')
         o.append(f'<text x="{zx - 74}" y="{ty - 1}" text-anchor="middle" font-size="16" font-weight="800" fill="{'#FFFFFF' if theme == 'light' else '#0D1117'}">{k}</text>')
         o.append(f'<text x="{zx - 51}" y="{ty - 1}" font-size="19" font-weight="750" fill="{t["ink"]}">{name}<tspan font-size="14.5" font-weight="400" fill="{t["soft"]}" dx="8">{phrase}</tspan></text>')
