@@ -26,8 +26,8 @@ CENTRE = {'R': (-4, 0), 'E': (0, -6), 'A': (7, 2), 'L': (8, 15)}   # nudge each 
 FLOW = [  # clockwise hand-offs, label position on the orbit (degrees, SVG angle)
     ('reasoning meets the physical world', 225, 'end'),
     ('physical interaction becomes autonomy', 315, 'start'),
-    ('every task leaves lasting experience', 45, 'start'),
-    ('continual learning sharpens reasoning', 135, 'end'),
+    ('agents generate their own experience', 45, 'start'),
+    ('learning from experience scales reasoning', 135, 'end'),
 ]
 THEMES = {
     'light': dict(bg='#FFFFFF', ink='#0F172A', soft='#475569', mute='#64748B', card='#FFFFFF', line='#DCE5F3',

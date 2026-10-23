@@ -74,8 +74,8 @@
 </g>
 <text x="316" y="190" text-anchor="end" font-size="15" font-style="italic" fill="#B6C2D2">reasoning meets the physical world</text>
 <text x="804" y="190" text-anchor="start" font-size="15" font-style="italic" fill="#B6C2D2">physical interaction becomes autonomy</text>
-<text x="804" y="542" text-anchor="start" font-size="15" font-style="italic" fill="#B6C2D2">every task leaves lasting experience</text>
-<text x="316" y="542" text-anchor="end" font-size="15" font-style="italic" fill="#B6C2D2">continual learning sharpens reasoning</text>
+<text x="804" y="542" text-anchor="start" font-size="15" font-style="italic" fill="#B6C2D2">agents generate their own experience</text>
+<text x="316" y="542" text-anchor="end" font-size="15" font-style="italic" fill="#B6C2D2">learning from experience scales reasoning</text>
 <path d="M 490 366 L 358 366" stroke="#7AB0FF" stroke-opacity="0.35" stroke-width="1.4" stroke-dasharray="3 5" fill="none"/>
 <circle r="3.6" fill="#7AB0FF"><animateMotion dur="3s" repeatCount="indefinite" path="M 490 366 L 358 366"/></circle>
 <circle r="3.6" fill="#7AB0FF" opacity="0.5"><animateMotion dur="3s" begin="-1.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear" path="M 490 366 L 358 366"/></circle>
