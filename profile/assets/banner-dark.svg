@@ -35,7 +35,7 @@
 <polygon points="912,98 1036,132 912,166 788,132" fill="#FFFFFF" opacity="0.10"/>
 <text x="912" y="156" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" font-weight="800" fill="#FFFFFF">E</text>
 <line x1="1046" y1="132" x2="1066" y2="132" stroke="#5B6B85" stroke-width="1.5"/>
-<text x="1074" y="138" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#B6C2D2">inhabits a body</text>
+<text x="1074" y="138" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#B6C2D2">explores the world</text>
 <polygon points="788,56 912,90 912,102 788,68" fill="#002B5C" opacity="0.9"/>
 <polygon points="912,90 1036,56 1036,68 912,102" fill="#002B5C" opacity="0.7"/>
 <polygon points="912,22 1036,56 912,90 788,56" fill="#004EA2"/>

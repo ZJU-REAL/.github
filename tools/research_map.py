@@ -19,7 +19,7 @@ ZONES = {                         # centre of each illustration
 }
 PILLAR = {
     'R': ('Reasoning', 'reasons reliably', '#004EA2', '#6FA0E0'),
-    'E': ('Embodied', 'inhabits a body', '#13808C', '#6CC3CC'),
+    'E': ('Embodied', 'explores the world', '#13808C', '#6CC3CC'),
     'A': ('Agentic', 'acts autonomously', '#4A6FA5', '#93A9D1'),
     'L': ('Lifelong', 'learns continuously', '#2E7D5B', '#7DC4A0'),
 }

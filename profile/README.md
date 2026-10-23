@@ -27,7 +27,7 @@
   <img alt="" src="assets/divider-light.svg" width="100%">
 </picture>
 
-**REAL Lab** at Zhejiang University builds AI systems that **reason reliably**, **inhabit physical bodies**, **act autonomously** as agents, and **learn continuously** throughout their lifetime, bridging the gap between virtual intelligence and physical intelligence.
+**REAL Lab** at Zhejiang University builds AI systems that **reason reliably**, **explore the physical world**, **act autonomously** as agents, and **learn continuously** throughout their lifetime, bridging the gap between virtual intelligence and physical intelligence.
 
 
 <picture>
@@ -78,7 +78,7 @@ Models that can reason for as long as a problem requires, spend only the thinkin
 | **Efficient reasoning** | Fit the amount of thinking to the difficulty of the problem and stop overthinking. | [Self-Braking Tuning](https://github.com/ZJU-REAL/Self-Braking-Tuning) · [LAPO](https://github.com/ZJU-REAL/LAPO) · [Mind the Gap](https://github.com/ZJU-REAL/Mind-the-Gap) |
 | **Verifiable reasoning** | Verifiers and rewards that can be trusted, and models that pause instead of fabricate. | [VerifyBench](https://github.com/ZJU-REAL/VerifyBench) · [CoVerRL](https://github.com/ZJU-REAL/CoVerRL) · [Pause or Fabricate?](https://github.com/ZJU-REAL/GRIL) |
 
-### E · Embodied: inhabit physical bodies
+### E · Embodied: explore the physical world
 
 Taking intelligence off the screen: understanding 3D space, anticipating how the world changes, and acting through a body.
 
