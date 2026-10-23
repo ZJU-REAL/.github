@@ -20,7 +20,7 @@
 
 </div>
 
-We study one question from four sides: **what does it take for AI to work in the real world?** Our answer is a stack rather than a list of topics. A model first learns to **reason**, then to **perceive and model space**, then to **act** as an agent on screens, in software, and in the physical world, and finally to **keep growing** from the experience those actions produce. Each layer hands something concrete to the next, and a shared engine of agentic RL, self-distillation, and verifiable rewards runs through all of them.
+We study one question from four sides: **what does it take for AI to work in the real world?** A model first learns to **reason**, then to **perceive and model space**, then to **act** as an agent on screens, in software, and in the physical world, and finally to **keep growing** from the experience those actions produce. Each capability builds on the one before it, and a shared engine of agentic RL, self-distillation, and verifiable rewards runs through all of them.
 
 <p align="center"><sub><b>35+ papers in 2026</b> at ACL · EMNLP · ICML · ICLR · AAAI · CVPR · ECCV &nbsp;|&nbsp; <b>60+ open-source repositories</b></sub></p>
 
