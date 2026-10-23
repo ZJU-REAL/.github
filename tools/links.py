@@ -10,8 +10,9 @@ from PIL import ImageFont
 
 OUT = 'profile/assets/links'
 FAMILY = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-MEASURE = ImageFont.truetype('/System/Library/Fonts/Helvetica.ttc', 14, index=1)   # bold Helvetica, for width estimates
-SLACK = 1.08                                                                        # room for wider system fonts
+FS, H, ICON, PAD = 12.5, 26, 13, 10       # font size, pill height, icon size, side padding
+MEASURE = ImageFont.truetype('/System/Library/Fonts/Helvetica.ttc', FS, index=1)   # bold Helvetica, for width estimates
+SLACK = 1.06                                                                        # room for wider system fonts
 
 LINE = {  # stroke icons on a 24x24 grid
     'home': 'M3 11 12 4l9 7M5 10v10h5v-6h4v6h5V10',
@@ -43,15 +44,16 @@ def icon(name, colour, x, y, s=16):
 
 
 def pill(label, ic, theme, accent):
-    w, h = round(14 + 16 + 8 + MEASURE.getlength(label) * SLACK + 16), 34
+    tx = PAD + ICON + 6
+    w, h = round(tx + MEASURE.getlength(label) * SLACK + PAD + 1), H
     fg = '#FFFFFF' if accent else INK[theme]
     fill, fill_op, stroke_op = (GREEN, 1, 1) if accent else (INK[theme], 0.06 if theme == 'light' else 0.10, 0.45)
     stroke = GREEN if accent else INK[theme]
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">'
             f'<rect x="0.75" y="0.75" width="{w - 1.5}" height="{h - 1.5}" rx="{(h - 1.5) / 2}" fill="{fill}" fill-opacity="{fill_op}" '
             f'stroke="{stroke}" stroke-opacity="{stroke_op}" stroke-width="1.5"/>'
-            + icon(ic, fg, 14, 9)
-            + f'<text x="38" y="22" font-family="{FAMILY}" font-size="14" font-weight="600" fill="{fg}">{escape(label)}</text></svg>')
+            + icon(ic, fg, PAD, (H - ICON) / 2, ICON)
+            + f'<text x="{tx}" y="{H / 2 + FS * 0.36:.1f}" font-family="{FAMILY}" font-size="{FS}" font-weight="600" fill="{fg}">{escape(label)}</text></svg>')
 
 
 os.makedirs(OUT, exist_ok=True)
@@ -60,5 +62,5 @@ for key, label, url, ic, accent in LINKS:
     for theme in ('light', 'dark'):
         open(os.path.join(OUT, f'{key}-{theme}.svg'), 'w').write(pill(label, ic, theme, accent))
     row.append(f'<a href="{url}"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/{key}-dark.svg">'
-               f'<img alt="{label}" src="assets/links/{key}-light.svg" height="34"></picture></a>')
+               f'<img alt="{label}" src="assets/links/{key}-light.svg" height="{H}"></picture></a>')
 print('&nbsp;\n'.join(row))

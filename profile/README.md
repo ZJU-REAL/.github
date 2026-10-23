@@ -122,12 +122,12 @@ Deployment is where learning continues: agents turn their own experience into gu
 
 <div align="center">
 <br>
-<sub>If our work helps you, a ⭐ on the repository helps others find it too.</sub>
+If our work helps you, a ⭐ on the repository helps others find it too.
 <br><br>
-<a href="https://zjureal.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/website-dark.svg"><img alt="Lab Website" src="assets/links/website-light.svg" height="34"></picture></a>&nbsp;
-<a href="https://scholar.google.com/citations?user=UT3NzFAAAAAJ"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/scholar-dark.svg"><img alt="Google Scholar" src="assets/links/scholar-light.svg" height="34"></picture></a>&nbsp;
-<a href="https://www.xiaohongshu.com/user/profile/67d84bef000000000d008f18"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/rednote-dark.svg"><img alt="RedNote" src="assets/links/rednote-light.svg" height="34"></picture></a>&nbsp;
-<a href="https://x.com/zjureal"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/x-dark.svg"><img alt="@zjureal" src="assets/links/x-light.svg" height="34"></picture></a>&nbsp;
-<a href="https://person.zju.edu.cn/shenyongliang"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/pi-dark.svg"><img alt="PI Homepage" src="assets/links/pi-light.svg" height="34"></picture></a>&nbsp;
-<a href="https://zjureal.com/join.html"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/join-dark.svg"><img alt="Join Us" src="assets/links/join-light.svg" height="34"></picture></a>
+<a href="https://zjureal.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/website-dark.svg"><img alt="Lab Website" src="assets/links/website-light.svg" height="26"></picture></a>&nbsp;
+<a href="https://scholar.google.com/citations?user=UT3NzFAAAAAJ"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/scholar-dark.svg"><img alt="Google Scholar" src="assets/links/scholar-light.svg" height="26"></picture></a>&nbsp;
+<a href="https://www.xiaohongshu.com/user/profile/67d84bef000000000d008f18"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/rednote-dark.svg"><img alt="RedNote" src="assets/links/rednote-light.svg" height="26"></picture></a>&nbsp;
+<a href="https://x.com/zjureal"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/x-dark.svg"><img alt="@zjureal" src="assets/links/x-light.svg" height="26"></picture></a>&nbsp;
+<a href="https://person.zju.edu.cn/shenyongliang"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/pi-dark.svg"><img alt="PI Homepage" src="assets/links/pi-light.svg" height="26"></picture></a>&nbsp;
+<a href="https://zjureal.com/join.html"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/links/join-dark.svg"><img alt="Join Us" src="assets/links/join-light.svg" height="26"></picture></a>
 </div>
