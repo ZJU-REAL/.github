@@ -34,24 +34,24 @@
 <tr>
 <td width="50%" valign="top">
 <a href="https://github.com/microsoft/JARVIS"><img src="assets/covers/hugginggpt.jpg" alt="HuggingGPT" width="100%"></a>
-<b><a href="https://github.com/microsoft/JARVIS">HuggingGPT</a></b> &nbsp; <img src="https://img.shields.io/github/stars/microsoft/JARVIS?style=social" alt="stars"><br>
+<b><a href="https://github.com/microsoft/JARVIS">HuggingGPT</a></b> &nbsp; <img src="https://img.shields.io/github/stars/microsoft/JARVIS?style=social" alt="stars" align="absmiddle"><br>
 <sub>An LLM as controller and the Hugging Face hub as executors: plan, pick expert models, run them, and compose the answer.</sub>
 </td>
 <td width="50%" valign="top">
 <a href="https://github.com/ZJU-REAL/HugAgentOS"><img src="assets/covers/hugagentos.jpg" alt="HugAgentOS" width="100%"></a>
-<b><a href="https://github.com/ZJU-REAL/HugAgentOS">HugAgentOS</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/HugAgentOS?style=social" alt="stars"><br>
+<b><a href="https://github.com/ZJU-REAL/HugAgentOS">HugAgentOS</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/HugAgentOS?style=social" alt="stars" align="absmiddle"><br>
 <sub>A self-evolving AgentOS. Memory, skills, and orchestration improve with every task, and each evolution step is attributable, replayable, and reversible.</sub>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 <a href="https://github.com/ZJU-REAL/Easel"><img src="assets/covers/easel.jpg" alt="Easel" width="100%"></a>
-<b><a href="https://github.com/ZJU-REAL/Easel">Easel</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/Easel?style=social" alt="stars"><br>
+<b><a href="https://github.com/ZJU-REAL/Easel">Easel</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/Easel?style=social" alt="stars" align="absmiddle"><br>
 <sub>An open-source social-media agent: discover trends, create posts, audio, and video, publish across platforms, and learn what actually works.</sub>
 </td>
 <td width="50%" valign="top">
 <a href="https://github.com/ZJU-REAL/ClawGUI"><img src="assets/covers/clawgui.jpg" alt="ClawGUI" width="100%"></a>
-<b><a href="https://github.com/ZJU-REAL/ClawGUI">ClawGUI</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/ClawGUI?style=social" alt="stars"><br>
+<b><a href="https://github.com/ZJU-REAL/ClawGUI">ClawGUI</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/ClawGUI?style=social" alt="stars" align="absmiddle"><br>
 <sub>Train, evaluate, and deploy GUI agents in one framework: online RL across parallel emulators and real Android, HarmonyOS, and iOS devices.</sub>
 </td>
 </tr>

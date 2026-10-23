@@ -61,33 +61,43 @@ def scene_reasoning(c):
 
 
 def scene_embodied(c):
-    # isometric floor, a floating cube, and a robot arm that reaches for it
-    o = [f'<polygon points="0,-30 92,16 0,62 -92,16" fill="{c}" fill-opacity="0.16"/>']
-    for k in range(1, 4):
-        t = k / 4
-        o.append(f'<line x1="{-92 + 92 * t:.1f}" y1="{16 - 46 * t:.1f}" x2="{0 + 92 * t:.1f}" y2="{62 - 46 * t:.1f}" stroke="{c}" stroke-opacity="0.28" stroke-dasharray="2 3"/>')
-        o.append(f'<line x1="{-92 + 92 * t:.1f}" y1="{16 + 46 * t:.1f}" x2="{0 + 92 * t:.1f}" y2="{-30 + 46 * t:.1f}" stroke="{c}" stroke-opacity="0.28" stroke-dasharray="2 3"/>')
-    o.append('<g class="e-cube">'
-             f'<polygon points="30,-36 52,-25 30,-14 8,-25" fill="{c}" fill-opacity="0.9"/>'
-             f'<polygon points="8,-25 30,-14 30,10 8,-1" fill="{c}" fill-opacity="0.55"/>'
-             f'<polygon points="30,-14 52,-25 52,-1 30,10" fill="{c}" fill-opacity="0.75"/></g>')
-    # robot arm on the floor: shoulder and elbow swing so the gripper reaches toward the cube
-    o.append('<g transform="translate(-40,30)">'
-             f'<ellipse cx="0" cy="2" rx="17" ry="7" fill="{c}" fill-opacity="0.35"/>'
-             f'<rect x="-9" y="-12" width="18" height="14" rx="4" fill="{c}" fill-opacity="0.75"/>'
-             '<g>'
-             '<animateTransform attributeName="transform" type="rotate" values="-24 0 -12;24 0 -12;-24 0 -12" '
-             'keyTimes="0;0.5;1" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" dur="4s" repeatCount="indefinite"/>'
-             f'<line x1="0" y1="-12" x2="0" y2="-46" stroke="{c}" stroke-width="8" stroke-linecap="round"/>'
-             f'<circle cx="0" cy="-12" r="6" fill="{c}"/>'
-             '<g>'
-             '<animateTransform attributeName="transform" type="rotate" values="28 0 -46;80 0 -46;28 0 -46" '
-             'keyTimes="0;0.5;1" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" dur="4s" repeatCount="indefinite"/>'
-             f'<line x1="0" y1="-46" x2="0" y2="-76" stroke="{c}" stroke-width="6.5" stroke-linecap="round"/>'
-             f'<circle cx="0" cy="-46" r="5.5" fill="{c}"/>'
-             f'<path d="M -7 -74 L -7 -85 M 7 -74 L 7 -85 M -7 -76 L 7 -76" stroke="{c}" stroke-width="3.5" stroke-linecap="round" fill="none"/>'
-             '</g></g></g>')
-    return ''.join(o)
+    # a camera explores a 3D scene: the view pans and pushes in, near objects move faster than the far layer
+    def cube(x, y, k=1.0):
+        pts = lambda ps: ' '.join(f'{x + px * k:.1f},{y + py * k:.1f}' for px, py in ps)
+        return (f'<polygon points="{pts([(0, -22), (22, -11), (0, 0), (-22, -11)])}" fill="{c}" fill-opacity="0.9"/>'
+                f'<polygon points="{pts([(-22, -11), (0, 0), (0, 24), (-22, 13)])}" fill="{c}" fill-opacity="0.55"/>'
+                f'<polygon points="{pts([(0, 0), (22, -11), (22, 13), (0, 24)])}" fill="{c}" fill-opacity="0.75"/>')
+    far = (f'<line x1="-220" y1="-30" x2="220" y2="-30" stroke="{c}" stroke-opacity="0.25" stroke-width="1.2"/>'
+           f'<path d="M -200 -30 L -150 -52 L -110 -38 L -70 -60 L -20 -34 L 30 -50 L 80 -36 L 130 -56 L 200 -30 Z" '
+           f'fill="{c}" fill-opacity="0.10"/>')
+    floor = [f'<polygon points="0,-26 190,46 0,118 -190,46" fill="{c}" fill-opacity="0.13"/>']
+    for k in range(1, 6):
+        t = k / 6
+        floor.append(f'<line x1="{-190 + 190 * t:.1f}" y1="{46 - 72 * t:.1f}" x2="{190 * t:.1f}" y2="{118 - 72 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 4"/>')
+        floor.append(f'<line x1="{-190 + 190 * t:.1f}" y1="{46 + 72 * t:.1f}" x2="{190 * t:.1f}" y2="{-26 + 72 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 4"/>')
+    objs = (cube(-62, 26) +
+            f'<rect x="12" y="-6" width="28" height="30" fill="{c}" fill-opacity="0.6"/>'
+            f'<ellipse cx="26" cy="24" rx="14" ry="6" fill="{c}" fill-opacity="0.6"/>'
+            f'<ellipse cx="26" cy="-6" rx="14" ry="6" fill="{c}" fill-opacity="0.9"/>'
+            f'<circle cx="96" cy="40" r="14" fill="{c}" fill-opacity="0.75"/>'
+            f'<circle cx="91" cy="35" r="4.5" fill="#FFFFFF" fill-opacity="0.45"/>'
+            f'<polygon points="-128,34 -142,58 -128,66" fill="{c}" fill-opacity="0.55"/>'
+            f'<polygon points="-128,34 -128,66 -114,58" fill="{c}" fill-opacity="0.85"/>'
+            + cube(150, 30, 0.8))
+    hud = (''.join(f'<path d="M {sx * 104} {sy * 46} L {sx * 104} {sy * 60} L {sx * 90} {sy * 60}" '
+                   f'stroke="{c}" stroke-width="2.4" fill="none" stroke-linecap="round"/>'
+                   for sx in (-1, 1) for sy in (-1, 1))
+           + f'<line x1="-38" y1="-68" x2="-38" y2="68" stroke="{c}" stroke-opacity="0.12"/>'
+           + f'<line x1="38" y1="-68" x2="38" y2="68" stroke="{c}" stroke-opacity="0.12"/>'
+           + f'<rect class="e-focus" x="-14" y="-12" width="28" height="24" rx="3" fill="none" stroke="{c}" stroke-width="1.8"/>'
+           + f'<line x1="-5" y1="0" x2="5" y2="0" stroke="{c}" stroke-width="1.4"/><line x1="0" y1="-5" x2="0" y2="5" stroke="{c}" stroke-width="1.4"/>'
+           + '<circle class="e-rec" cx="-92" cy="-48" r="3.6" fill="#E5484D"/>'
+           + f'<text x="-84" y="-44.5" font-size="9.5" font-weight="700" letter-spacing="1" fill="{c}">REC</text>')
+    return ('<defs><clipPath id="eview"><rect x="-112" y="-68" width="224" height="136" rx="10"/></clipPath></defs>'
+            '<g clip-path="url(#eview)">'
+            f'<g class="e-far">{far}</g>'
+            f'<g class="e-near">{"".join(floor)}{objs}</g>'
+            '</g>' + hud)
 
 
 def scene_agentic(c, t):
@@ -129,18 +139,29 @@ def scene_lifelong(c):
 
 
 def robot(t):
-    # homepage robot, recentred on (0,0) and topped with the Qiushi eagle
-    a = t['robot']
-    return (f'<g transform="translate({-220 * 0.9:.1f},{-294 * 0.9:.1f}) scale(0.9)"><g class="bot">'
-            f'<g transform="translate(175, 118) scale(1.0225)"><path d="{EAGLE}" fill="{t["eagle"]}" fill-rule="evenodd"/></g>'
-            f'<rect x="178" y="208" width="4" height="32" rx="2" transform="rotate(-14 180 224)" fill="{a}"/>'
-            f'<rect x="258" y="208" width="4" height="32" rx="2" transform="rotate(14 260 224)" fill="{a}"/>'
-            f'<circle class="tip" cx="180" cy="206" r="7" fill="{a}"/><circle class="tip tip2" cx="260" cy="206" r="7" fill="{a}"/>'
-            f'<rect x="148" y="235" width="144" height="118" rx="26" fill="{t["robot_fill"]}" stroke="{a}" stroke-width="4"/>'
-            f'<ellipse class="blink" cx="192" cy="285" rx="13" ry="15" fill="{a}" fill-opacity="0.14"/><ellipse class="blink" cx="248" cy="285" rx="13" ry="15" fill="{a}" fill-opacity="0.14"/>'
-            f'<circle class="blink look" cx="192" cy="287" r="6.5" fill="{a}"/><circle class="blink look" cx="248" cy="287" r="6.5" fill="{a}"/>'
-            f'<path d="M 204 318 Q 220 334 236 318" fill="none" stroke="{a}" stroke-width="4" stroke-linecap="round"/>'
-            '</g></g>')
+    # a friendly robot: gradient head, dark visor with glowing eyes, mint antenna (REAL logo dot), Qiushi eagle above
+    glow = '#7DF0FF'
+    return (
+        '<defs>'
+        '<linearGradient id="botg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6A97FF"/><stop offset="1" stop-color="#2C59E0"/></linearGradient>'
+        '<linearGradient id="visor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14224A"/><stop offset="1" stop-color="#0B1430"/></linearGradient>'
+        '<radialGradient id="tipg"><stop offset="0" stop-color="#19D3A7" stop-opacity=".55"/><stop offset="1" stop-color="#19D3A7" stop-opacity="0"/></radialGradient>'
+        '</defs>'
+        f'<ellipse class="shadow" cx="0" cy="80" rx="48" ry="7" fill="{t["ink"]}" fill-opacity="0.10"/>'
+        '<g class="botf">'
+        f'<g transform="translate(-198,-274.6) scale(0.9)"><g transform="translate(175, 118) scale(1.0225)"><path d="{EAGLE}" fill="{t["eagle"]}" fill-rule="evenodd"/></g></g>'
+        '<line x1="0" y1="-62" x2="0" y2="-80" stroke="#3E6BEA" stroke-width="5" stroke-linecap="round"/>'
+        '<circle class="tip" cx="0" cy="-84" r="16" fill="url(#tipg)"/>'
+        '<circle cx="0" cy="-84" r="7" fill="#19D3A7"/>'
+        '<rect x="-86" y="-22" width="16" height="40" rx="8" fill="#2C59E0"/>'
+        '<rect x="70" y="-22" width="16" height="40" rx="8" fill="#2C59E0"/>'
+        '<rect x="-74" y="-62" width="148" height="122" rx="36" fill="url(#botg)"/>'
+        '<rect x="-58" y="-55" width="116" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.22"/>'
+        '<rect x="-56" y="-34" width="112" height="72" rx="24" fill="url(#visor)"/>'
+        f'<rect class="blink" x="-31" y="-16" width="16" height="24" rx="8" fill="{glow}"/>'
+        f'<rect class="blink" x="15" y="-16" width="16" height="24" rx="8" fill="{glow}"/>'
+        f'<path d="M -14 17 Q 0 27 14 17" fill="none" stroke="{glow}" stroke-width="3.6" stroke-linecap="round"/>'
+        '</g>')
 
 
 STYLE = """
@@ -148,8 +169,10 @@ STYLE = """
 @keyframes halo{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.07);opacity:.8}}
 .orbit{stroke-dasharray:2 10;animation:flow 14s linear infinite}
 @keyframes flow{to{stroke-dashoffset:-240}}
-.bot{transform-origin:220px 294px;animation:tilt 11s ease-in-out infinite}
-@keyframes tilt{0%,100%{transform:rotate(0)}12%{transform:rotate(-8deg)}26%{transform:rotate(0)}40%{transform:rotate(4deg)}55%{transform:rotate(0)}70%{transform:rotate(7deg)}85%{transform:rotate(-3deg)}}
+.botf{animation:hover 4s ease-in-out infinite}
+@keyframes hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.shadow{transform-box:fill-box;transform-origin:center;animation:shade 4s ease-in-out infinite}
+@keyframes shade{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.86);opacity:.7}}
 .tip{animation:tip 1.4s ease-in-out infinite}.tip2{animation-delay:.4s}
 @keyframes tip{0%,100%{opacity:.5}50%{opacity:1}}
 .blink{transform-box:fill-box;transform-origin:center;animation:blink 4s ease-in-out infinite}
@@ -167,12 +190,14 @@ STYLE = """
 @keyframes goal{0%,60%,100%{transform:scale(1);opacity:.75}72%{transform:scale(1.25);opacity:.25}}
 .r-check{transform-box:fill-box;transform-origin:center;animation:check 4.2s ease-out infinite}
 @keyframes check{0%,58%,100%{transform:scale(1)}66%{transform:scale(1.25)}}
-.e-cube{animation:float 3.2s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.e-cone{transform-origin:0 0;animation:sweep 3s ease-in-out infinite}
-@keyframes sweep{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}
-.e-halo{transform-box:fill-box;transform-origin:center;animation:pulse 2.2s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.6);opacity:.08}}
+.e-near{animation:dolly 11s ease-in-out infinite alternate}
+@keyframes dolly{from{transform:translate(58px,-4px) scale(1)}to{transform:translate(-64px,-12px) scale(1.14)}}
+.e-far{animation:drift 11s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translateX(16px)}to{transform:translateX(-16px)}}
+.e-focus{transform-box:fill-box;transform-origin:center;animation:focus 2.75s ease-in-out infinite}
+@keyframes focus{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(.8);opacity:.55}}
+.e-rec{animation:rec 1.2s step-end infinite}
+@keyframes rec{0%,50%{opacity:1}51%,100%{opacity:.15}}
 .a-line{transform-box:fill-box;transform-origin:left center;animation:type 4.5s ease-out infinite}
 @keyframes type{0%,4%{transform:scaleX(0)}20%,85%{transform:scaleX(1)}100%{transform:scaleX(0)}}
 .a-cursor{animation:cur 1s step-end infinite}
@@ -204,9 +229,19 @@ def build(theme):
          f'<circle class="halo" cx="{CX}" cy="{CY}" r="300" fill="url(#glow)"/>']
     # clockwise orbit (starts at R, passes E, A, L)
     orbit = f'M {CX - RX} {CY} A {RX} {RY} 0 1 1 {CX + RX} {CY} A {RX} {RY} 0 1 1 {CX - RX} {CY}'
+    holes = []
+    for k, (zx, zy) in ZONES.items():
+        name, phrase = PILLAR[k][0], PILLAR[k][1]
+        ty = {'E': zy - 104, 'L': zy + 112, 'R': zy - 106, 'A': zy - 106}[k]
+        tw = len(name) * 11.2 + 8 + len(phrase) * 7.7
+        holes.append(f'<rect x="{zx - 100}" y="{ty - 30}" width="{tw + 60:.0f}" height="46" rx="12" fill="#000"/>')
+    o.append(f'<mask id="titles" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}">'
+             f'<rect width="{W}" height="{H}" fill="#fff"/>' + ''.join(holes) + '</mask>')
+    o.append('<g mask="url(#titles)">')
     o.append(f'<path class="orbit" d="{orbit}" fill="none" stroke="{t["orbit"]}" stroke-width="2.2" stroke-linecap="round"/>')
     for k, delay in zip('REAL', (-1.75, -5.25, -8.75, -12.25)):
         o.append(f'<circle r="5.5" fill="{col(k, theme)}"><animateMotion dur="14s" begin="{delay}s" repeatCount="indefinite" path="{orbit}"/></circle>')
+    o.append('</g>')
     # hand-off labels on the orbit
     import math
     for text, deg, anchor in FLOW:
@@ -218,8 +253,8 @@ def build(theme):
         dx, dy = zx - CX, zy - CY
         import math as m
         d = m.hypot(dx, dy)
-        sx, sy = CX + dx / d * 108, CY + dy / d * (172 if k == 'E' else 96)
-        ex, ey = zx - dx / d * 118, zy - dy / d * 84
+        sx, sy = CX + dx / d * 112, CY + dy / d * (138 if k == 'E' else 98)
+        ex, ey = zx - dx / d * 118, zy - dy / d * (88 if k == 'E' else 84)
         p = f'M {sx:.0f} {sy:.0f} L {ex:.0f} {ey:.0f}'
         c = col(k, theme)
         o.append(f'<path d="{p}" stroke="{c}" stroke-opacity="0.35" stroke-width="1.4" stroke-dasharray="3 5" fill="none"/>')
