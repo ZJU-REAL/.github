@@ -63,7 +63,7 @@ def banner(theme):
          'ZHEJIANG UNIVERSITY  ·  HANGZHOU, CHINA</text>']
     # isometric R/E/A/L stack: foundation at the bottom, growth at the top
     cx, half, depth, thick, gap = 1000, 132, 37, 13, 63
-    rows = [('L', 'grows'), ('A', 'acts'), ('E', 'perceives'), ('R', 'thinks')]
+    rows = [('L', 'grows'), ('A', 'acts'), ('E', 'is embodied'), ('R', 'thinks')]
     top0 = 30
     for k, (letter, verb) in reversed(list(enumerate(rows))):   # paint back-to-front
         y = top0 + k * gap
@@ -95,11 +95,11 @@ BANDS = [  # top (growth) to bottom (foundation)
          ('Beyond GUI', ['HybridCUA', 'ComputerSD']), ('Deploy', ['ClawGUI'], True)],
         [('Search', ['IterSynth', 'BrowserForge']), ('Build', ['Code-A1', 'PaperGym']),
          ('Discover', ['Polaris'], True), ('Create', ['Easel'], True)]]),
-    ('E', 'Embodied', 'perceive space', [[
-        ('Measure', ['ViewSpatial']),
-        ('Teach', ['SpatialLadder', 'GPD']),
+    ('E', 'Embodied', 'sense, predict, act', [[
+        ('Perceive', ['ViewSpatial', 'SpatialLadder']),
         ('Self-evolve', ['SpatialEvo']),
-        ('Predict', ['SpaceCast', 'WorldMemBench'])]]),
+        ('Predict', ['SpaceCast', 'WorldMemBench']),
+        ('Act', ['VLA-Corrector', 'OmniEmbodied'])]]),
     ('R', 'Reasoning', 'think deeper', [[
         ('Longer', ['InftyThink', 'InftyThink+']),
         ('Leaner', ['Self-Braking', 'LAPO']),
@@ -110,7 +110,7 @@ ROW_TAGS = {'A': ['COMPUTER-USE AGENTS', 'RESEARCH & CREATION AGENTS']}
 LINKS = {  # what each layer hands to the one above it
     ('E', 'L'): None,
     ('A', 'L'): 'every trajectory becomes experience for the next policy',
-    ('E', 'A'): 'grounded perception lets agents act on screens and in the world',
+    ('E', 'A'): 'grounding in the physical world lets agents act beyond the screen',
     ('R', 'E'): 'reasoning grounded in what the model sees',
 }
 ENGINE = ['Agentic RL', 'Self-distillation', 'Verifiable rewards', 'Test-time RL',

@@ -9,7 +9,6 @@
   <a href="https://zju-real.github.io"><img alt="Website" src="https://img.shields.io/badge/Website-zju--real.github.io-1D4ED8?style=flat-square&logo=googlechrome&logoColor=white"></a>
   <a href="https://scholar.google.com/citations?user=UT3NzFAAAAAJ"><img alt="Google Scholar" src="https://img.shields.io/badge/Google%20Scholar-Publications-4285F4?style=flat-square&logo=googlescholar&logoColor=white"></a>
   <a href="https://huggingface.co/ZJU-REAL"><img alt="Hugging Face" src="https://img.shields.io/badge/Hugging%20Face-ZJU--REAL-FFD21E?style=flat-square&logo=huggingface&logoColor=black"></a>
-  <a href="https://zju-real.github.io/join.html"><img alt="Join us" src="https://img.shields.io/badge/We're%20hiring-Join%20us-10B981?style=flat-square"></a>
   <br>
   <a href="https://github.com/ZJU-REAL"><img alt="Total stars" src="https://img.shields.io/github/stars/ZJU-REAL?style=social&label=Stars"></a>
   &nbsp;
@@ -20,10 +19,10 @@
 
 </div>
 
-We study one question from four sides: **what does it take for AI to work in the real world?** A model first learns to **reason**, then to **perceive and model space**, then to **act** as an agent on screens, in software, and in the physical world, and finally to **keep growing** from the experience those actions produce. Each capability builds on the one before it, and a shared engine of agentic RL, self-distillation, and verifiable rewards runs through all of them.
+We study one question from four sides: **what does it take for AI to work in the real world?** A model first learns to **reason**, then to **ground itself in the physical world**, then to **act** as an agent on screens, in software, and in real environments, and finally to **keep growing** from the experience those actions produce. Each capability builds on the one before it, and a shared engine of agentic RL, self-distillation, and verifiable rewards runs through all of them.
 
 
-## Flagship open source
+## Open-source systems
 
 <table>
 <tr>
@@ -99,19 +98,18 @@ We study one question from four sides: **what does it take for AI to work in the
 
 **Hands up to the next layers:** verifiers and verifiable rewards become the training signal for spatial reasoning and agentic RL.
 
-### E · Embodied: perceive, model, and predict space
+### E · Embodied: sense, predict, and act in the physical world
 
-> **Frontier question.** Can a vision-language model build a usable model of 3D space, reason from someone else's viewpoint, improve its spatial skill without human labels, and anticipate how a scene will change?
+> **Frontier question.** How does intelligence leave the screen? A model has to perceive 3D space from any viewpoint, keep improving that perception without human labels, anticipate how the world will change, and turn all of it into reliable physical action.
 
 | Step | Work | What it contributes |
 | :-- | :-- | :-- |
-| **Measure** | [ViewSpatial-Bench](https://github.com/ZJU-REAL/ViewSpatial-Bench) | Multi-perspective localization exposes how poorly VLMs reason from viewpoints other than the camera's. |
-| **Teach** | [SpatialLadder](https://github.com/ZJU-REAL/SpatialLadder) · [GPD](https://github.com/ZJU-REAL/GPD) | A progressive curriculum and distilled 3D privilege inject the spatial structure that 2D pretraining lacks. |
-| **Self-evolve** | [SpatialEvo](https://github.com/ZJU-REAL/SpatialEvo) · [Spatial-Interactor](https://arxiv.org/abs/2609.23038) | Deterministic geometric environments and interaction with the physical world generate their own supervision. |
-| **Predict** | [SpaceCast-Bench](https://github.com/ZJU-REAL/SpaceCast-Bench) · [WorldMemBench](https://github.com/ZJU-REAL/WorldMemBench) | From understanding the current scene to predictive spatial reasoning and the memory of video world models. |
-| **Act** | [OmniEmbodied](https://github.com/ZJU-REAL/OmniEmbodied) | Embodied agents reasoning over physical interaction, tool use, and multi-agent coordination. |
+| **Perceive** | [ViewSpatial-Bench](https://github.com/ZJU-REAL/ViewSpatial-Bench) · [SpatialLadder](https://github.com/ZJU-REAL/SpatialLadder) · [GPD](https://github.com/ZJU-REAL/GPD) | Measure and teach the 3D spatial understanding that 2D pretraining lacks, including reasoning from viewpoints other than the camera's. |
+| **Self-evolve** | [SpatialEvo](https://github.com/ZJU-REAL/SpatialEvo) · [Spatial-Interactor](https://arxiv.org/abs/2609.23038) | Geometric environments and interaction with the physical world generate their own supervision, so spatial skill keeps improving without human labels. |
+| **Predict** | [SpaceCast-Bench](https://github.com/ZJU-REAL/SpaceCast-Bench) · [WorldMemBench](https://github.com/ZJU-REAL/WorldMemBench) | From the current scene to what happens next: predictive spatial reasoning and the memory of video world models. |
+| **Act** | [VLA-Corrector](https://arxiv.org/abs/2607.01804) · [OmniEmbodied](https://github.com/ZJU-REAL/OmniEmbodied) | Close the loop to action: vision-language-action policies that detect and correct their own mistakes at inference time, and embodied agents that coordinate physical interaction and tool use. |
 
-**Hands up:** grounded perception is what lets agents act reliably on screens and in the physical world.
+**Hands up:** grounding in the physical world is what lets agents act reliably beyond the screen.
 
 ### A · Agentic I: computer-use agents
 
@@ -158,10 +156,6 @@ One toolkit runs through all four layers, so a gain in one place compounds every
 - **Evaluation:** [ageval](https://github.com/ZJU-REAL/ageval), KnowU-Bench, ViewSpatial-Bench
 - **Steering:** [EasySteer](https://github.com/ZJU-REAL/EasySteer)
 - **Roots:** [HuggingGPT](https://github.com/microsoft/JARVIS) and [TaskBench](https://github.com/microsoft/JARVIS/tree/main/taskbench), where our agent line began with LLMs as controllers of models and tools
-
-## Join us
-
-We are continuously recruiting master's students, PhD students, and research interns through the **School of Software Technology**, the **School of Artificial Intelligence**, and the **College of Computer Science and Technology** at Zhejiang University. If you want to explore the frontiers of intelligence with us, see [how to apply](https://zju-real.github.io/join.html) or write to syl [AT] zju.edu.cn.
 
 <div align="center">
 <br>
