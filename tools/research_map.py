@@ -43,18 +43,20 @@ def col(k, theme):
 # --------------------------------------------------------------------------- zone scenes (local coords, centred on 0,0)
 def scene_reasoning(c):
     # a small thought tree: nodes light up in order, then a check mark confirms the answer
-    nodes = [(-78, 0), (-30, -36), (-30, 36), (18, -52), (18, -12), (18, 30), (49, -12)]
+    nodes = [(-94, 8), (-46, -28), (-46, 44), (2, -44), (2, -4), (2, 38), (50, -4)]
     edges = [(0, 1), (0, 2), (1, 3), (1, 4), (2, 5), (4, 6)]
     o = []
     for i, (a, b) in enumerate(edges):
         (x1, y1), (x2, y2) = nodes[a], nodes[b]
         o.append(f'<line class="r-edge" x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{c}"/>')
         o.append(f'<line class="r-sig" style="animation-delay:{-0.35 * i:.2f}s" x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{c}" stroke-linecap="round"/>')
-    for i, (x, y) in enumerate(nodes[:-1]):
+    for i, (x, y) in enumerate(nodes):
         dim = ' r-dead' if i in (3, 5) else ''
         o.append(f'<circle class="r-node{dim}" style="animation-delay:{0.35 * i:.2f}s" cx="{x}" cy="{y}" r="8" fill="{c}"/>')
-    o.append(f'<circle class="r-goal" cx="66" cy="-12" r="17" fill="none" stroke="{c}" stroke-width="2"/>')
-    o.append(f'<path class="r-check" d="M 57 -12 L 64 -4 L 77 -21" fill="none" stroke="{c}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>')
+    # answer -> verified: a short link from the final node to the check ring on its right
+    o.append(f'<line class="r-edge" x1="58" y1="-4" x2="75" y2="-4" stroke="{c}"/>')
+    o.append(f'<circle class="r-goal" cx="92" cy="-4" r="17" fill="none" stroke="{c}" stroke-width="2"/>')
+    o.append(f'<path class="r-check" d="M 83 -4 L 90 4 L 103 -13" fill="none" stroke="{c}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>')
     return ''.join(o)
 
 
