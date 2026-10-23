@@ -324,7 +324,8 @@ def build(theme):
         marks.append(f'<path d="M -5 -6 L 3 0 L -5 6" transform="translate({mx:.1f},{my:.1f}) rotate({ang:.1f})" fill="none" stroke="{cm}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
         lx, ly = CX + RX * 1.08 * math.cos(th), CY + RY * 1.1 * math.sin(th)
         ly += -18 if my < CY else 6
-        marks.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anchor}" font-size="15" font-style="italic" fill="{t["soft"]}">'
+        lx += (-1 if anchor == 'end' else 1) * max(map(len, lines)) * 7.3 / 2   # keep the block in place, centre its lines
+        marks.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="middle"font-size="15" font-style="italic" fill="{t["soft"]}">'
                      + ''.join(f'<tspan x="{lx:.0f}" dy="{0 if i == 0 else 19}">{escape(line)}</tspan>' for i, line in enumerate(lines)) + '</text>')
     o.append('<defs>' + ''.join(defs) + '</defs>')
     o.append('<g mask="url(#titles)">' + ''.join(paths) + '</g>')
