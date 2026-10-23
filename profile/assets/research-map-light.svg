@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="930" viewBox="0 0 1200 930" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+<marker id="ah" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#94A3B8"/></marker>
+<marker id="up" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M1,2 L11,6 L1,10 z" fill="#94A3B8"/></marker>
+</defs>
+<rect width="1200" height="930" rx="20" fill="#F7FAFF"/>
+<rect x="972" y="24" width="204" height="820" rx="16" fill="#F1F5FB" stroke="#DCE5F3" stroke-width="1.5"/>
+<text x="1074.0" y="58" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="2.5" fill="#64748B">SHARED ENGINE</text>
+<text x="1074.0" y="78" text-anchor="middle" font-size="12.5" fill="#64748B">across all four layers</text>
+<circle cx="998" cy="119.0" r="5" fill="#1D4ED8"/>
+<text x="1012" y="124.0" font-size="15.5" font-weight="600" fill="#0F172A">Agentic RL</text>
+<circle cx="998" cy="259.0" r="5" fill="#1D4ED8"/>
+<text x="1012" y="264.0" font-size="15.5" font-weight="600" fill="#0F172A">Self-distillation</text>
+<circle cx="998" cy="399.0" r="5" fill="#1D4ED8"/>
+<text x="1012" y="404.0" font-size="15.5" font-weight="600" fill="#0F172A">Verifiable rewards</text>
+<circle cx="998" cy="539.0" r="5" fill="#1D4ED8"/>
+<text x="1012" y="544.0" font-size="15.5" font-weight="600" fill="#0F172A">Test-time RL</text>
+<circle cx="998" cy="679.0" r="5" fill="#1D4ED8"/>
+<text x="1012" y="684.0" font-size="15.5" font-weight="600" fill="#0F172A">Evaluation · ageval</text>
+<circle cx="998" cy="819.0" r="5" fill="#1D4ED8"/>
+<text x="1012" y="824.0" font-size="15.5" font-weight="600" fill="#0F172A">Steering · EasySteer</text>
+<rect x="24" y="24" width="928" height="132" rx="16" fill="#D1FAE5" fill-opacity="0.55" stroke="#059669" stroke-opacity="0.45" stroke-width="1.5"/>
+<line x1="952" y1="90.0" x2="972" y2="90.0" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="4 4"/>
+<circle cx="70" cy="90.0" r="27" fill="#059669"/>
+<text x="70" y="99.0" text-anchor="middle" font-size="26" font-weight="800" fill="#FFFFFF">L</text>
+<text x="110" y="88.0" font-size="22" font-weight="750" fill="#0F172A">Lifelong</text>
+<text x="110" y="111.0" font-size="14.5" fill="#475569">keep growing</text>
+<rect x="280" y="50" width="124.30499999999999" height="78" rx="11" fill="#FFFFFF" stroke="#059669" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="295" y="73" font-size="15.5" font-weight="700" fill="#059669">Guide</text>
+<text x="295" y="95" font-size="14.5" font-weight="500" fill="#0F172A">Agent-G²</text>
+<text x="295" y="115" font-size="14.5" font-weight="500" fill="#0F172A">BEACON</text>
+<line x1="410.305" y1="89.0" x2="426.305" y2="89.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="434.305" y="50" width="145.505" height="78" rx="11" fill="#FFFFFF" stroke="#059669" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="449.305" y="73" font-size="15.5" font-weight="700" fill="#059669">Internalize</text>
+<text x="449.305" y="95" font-size="14.5" font-weight="500" fill="#0F172A">SKILL0</text>
+<text x="449.305" y="115" font-size="14.5" font-weight="500" fill="#0F172A">ViSkill</text>
+<line x1="585.81" y1="89.0" x2="601.81" y2="89.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="609.81" y="50" width="143.385" height="78" rx="11" fill="#FFFFFF" stroke="#059669" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="624.81" y="73" font-size="15.5" font-weight="700" fill="#059669">Distill</text>
+<text x="624.81" y="95" font-size="14.5" font-weight="500" fill="#0F172A">SDAR</text>
+<text x="624.81" y="115" font-size="14.5" font-weight="500" fill="#0F172A">AgentOPSD</text>
+<line x1="759.1949999999999" y1="89.0" x2="775.1949999999999" y2="89.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="783.1949999999999" y="50" width="150.805" height="78" rx="11" fill="#059669" stroke="#059669" stroke-opacity="1" stroke-width="1.2"/>
+<text x="798.1949999999999" y="73" font-size="15.5" font-weight="700" fill="#FFFFFF">Operate</text>
+<text x="798.1949999999999" y="95" font-size="14.5" font-weight="700" fill="#FFFFFF">HugAgentOS</text>
+<rect x="24" y="210" width="928" height="262" rx="16" fill="#EDE9FE" fill-opacity="0.55" stroke="#7C3AED" stroke-opacity="0.45" stroke-width="1.5"/>
+<line x1="952" y1="341.0" x2="972" y2="341.0" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="4 4"/>
+<circle cx="70" cy="341.0" r="27" fill="#7C3AED"/>
+<text x="70" y="350.0" text-anchor="middle" font-size="26" font-weight="800" fill="#FFFFFF">A</text>
+<text x="110" y="339.0" font-size="22" font-weight="750" fill="#0F172A">Agentic</text>
+<text x="110" y="362.0" font-size="14.5" fill="#475569">act and deliver</text>
+<text x="280" y="248" font-size="11.5" font-weight="700" letter-spacing="1.6" fill="#7C3AED">COMPUTER-USE AGENTS</text>
+<rect x="280" y="254" width="140.735" height="78" rx="11" fill="#FFFFFF" stroke="#7C3AED" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="295" y="277" font-size="15.5" font-weight="700" fill="#7C3AED">Ground</text>
+<text x="295" y="299" font-size="14.5" font-weight="500" fill="#0F172A">GUI-G²</text>
+<text x="295" y="319" font-size="14.5" font-weight="500" fill="#0F172A">GUI-RCPO</text>
+<line x1="426.735" y1="293.0" x2="442.735" y2="293.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="450.735" y="254" width="133.315" height="78" rx="11" fill="#FFFFFF" stroke="#7C3AED" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="465.735" y="277" font-size="15.5" font-weight="700" fill="#7C3AED">Act</text>
+<text x="465.735" y="299" font-size="14.5" font-weight="500" fill="#0F172A">UI-S1</text>
+<text x="465.735" y="319" font-size="14.5" font-weight="500" fill="#0F172A">UI-Copilot</text>
+<line x1="590.05" y1="293.0" x2="606.05" y2="293.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="614.05" y="254" width="164.055" height="78" rx="11" fill="#FFFFFF" stroke="#7C3AED" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="629.05" y="277" font-size="15.5" font-weight="700" fill="#7C3AED">Beyond GUI</text>
+<text x="629.05" y="299" font-size="14.5" font-weight="500" fill="#0F172A">HybridCUA</text>
+<text x="629.05" y="319" font-size="14.5" font-weight="500" fill="#0F172A">ComputerSD</text>
+<line x1="784.105" y1="293.0" x2="800.105" y2="293.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="808.105" y="254" width="125.895" height="78" rx="11" fill="#7C3AED" stroke="#7C3AED" stroke-opacity="1" stroke-width="1.2"/>
+<text x="823.105" y="277" font-size="15.5" font-weight="700" fill="#FFFFFF">Deploy</text>
+<text x="823.105" y="299" font-size="14.5" font-weight="700" fill="#FFFFFF">ClawGUI</text>
+<text x="280" y="360" font-size="11.5" font-weight="700" letter-spacing="1.6" fill="#7C3AED">RESEARCH &amp; CREATION AGENTS</text>
+<rect x="280" y="366" width="163.26" height="78" rx="11" fill="#FFFFFF" stroke="#7C3AED" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="295" y="389" font-size="15.5" font-weight="700" fill="#7C3AED">Search</text>
+<text x="295" y="411" font-size="14.5" font-weight="500" fill="#0F172A">IterSynth</text>
+<text x="295" y="431" font-size="14.5" font-weight="500" fill="#0F172A">BrowserForge</text>
+<line x1="449.26" y1="405.0" x2="465.26" y2="405.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="473.26" y="366" width="139.94" height="78" rx="11" fill="#FFFFFF" stroke="#7C3AED" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="488.26" y="389" font-size="15.5" font-weight="700" fill="#7C3AED">Build</text>
+<text x="488.26" y="411" font-size="14.5" font-weight="500" fill="#0F172A">Code-A1</text>
+<text x="488.26" y="431" font-size="14.5" font-weight="500" fill="#0F172A">PaperGym</text>
+<line x1="619.2" y1="405.0" x2="635.2" y2="405.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="643.2" y="366" width="139.94" height="78" rx="11" fill="#7C3AED" stroke="#7C3AED" stroke-opacity="1" stroke-width="1.2"/>
+<text x="658.2" y="389" font-size="15.5" font-weight="700" fill="#FFFFFF">Discover</text>
+<text x="658.2" y="411" font-size="14.5" font-weight="700" fill="#FFFFFF">Polaris</text>
+<line x1="789.1400000000001" y1="405.0" x2="805.1400000000001" y2="405.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="813.1400000000001" y="366" width="120.86" height="78" rx="11" fill="#7C3AED" stroke="#7C3AED" stroke-opacity="1" stroke-width="1.2"/>
+<text x="828.1400000000001" y="389" font-size="15.5" font-weight="700" fill="#FFFFFF">Create</text>
+<text x="828.1400000000001" y="411" font-size="14.5" font-weight="700" fill="#FFFFFF">Easel</text>
+<rect x="24" y="526" width="928" height="132" rx="16" fill="#CFFAFE" fill-opacity="0.55" stroke="#0891B2" stroke-opacity="0.45" stroke-width="1.5"/>
+<line x1="952" y1="592.0" x2="972" y2="592.0" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="4 4"/>
+<circle cx="70" cy="592.0" r="27" fill="#0891B2"/>
+<text x="70" y="601.0" text-anchor="middle" font-size="26" font-weight="800" fill="#FFFFFF">E</text>
+<text x="110" y="590.0" font-size="22" font-weight="750" fill="#0F172A">Embodied</text>
+<text x="110" y="613.0" font-size="14.5" fill="#475569">perceive space</text>
+<rect x="280" y="552" width="124.57000000000001" height="78" rx="11" fill="#FFFFFF" stroke="#0891B2" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="295" y="575" font-size="15.5" font-weight="700" fill="#0891B2">Measure</text>
+<text x="295" y="597" font-size="14.5" font-weight="500" fill="#0F172A">ViewSpatial</text>
+<line x1="410.57" y1="591.0" x2="426.57" y2="591.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="434.57" y="552" width="140.47" height="78" rx="11" fill="#FFFFFF" stroke="#0891B2" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="449.57" y="575" font-size="15.5" font-weight="700" fill="#0891B2">Teach</text>
+<text x="449.57" y="597" font-size="14.5" font-weight="500" fill="#0F172A">SpatialLadder</text>
+<text x="449.57" y="617" font-size="14.5" font-weight="500" fill="#0F172A">GPD</text>
+<line x1="581.04" y1="591.0" x2="597.04" y2="591.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="605.04" y="552" width="136.23000000000002" height="78" rx="11" fill="#FFFFFF" stroke="#0891B2" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="620.04" y="575" font-size="15.5" font-weight="700" fill="#0891B2">Self-evolve</text>
+<text x="620.04" y="597" font-size="14.5" font-weight="500" fill="#0F172A">SpatialEvo</text>
+<line x1="747.27" y1="591.0" x2="763.27" y2="591.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="771.27" y="552" width="162.73000000000002" height="78" rx="11" fill="#FFFFFF" stroke="#0891B2" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="786.27" y="575" font-size="15.5" font-weight="700" fill="#0891B2">Predict</text>
+<text x="786.27" y="597" font-size="14.5" font-weight="500" fill="#0F172A">SpaceCast</text>
+<text x="786.27" y="617" font-size="14.5" font-weight="500" fill="#0F172A">WorldMemBench</text>
+<rect x="24" y="712" width="928" height="132" rx="16" fill="#DBEAFE" fill-opacity="0.55" stroke="#2563EB" stroke-opacity="0.45" stroke-width="1.5"/>
+<line x1="952" y1="778.0" x2="972" y2="778.0" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="4 4"/>
+<circle cx="70" cy="778.0" r="27" fill="#2563EB"/>
+<text x="70" y="787.0" text-anchor="middle" font-size="26" font-weight="800" fill="#FFFFFF">R</text>
+<text x="110" y="776.0" font-size="22" font-weight="750" fill="#0F172A">Reasoning</text>
+<text x="110" y="799.0" font-size="14.5" fill="#475569">think deeper</text>
+<rect x="280" y="738" width="193.40666666666667" height="78" rx="11" fill="#FFFFFF" stroke="#2563EB" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="295" y="761" font-size="15.5" font-weight="700" fill="#2563EB">Longer</text>
+<text x="295" y="783" font-size="14.5" font-weight="500" fill="#0F172A">InftyThink</text>
+<text x="295" y="803" font-size="14.5" font-weight="500" fill="#0F172A">InftyThink+</text>
+<line x1="479.40666666666664" y1="777.0" x2="495.40666666666664" y2="777.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="503.40666666666664" y="738" width="200.82666666666665" height="78" rx="11" fill="#FFFFFF" stroke="#2563EB" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="518.4066666666666" y="761" font-size="15.5" font-weight="700" fill="#2563EB">Leaner</text>
+<text x="518.4066666666666" y="783" font-size="14.5" font-weight="500" fill="#0F172A">Self-Braking</text>
+<text x="518.4066666666666" y="803" font-size="14.5" font-weight="500" fill="#0F172A">LAPO</text>
+<line x1="710.2333333333333" y1="777.0" x2="726.2333333333333" y2="777.0" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="734.2333333333333" y="738" width="199.76666666666665" height="78" rx="11" fill="#FFFFFF" stroke="#2563EB" stroke-opacity="0.35" stroke-width="1.2"/>
+<text x="749.2333333333333" y="761" font-size="15.5" font-weight="700" fill="#2563EB">Verified</text>
+<text x="749.2333333333333" y="783" font-size="14.5" font-weight="500" fill="#0F172A">VerifyBench</text>
+<text x="749.2333333333333" y="803" font-size="14.5" font-weight="500" fill="#0F172A">CoVerRL</text>
+<line x1="70" y1="206" x2="70" y2="166" stroke="#94A3B8" stroke-width="2" marker-end="url(#up)"/>
+<text x="92" y="188.0" font-size="14" font-style="italic" fill="#475569">every trajectory becomes experience for the next policy</text>
+<line x1="70" y1="522" x2="70" y2="482" stroke="#94A3B8" stroke-width="2" marker-end="url(#up)"/>
+<text x="92" y="504.0" font-size="14" font-style="italic" fill="#475569">grounded perception lets agents act on screens and in the world</text>
+<line x1="70" y1="708" x2="70" y2="668" stroke="#94A3B8" stroke-width="2" marker-end="url(#up)"/>
+<text x="92" y="690.0" font-size="14" font-style="italic" fill="#475569">reasoning grounded in what the model sees</text>
+<rect x="24" y="870" width="1152" height="40" rx="12" fill="#FFFFFF" stroke="#DCE5F3" stroke-width="1.2"/>
+<text x="42" y="896" font-size="12.5" font-weight="700" letter-spacing="2" fill="#64748B">ROOTS</text>
+<text x="116" y="896" font-size="15" fill="#475569"><tspan font-weight="700" fill="#0F172A">HuggingGPT</tspan> (NeurIPS ’23) and <tspan font-weight="700" fill="#0F172A">TaskBench</tspan> (NeurIPS ’24): LLMs as controllers of models and tools, where our agent line began</text>
+</svg>
