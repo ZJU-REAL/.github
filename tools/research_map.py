@@ -22,6 +22,7 @@ PILLAR = {
     'A': ('Agentic', 'acts autonomously', '#7C3AED', '#B79CFF'),
     'L': ('Lifelong', 'learns continuously', '#059669', '#4ADE9E'),
 }
+CENTRE = {'R': (-4, 0), 'E': (0, -6), 'A': (7, 2), 'L': (8, 15)}   # nudge each scene to its card centre
 FLOW = [  # clockwise hand-offs, label position on the orbit (degrees, SVG angle)
     ('reasoning meets the physical world', 225, 'end'),
     ('physical interaction becomes autonomy', 315, 'start'),
@@ -310,7 +311,7 @@ def build(theme):
         dx, dy = zx - CX, zy - CY
         import math as m
         d = m.hypot(dx, dy)
-        sx, sy = CX + dx / d * 80, CY + dy / d * (100 if k == 'E' else 74)
+        sx, sy = CX + dx / d * 70, CY + dy / d * (88 if k == 'E' else 66)
         ex, ey = zx - dx / d * 118, zy - dy / d * (76 if k == 'E' else 72)
         p = f'M {sx:.0f} {sy:.0f} L {ex:.0f} {ey:.0f}'
         c = col(k, theme)
@@ -324,14 +325,15 @@ def build(theme):
         c = col(k, theme)
         o.append(f'<rect x="{zx - 128}" y="{zy - 70}" width="256" height="140" rx="20" fill="{t["card"]}" stroke="{c}" stroke-opacity="0.35" stroke-width="1.4"/>')
         body = scene_agentic(c, t) if k == 'A' else (scene_lifelong(c, theme) if k == 'L' else scenes[k](c))
-        o.append(f'<g transform="translate({zx},{zy})"><g class="zone">{body}</g></g>')
+        ox, oy = CENTRE[k]
+        o.append(f'<g transform="translate({zx + ox},{zy + oy})"><g class="zone">{body}</g></g>')
         # title block: above for E, below for L, above the card for R and A
         ty = {'E': zy - 92, 'L': zy + 100, 'R': zy - 94, 'A': zy - 94}[k]
         o.append(f'<circle cx="{zx - 74}" cy="{ty - 7}" r="15" fill="{c}"/>')
         o.append(f'<text x="{zx - 74}" y="{ty - 1}" text-anchor="middle" font-size="16" font-weight="800" fill="{'#FFFFFF' if theme == 'light' else '#0D1117'}">{k}</text>')
         o.append(f'<text x="{zx - 51}" y="{ty - 1}" font-size="19" font-weight="750" fill="{t["ink"]}">{name}<tspan font-size="14.5" font-weight="400" fill="{t["soft"]}" dx="8">{phrase}</tspan></text>')
     # robot at the centre
-    o.append(f'<g transform="translate({CX},{CY + 5}) scale(0.72)">{robot(t)}</g>')
+    o.append(f'<g transform="translate({CX},{CY + 4}) scale(0.62)">{robot(t)}</g>')
     o.append('</svg>')
     return '\n'.join(o)
 

@@ -11,6 +11,7 @@
   <a href="https://zju-real.github.io"><img alt="Website" src="https://img.shields.io/badge/Website-zju--real.github.io-1D4ED8?style=flat-square&logo=googlechrome&logoColor=white" align="top"></a>
   <a href="https://scholar.google.com/citations?user=UT3NzFAAAAAJ"><img alt="Google Scholar" src="https://img.shields.io/badge/Google%20Scholar-Publications-4285F4?style=flat-square&logo=googlescholar&logoColor=white" align="top"></a>
   <a href="https://huggingface.co/ZJU-REAL"><img alt="Hugging Face" src="assets/badge-huggingface.svg" align="top"></a>
+  <img alt="" src="assets/spacer.svg" width="1" height="30" align="top">
   <br>
   <a href="https://github.com/ZJU-REAL"><img alt="Total stars" src="https://img.shields.io/github/stars/ZJU-REAL?style=social&label=Stars" align="absbottom"></a>
   &nbsp;
