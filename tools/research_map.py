@@ -23,16 +23,16 @@ PILLAR = {
     'L': ('Lifelong', 'learns continuously', '#059669', '#4ADE9E'),
 }
 FLOW = [  # clockwise hand-offs, label position on the orbit (degrees, SVG angle)
-    ('reasoning grounded in perception', 225, 'end'),
-    ('perception turned into action', 315, 'start'),
+    ('reasoning meets the physical world', 225, 'end'),
+    ('physical interaction becomes autonomy', 315, 'start'),
     ('every trajectory becomes experience', 45, 'start'),
     ('experience becomes a better model', 135, 'end'),
 ]
 THEMES = {
     'light': dict(bg='#FFFFFF', ink='#0F172A', soft='#475569', mute='#64748B', card='#FFFFFF', line='#DCE5F3',
-                  orbit='#9FB2D0', robot='#1D4ED8', halo='#8AA3C2', screen='#F9FAFB', eagle='#004EA2'),
+                  orbit='#9FB2D0', robot='#3B6FE0', robot_fill='#EEF3FF', halo='#8AA3C2', screen='#F9FAFB', eagle='#004EA2'),
     'dark': dict(bg='#0D1117', ink='#E6EDF3', soft='#B6C2D2', mute='#8B98AB', card='#121A27', line='#24324A',
-                 orbit='#4A5C7A', robot='#5B8DFF', halo='#3B5B8C', screen='#1B2536', eagle='#7AA7FF'),
+                 orbit='#4A5C7A', robot='#7AA7FF', robot_fill='#18233A', halo='#3B5B8C', screen='#1B2536', eagle='#7AA7FF'),
 }
 
 
@@ -61,7 +61,7 @@ def scene_reasoning(c):
 
 
 def scene_embodied(c):
-    # isometric floor, a floating cube, an agent that walks the floor and sweeps its view cone
+    # isometric floor, a floating cube, and a robot arm that reaches for it
     o = [f'<polygon points="0,-30 92,16 0,62 -92,16" fill="{c}" fill-opacity="0.16"/>']
     for k in range(1, 4):
         t = k / 4
@@ -71,13 +71,22 @@ def scene_embodied(c):
              f'<polygon points="30,-36 52,-25 30,-14 8,-25" fill="{c}" fill-opacity="0.9"/>'
              f'<polygon points="8,-25 30,-14 30,10 8,-1" fill="{c}" fill-opacity="0.55"/>'
              f'<polygon points="30,-14 52,-25 52,-1 30,10" fill="{c}" fill-opacity="0.75"/></g>')
-    path = 'M -50 22 C -30 40, 0 44, 18 30 S 40 6, 20 -2 S -40 0, -50 22 Z'
-    o.append(f'<path d="{path}" fill="none" stroke="{c}" stroke-opacity="0.25" stroke-dasharray="3 4"/>')
-    o.append('<g>'
-             f'<path class="e-cone" d="M 0 0 L 46 -16 A 48 48 0 0 1 46 16 Z" fill="{c}" fill-opacity="0.16"/>'
-             f'<circle r="11" fill="{c}" fill-opacity="0.25" class="e-halo"/>'
-             f'<circle r="6" fill="{c}"/>'
-             f'<animateMotion dur="7s" repeatCount="indefinite" rotate="auto" path="{path}"/></g>')
+    # robot arm on the floor: shoulder and elbow swing so the gripper reaches toward the cube
+    o.append('<g transform="translate(-40,30)">'
+             f'<ellipse cx="0" cy="2" rx="17" ry="7" fill="{c}" fill-opacity="0.35"/>'
+             f'<rect x="-9" y="-12" width="18" height="14" rx="4" fill="{c}" fill-opacity="0.75"/>'
+             '<g>'
+             '<animateTransform attributeName="transform" type="rotate" values="-24 0 -12;24 0 -12;-24 0 -12" '
+             'keyTimes="0;0.5;1" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" dur="4s" repeatCount="indefinite"/>'
+             f'<line x1="0" y1="-12" x2="0" y2="-46" stroke="{c}" stroke-width="8" stroke-linecap="round"/>'
+             f'<circle cx="0" cy="-12" r="6" fill="{c}"/>'
+             '<g>'
+             '<animateTransform attributeName="transform" type="rotate" values="28 0 -46;80 0 -46;28 0 -46" '
+             'keyTimes="0;0.5;1" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" dur="4s" repeatCount="indefinite"/>'
+             f'<line x1="0" y1="-46" x2="0" y2="-76" stroke="{c}" stroke-width="6.5" stroke-linecap="round"/>'
+             f'<circle cx="0" cy="-46" r="5.5" fill="{c}"/>'
+             f'<path d="M -7 -74 L -7 -85 M 7 -74 L 7 -85 M -7 -76 L 7 -76" stroke="{c}" stroke-width="3.5" stroke-linecap="round" fill="none"/>'
+             '</g></g></g>')
     return ''.join(o)
 
 
@@ -127,10 +136,10 @@ def robot(t):
             f'<rect x="178" y="208" width="4" height="32" rx="2" transform="rotate(-14 180 224)" fill="{a}"/>'
             f'<rect x="258" y="208" width="4" height="32" rx="2" transform="rotate(14 260 224)" fill="{a}"/>'
             f'<circle class="tip" cx="180" cy="206" r="7" fill="{a}"/><circle class="tip tip2" cx="260" cy="206" r="7" fill="{a}"/>'
-            f'<rect x="148" y="235" width="144" height="118" rx="26" fill="{a}"/>'
-            f'<ellipse class="blink" cx="192" cy="285" rx="15" ry="17" fill="#ffffff"/><ellipse class="blink" cx="248" cy="285" rx="15" ry="17" fill="#ffffff"/>'
-            f'<circle class="blink look" cx="192" cy="288" r="6" fill="{a}"/><circle class="blink look" cx="248" cy="288" r="6" fill="{a}"/>'
-            f'<path d="M 204 320 Q 220 338 236 320" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>'
+            f'<rect x="148" y="235" width="144" height="118" rx="26" fill="{t["robot_fill"]}" stroke="{a}" stroke-width="4"/>'
+            f'<ellipse class="blink" cx="192" cy="285" rx="13" ry="15" fill="{a}" fill-opacity="0.14"/><ellipse class="blink" cx="248" cy="285" rx="13" ry="15" fill="{a}" fill-opacity="0.14"/>'
+            f'<circle class="blink look" cx="192" cy="287" r="6.5" fill="{a}"/><circle class="blink look" cx="248" cy="287" r="6.5" fill="{a}"/>'
+            f'<path d="M 204 318 Q 220 334 236 318" fill="none" stroke="{a}" stroke-width="4" stroke-linecap="round"/>'
             '</g></g>')
 
 

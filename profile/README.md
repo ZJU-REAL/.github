@@ -22,8 +22,6 @@
 **REAL Lab** at Zhejiang University builds AI systems that **reason reliably**, **inhabit physical bodies**, **act autonomously** as agents, and **learn continuously** throughout their lifetime, bridging the gap between virtual intelligence and physical intelligence.
 
 
-## Research map
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/research-map-dark.svg">
   <img alt="REAL research map: how Reasoning, Embodied, Agentic, and Lifelong-learning AI connect" src="assets/research-map-light.svg" width="100%">
@@ -60,7 +58,7 @@
 
 <p align="center"><a href="https://zju-real.github.io/projects.html"><b>More projects →</b></a></p>
 
-## Research lines
+## Research map
 
 ### R · Reasoning: reason reliably
 
