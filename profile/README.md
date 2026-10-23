@@ -8,7 +8,7 @@
 </p>
 
 <p>
-  <a href="https://zju-real.github.io"><img alt="Website" src="https://img.shields.io/badge/Website-zju--real.github.io-1D4ED8?style=flat-square&logo=googlechrome&logoColor=white" align="top"></a>
+  <a href="https://zjureal.com"><img alt="Website" src="https://img.shields.io/badge/Website-zjureal.com-004EA2?style=flat-square&logo=googlechrome&logoColor=white" align="top"></a>
   <a href="https://scholar.google.com/citations?user=UT3NzFAAAAAJ"><img alt="Google Scholar" src="https://img.shields.io/badge/Google%20Scholar-Publications-4285F4?style=flat-square&logo=googlescholar&logoColor=white" align="top"></a>
   <a href="https://huggingface.co/ZJU-REAL"><img alt="Hugging Face" src="assets/badge-huggingface.svg" align="top"></a>
   <img alt="" src="assets/spacer.svg" width="1" height="30" align="top">
@@ -64,7 +64,7 @@
 </tr>
 </table>
 
-<p align="center"><a href="https://zju-real.github.io/projects.html"><b>More projects →</b></a></p>
+<p align="center"><a href="https://zjureal.com/projects.html"><b>More projects →</b></a></p>
 
 ## Research map
 
@@ -124,5 +124,10 @@ Deployment is where learning continues: agents turn their own experience into gu
 <br>
 <sub>If our work helps you, a ⭐ on the repository helps others find it too.</sub>
 <br><br>
-<a href="https://zju-real.github.io"><img src="https://img.shields.io/badge/REAL%20Lab-Zhejiang%20University-1D4ED8?style=for-the-badge" alt="REAL Lab, Zhejiang University"></a>
+<a href="https://zjureal.com"><img alt="Lab Website" src="https://img.shields.io/badge/-Lab%20Website-004EA2?style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI%2BPHBhdGggZD0iTTMgMTEgMTIgNGw5IDdNNSAxMHYxMGg1di02aDR2Nmg1VjEwIi8%2BPC9zdmc%2B&logoColor=white" height="24"></a>&nbsp;
+<a href="https://scholar.google.com/citations?user=UT3NzFAAAAAJ"><img alt="Google Scholar" src="https://img.shields.io/badge/-Google%20Scholar-004EA2?style=flat-square&logo=googlescholar&logoColor=white" height="24"></a>&nbsp;
+<a href="https://www.xiaohongshu.com/user/profile/67d84bef000000000d008f18"><img alt="RedNote" src="https://img.shields.io/badge/-RedNote-004EA2?style=flat-square&logo=xiaohongshu&logoColor=white" height="24"></a>&nbsp;
+<a href="https://x.com/zjureal"><img alt="@zjureal" src="https://img.shields.io/badge/-%40zjureal-004EA2?style=flat-square&logo=x&logoColor=white" height="24"></a>&nbsp;
+<a href="https://zjureal.com/join.html"><img alt="Join Us" src="https://img.shields.io/badge/-Join%20Us-2E7D5B?style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI%2BPHBhdGggZD0iTTE1IDIwdi0xYTUgNSAwIDAgMC0xMCAwdjFNMTAgMTFhMy41IDMuNSAwIDEgMCAwLTcgMy41IDMuNSAwIDAgMCAwIDdNMTkgOHY2TTE2IDExaDYiLz48L3N2Zz4%3D&logoColor=white" height="24"></a>&nbsp;
+<a href="https://person.zju.edu.cn/shenyongliang"><img alt="PI Homepage" src="https://img.shields.io/badge/-PI%20Homepage-004EA2?style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI%2BPHBhdGggZD0iTTQgNWgxNnYxNEg0ek04IDEwaC4wMU03IDE1Yy42LTEuNSAxLjctMiAzLTJzMi40LjUgMyAyTTE0IDloM00xNCAxMmgzIi8%2BPC9zdmc%2B&logoColor=white" height="24"></a>&nbsp;
 </div>
