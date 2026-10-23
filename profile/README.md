@@ -18,7 +18,7 @@
   <a href="https://github.com/ZJU-REAL"><img alt="Follow ZJU-REAL" src="https://img.shields.io/github/followers/ZJU-REAL?style=social&label=Follow" align="absbottom"></a>
 </p>
 
-**浙江大学 REAL Lab** · 推理 · 具身 · 智能体 · RSI
+**浙江大学 REAL Lab**,致力于打造能在真实世界中思考、行动并持续成长的人工智能
 
 </div>
 
