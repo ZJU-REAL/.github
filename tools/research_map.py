@@ -60,7 +60,7 @@ def scene_reasoning(c):
     return ''.join(o)
 
 
-def scene_embodied(c):
+def _first_person(c):
     # a camera explores a 3D scene: the view pans and pushes in, near objects move faster than the far layer
     def cube(x, y, k=1.0):
         pts = lambda ps: ' '.join(f'{x + px * k:.1f},{y + py * k:.1f}' for px, py in ps)
@@ -93,11 +93,61 @@ def scene_embodied(c):
            + f'<line x1="-5" y1="0" x2="5" y2="0" stroke="{c}" stroke-width="1.4"/><line x1="0" y1="-5" x2="0" y2="5" stroke="{c}" stroke-width="1.4"/>'
            + '<circle class="e-rec" cx="-92" cy="-48" r="3.6" fill="#E5484D"/>'
            + f'<text x="-84" y="-44.5" font-size="9.5" font-weight="700" letter-spacing="1" fill="{c}">REC</text>')
-    return ('<defs><clipPath id="eview"><rect x="-112" y="-68" width="224" height="136" rx="10"/></clipPath></defs>'
-            '<g clip-path="url(#eview)">'
-            f'<g class="e-far">{far}</g>'
-            f'<g class="e-near">{"".join(floor)}{objs}</g>'
-            '</g>' + hud)
+    return far, ''.join(floor) + objs
+
+
+
+
+def scene_embodied(c):
+    # left: third-person, a small robot roams the scene with its view cone; right: what that robot sees
+    W2, H2 = 56, 56
+    o = [f'<defs><clipPath id="e3"><rect x="{-W2}" y="{-H2}" width="{2 * W2}" height="{2 * H2}" rx="9"/></clipPath>'
+         f'<clipPath id="e1"><rect x="{-W2}" y="{-H2}" width="{2 * W2}" height="{2 * H2}" rx="9"/></clipPath></defs>']
+    # ---- third person (left panel, centred at -62,0)
+    floor = [f'<polygon points="0,-18 54,8 0,34 -54,8" fill="{c}" fill-opacity="0.14"/>']
+    for k in range(1, 4):
+        t = k / 4
+        floor.append(f'<line x1="{-54 + 54 * t:.1f}" y1="{8 - 26 * t:.1f}" x2="{54 * t:.1f}" y2="{34 - 26 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 3"/>')
+        floor.append(f'<line x1="{-54 + 54 * t:.1f}" y1="{8 + 26 * t:.1f}" x2="{54 * t:.1f}" y2="{-18 + 26 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 3"/>')
+    props = (f'<polygon points="20,-12 31,-6.5 20,-1 9,-6.5" fill="{c}" fill-opacity="0.9"/>'
+             f'<polygon points="9,-6.5 20,-1 20,11 9,5.5" fill="{c}" fill-opacity="0.55"/>'
+             f'<polygon points="20,-1 31,-6.5 31,5.5 20,11" fill="{c}" fill-opacity="0.75"/>'
+             f'<rect x="-30" y="-2" width="14" height="14" fill="{c}" fill-opacity="0.6"/>'
+             f'<ellipse cx="-23" cy="12" rx="7" ry="3" fill="{c}" fill-opacity="0.6"/>'
+             f'<ellipse cx="-23" cy="-2" rx="7" ry="3" fill="{c}" fill-opacity="0.9"/>'
+             f'<circle cx="34" cy="20" r="6.5" fill="{c}" fill-opacity="0.75"/>')
+    route = 'M -20 27 C -12 21, 10 21, 18 27 S -8 32, -20 27 Z'
+    third = (''.join(floor) + props
+             + f'<path d="{route}" fill="none" stroke="{c}" stroke-opacity="0.35" stroke-dasharray="3 3"/>'
+             + f'<path d="M 0 0 L 30 -11 A 32 32 0 0 1 30 11 Z" fill="{c}" fill-opacity="0.2">'
+               f'<animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="{route}"/></path>'
+             + '<g><g transform="scale(0.82)">'
+               f'<ellipse cx="0" cy="3" rx="6" ry="2.4" fill="{c}" fill-opacity="0.3"/>'
+               f'<rect x="-5" y="-11" width="10" height="12" rx="3" fill="{c}"/>'
+               f'<circle cx="0" cy="-14" r="4.2" fill="{c}"/>'
+               f'<circle cx="1.6" cy="-14.6" r="1.2" fill="#FFFFFF"/>'
+               '</g>'
+               f'<animateMotion dur="9s" repeatCount="indefinite" path="{route}"/></g>')
+    o.append('<g transform="translate(-62,0)">'
+             f'<g clip-path="url(#e3)"><g transform="translate(0,-10)">{third}</g></g>'
+             f'<text x="0" y="{H2 + 16}" text-anchor="middle" font-size="9.5" font-weight="600" letter-spacing=".6" fill="{c}" fill-opacity="0.85">third-person</text>'
+             '</g>')
+    # ---- first person (right panel, centred at 62,0): the current camera view, scaled to fit
+    far, near = _first_person(c)
+    hud = (''.join(f'<path d="M {sx * 48} {sy * 36} L {sx * 48} {sy * 46} L {sx * 38} {sy * 46}" '
+                   f'stroke="{c}" stroke-width="2" fill="none" stroke-linecap="round"/>'
+                   for sx in (-1, 1) for sy in (-1, 1))
+           + f'<rect class="e-focus" x="-9" y="-8" width="18" height="16" rx="2.5" fill="none" stroke="{c}" stroke-width="1.6"/>'
+           + f'<line x1="-3.5" y1="0" x2="3.5" y2="0" stroke="{c}" stroke-width="1.2"/><line x1="0" y1="-3.5" x2="0" y2="3.5" stroke="{c}" stroke-width="1.2"/>'
+           + '<circle class="e-rec" cx="-41" cy="-36" r="3" fill="#E5484D"/>'
+           + f'<text x="-34" y="-33" font-size="8" font-weight="700" letter-spacing=".8" fill="{c}">REC</text>')
+    o.append('<g transform="translate(62,0)">'
+             f'<g clip-path="url(#e1)"><g transform="translate(0,-4) scale(0.6)"><g class="e-far">{far}</g><g class="e-near">{near}</g></g></g>'
+             + hud
+             + f'<text x="0" y="{H2 + 16}" text-anchor="middle" font-size="9.5" font-weight="600" letter-spacing=".6" fill="{c}" fill-opacity="0.85">first-person</text>'
+             '</g>')
+    o.append(f'<line x1="0" y1="-58" x2="0" y2="72" stroke="{c}" stroke-opacity="0.25" stroke-width="1.2"/>')
+    return ''.join(o)
 
 
 def scene_agentic(c, t):
@@ -122,18 +172,29 @@ def scene_agentic(c, t):
     return ''.join(o)
 
 
-def scene_lifelong(c):
+def scene_lifelong(c, theme='light'):
     # experience bars that keep growing, a loop that keeps turning, a sprout that keeps rising
     o = []
     for i, h in enumerate([26, 40, 56, 74]):
         o.append(f'<rect class="l-bar" style="animation-delay:{0.4 * i:.2f}s" x="{-96 + 26 * i}" y="{30 - h}" width="17" height="{h}" rx="4" fill="{c}" fill-opacity="{0.35 + 0.18 * i:.2f}"/>')
     o.append(f'<line x1="-104" y1="31" x2="6" y2="31" stroke="{c}" stroke-opacity="0.35" stroke-width="1.5"/>')
+    # trend arrow: colour gradient from a light mint at the start to the deep pillar green at the arrowhead
+    start = '#86EFC7' if theme == 'light' else '#1F7A5C'
+    end = '#047857' if theme == 'light' else '#5BF0B0'
+
+    def mix(t):
+        a = [int(start[i:i + 2], 16) for i in (1, 3, 5)]
+        b = [int(end[i:i + 2], 16) for i in (1, 3, 5)]
+        return '#' + ''.join(f'{round(a[j] + (b[j] - a[j]) * t):02X}' for j in range(3))
+
+    o.append(f'<defs><linearGradient id="ltrend" gradientUnits="userSpaceOnUse" x1="-87.5" y1="-8" x2="-9.5" y2="-56">'
+             f'<stop offset="0" stop-color="{start}"/><stop offset="1" stop-color="{end}"/></linearGradient></defs>')
     pts = [(-87.5, -8), (-61.5, -22), (-35.5, -38), (-9.5, -56)]
-    o.append(f'<path class="l-trend" d="M -87.5 -8 C -78 -12, -70 -17, -61.5 -22 S -44 -32, -35.5 -38 S -18 -50, -9.5 -56" '
-             f'fill="none" stroke="{c}" stroke-width="2.2" stroke-linecap="round"/>')
+    o.append('<path class="l-trend" d="M -87.5 -8 C -78 -12, -70 -17, -61.5 -22 S -44 -32, -35.5 -38 S -18 -50, -9.5 -56" '
+             'fill="none" stroke="url(#ltrend)" stroke-width="2.6" stroke-linecap="round"/>')
     for i, (x, y) in enumerate(pts):
-        o.append(f'<circle class="l-dot" style="animation-delay:{0.4 * i:.2f}s" cx="{x}" cy="{y}" r="3.2" fill="{c}"/>')
-    o.append(f'<path class="l-head" d="M -15.5 -57 L -6 -60 L -9.5 -50.5" fill="none" stroke="{c}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>')
+        o.append(f'<circle class="l-dot" style="animation-delay:{0.4 * i:.2f}s" cx="{x}" cy="{y}" r="3.4" fill="{mix(i / 3)}"/>')
+    o.append(f'<path class="l-head" d="M -15.5 -57 L -6 -60 L -9.5 -50.5" fill="none" stroke="{end}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
     o.append(f'<g transform="translate(62,-6)"><g class="l-loop">'
              f'<path d="M 26 0 A 26 26 0 1 1 18.4 -18.4" fill="none" stroke="{c}" stroke-width="3" stroke-linecap="round"/>'
              f'<path d="M 18.4 -18.4 L 10 -24 M 18.4 -18.4 L 24 -10" stroke="{c}" stroke-width="3" stroke-linecap="round"/></g>'
@@ -275,7 +336,7 @@ def build(theme):
         name, phrase, _, _ = PILLAR[k]
         c = col(k, theme)
         o.append(f'<rect x="{zx - 128}" y="{zy - 82}" width="256" height="164" rx="22" fill="{t["card"]}" stroke="{c}" stroke-opacity="0.35" stroke-width="1.4"/>')
-        body = scene_agentic(c, t) if k == 'A' else scenes[k](c)
+        body = scene_agentic(c, t) if k == 'A' else (scene_lifelong(c, theme) if k == 'L' else scenes[k](c))
         o.append(f'<g transform="translate({zx},{zy})"><g class="zone">{body}</g></g>')
         # title block: above for E, below for L, above the card for R and A
         ty = {'E': zy - 104, 'L': zy + 112, 'R': zy - 106, 'A': zy - 106}[k]
