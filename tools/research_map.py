@@ -18,10 +18,10 @@ ZONES = {                         # centre of each illustration
     'R': (240, 366), 'E': (560, 133), 'L': (880, 366), 'A': (560, 584),
 }
 PILLAR = {
-    'R': ('Reasoning', 'reasons reliably', '#2563EB', '#7AB0FF'),
-    'E': ('Embodied', 'inhabits a body', '#0891B2', '#3FD6EE'),
+    'R': ('Reasoning', 'reasons reliably', '#004EA2', '#6FA0E0'),
+    'E': ('Embodied', 'inhabits a body', '#13808C', '#6CC3CC'),
     'A': ('Agentic', 'acts autonomously', '#4A6FA5', '#93A9D1'),
-    'L': ('Lifelong', 'learns continuously', '#059669', '#4ADE9E'),
+    'L': ('Lifelong', 'learns continuously', '#2E7D5B', '#7DC4A0'),
 }
 TITLE_DY = {'R': -94, 'E': -92, 'L': -94, 'A': 100}   # title baseline relative to the card centre
 CENTRE = {'R': (-4, 0), 'E': (0, -6), 'A': (7, 2), 'L': (8, 15)}   # nudge each scene to its card centre

@@ -9,10 +9,10 @@
 </defs>
 <rect x="60" y="13.25" width="494" height="1.5" fill="url(#l)"/>
 <rect x="646" y="13.25" width="494" height="1.5" fill="url(#r)"/>
-<line class="s" x1="354" y1="14" x2="554" y2="14" stroke="#7AB0FF" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="10 38" style="animation-direction:reverse"/>
-<line class="s" x1="646" y1="14" x2="846" y2="14" stroke="#4ADE9E" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="10 38"/>
-<circle class="d d0" cx="573.0" cy="14" r="4.2" fill="#7AB0FF"/>
-<circle class="d d1" cx="591.0" cy="14" r="4.2" fill="#3FD6EE"/>
+<line class="s" x1="354" y1="14" x2="554" y2="14" stroke="#6FA0E0" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="10 38" style="animation-direction:reverse"/>
+<line class="s" x1="646" y1="14" x2="846" y2="14" stroke="#7DC4A0" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="10 38"/>
+<circle class="d d0" cx="573.0" cy="14" r="4.2" fill="#6FA0E0"/>
+<circle class="d d1" cx="591.0" cy="14" r="4.2" fill="#6CC3CC"/>
 <circle class="d d2" cx="609.0" cy="14" r="4.2" fill="#93A9D1"/>
-<circle class="d d3" cx="627.0" cy="14" r="4.2" fill="#4ADE9E"/>
+<circle class="d d3" cx="627.0" cy="14" r="4.2" fill="#7DC4A0"/>
 </svg>
