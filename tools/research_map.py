@@ -97,14 +97,16 @@ def scene_embodied(c):
         t = k / 4
         floor.append(f'<line x1="{-56 + 56 * t:.1f}" y1="{4 - 28 * t:.1f}" x2="{56 * t:.1f}" y2="{32 - 28 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 3"/>')
         floor.append(f'<line x1="{-56 + 56 * t:.1f}" y1="{4 + 28 * t:.1f}" x2="{56 * t:.1f}" y2="{-24 + 28 * t:.1f}" stroke="{c}" stroke-opacity="0.22" stroke-dasharray="2 3"/>')
-    walker = ('<g class="e-walk">'
+    walker = ('<g>'
               f'<path d="M 0 -12 L -14 -40 A 30 30 0 0 1 14 -40 Z" fill="{c}" fill-opacity="0.2"/>'
               f'<ellipse cx="0" cy="2" rx="5" ry="2" fill="{c}" fill-opacity="0.3"/>'
               f'<rect x="-4" y="-9" width="8" height="10" rx="2.5" fill="{c}"/>'
               f'<circle cx="0" cy="-12" r="3.6" fill="{c}"/>'
+              '<animateMotion path="M -26 0 Q 0 -16 26 0" dur="28s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;0.5;1" '
+              'calcMode="spline" keySplines=".42 0 .58 1;.42 0 .58 1"/>'
               '</g>')
     third = (''.join(floor)
-             + f'<line x1="-26" y1="22" x2="26" y2="22" stroke="{c}" stroke-opacity="0.35" stroke-dasharray="3 3"/>'
+             + f'<path d="M -26 22 Q 0 6 26 22" fill="none" stroke="{c}" stroke-opacity="0.35" stroke-dasharray="3 3"/>'
              + _row(c, (-26, 0, 26), 6, 0.5)
              + f'<g transform="translate(0,22)">{walker}</g>')
     o.append('<g transform="translate(-62,0)">'
@@ -128,7 +130,7 @@ def scene_embodied(c):
            + '<circle class="e-rec" cx="-41" cy="-28" r="3" fill="#E5484D"/>'
            + f'<text x="-34" y="-25" font-size="8" font-weight="700" letter-spacing=".8" fill="{c}">REC</text>')
     o.append('<g transform="translate(62,0)">'
-             f'<g clip-path="url(#e1)"><g transform="translate(0,-2) scale(0.6)"><g class="e-far">{far}</g><g class="e-pan">{near}</g></g></g>'
+             f'<g clip-path="url(#e1)"><g transform="translate(0,-2) scale(0.6)"><g class="e-far">{far}</g><g class="e-zoom"><g class="e-pan">{near}</g></g></g></g>'
              + hud
              + f'<text x="0" y="{H2 + 14}" text-anchor="middle" font-size="9.5" font-weight="600" letter-spacing=".6" fill="{c}" fill-opacity="0.85">first-person</text>'
              '</g>')
@@ -245,6 +247,8 @@ STYLE = """
 .e-walk{animation:walk 14s ease-in-out infinite alternate}
 @keyframes walk{from{transform:translateX(-26px)}to{transform:translateX(26px)}}
 .e-pan{animation:pan 14s ease-in-out infinite alternate}
+.e-zoom{animation:zoom 14s ease-in-out infinite alternate}
+@keyframes zoom{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(6px) scale(1.12)}}
 @keyframes pan{from{transform:translateX(80px)}to{transform:translateX(-80px)}}
 .e-far{animation:drift 14s ease-in-out infinite alternate}
 @keyframes drift{from{transform:translateX(26px)}to{transform:translateX(-26px)}}
