@@ -10,11 +10,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif"
 EAGLE = 'M44.1474 66.4569L39.1672 58.8578C40.6965 58.0705 40.5071 55.6155 39.197 55.4113C37.7385 55.1828 36.5775 55.1126 35.5542 52.8197H37.9267L37.1984 50.831C34.4838 51.0694 33.93 50.315 32.6429 48.1947L36.0336 48.0786L35.3481 46.3481C31.6532 46.5195 30.6784 45.6136 29.7558 43.5082L34.061 43.3573L33.129 41.2984C28.7201 41.4214 27.7869 41.2966 26.1701 38.3151L31.647 38.2884L30.8746 36.327C25.8826 36.5424 24.6359 36.0538 23.2227 33.5572L34.4435 33.2734C36.0789 33.2318 37.9459 34.3463 38.6339 35.8296L39.9831 38.741L41.403 33.8409C42.1351 31.3164 47.6523 32.2316 49.428 33.9117L46.0907 35.1187L47.7237 39.0949C48.9071 36.3257 50.3569 33.2722 53.4762 33.2722H64.484C63.6371 35.7042 61.5925 36.9168 57.1482 36.1301L56.3671 38.189L61.8564 38.1723C60.5426 41.2351 59.0847 41.6201 55.0018 41.1556L54.1493 43.2145L58.5191 43.3567C57.6784 45.2976 56.1566 46.458 52.7833 46.0545L52.073 48.0593L55.5525 48.0432C54.5553 50.482 53.9115 51.0265 50.74 50.8837L50.0129 52.8718L52.5194 52.8811C51.4658 55.004 51.1535 55.256 48.9046 55.4554C47.5678 55.5739 46.9718 57.7141 48.7519 58.9826L44.1474 66.4569Z'  # ZJU Qiushi eagle, as on the website
 
-W, H = 1200, 800
-CX, CY = 600, 410                 # robot / orbit centre
-RX, RY = 390, 262                 # orbit radii
+W, H = 1120, 742
+CX, CY = 560, 378                 # robot / orbit centre
+RX, RY = 320, 238                 # orbit radii
 ZONES = {                         # centre of each illustration
-    'R': (210, 410), 'E': (600, 148), 'A': (990, 410), 'L': (600, 672),
+    'R': (240, 378), 'E': (560, 133), 'A': (880, 378), 'L': (560, 610),
 }
 PILLAR = {
     'R': ('Reasoning', 'reasons reliably', '#2563EB', '#7AB0FF'),
@@ -107,7 +107,7 @@ def scene_embodied(c):
              + _row(c, (-26, 0, 26), 6, 0.5)
              + f'<g transform="translate(0,22)">{walker}</g>')
     o.append('<g transform="translate(-62,0)">'
-             f'<g clip-path="url(#e3)"><g transform="translate(0,-2)">{third}</g></g>'
+             f'<g clip-path="url(#e3)"><g transform="translate(0,9)">{third}</g></g>'
              f'<text x="0" y="{H2 + 16}" text-anchor="middle" font-size="9.5" font-weight="600" letter-spacing=".6" fill="{c}" fill-opacity="0.85">third-person</text>'
              '</g>')
     # ---- first person: the same row, seen from the robot, panning with its walk
@@ -283,7 +283,7 @@ def build(theme):
          f'<radialGradient id="glow"><stop offset="0" stop-color="{t["halo"]}" stop-opacity="0.22"/><stop offset="1" stop-color="{t["halo"]}" stop-opacity="0"/></radialGradient>',
          '</defs>',
          f'<rect width="{W}" height="{H}" rx="20" fill="{t["bg"]}"/>',
-         f'<circle class="halo" cx="{CX}" cy="{CY}" r="300" fill="url(#glow)"/>']
+         f'<circle class="halo" cx="{CX}" cy="{CY}" r="250" fill="url(#glow)"/>']
     # clockwise orbit (starts at R, passes E, A, L)
     orbit = f'M {CX - RX} {CY} A {RX} {RY} 0 1 1 {CX + RX} {CY} A {RX} {RY} 0 1 1 {CX - RX} {CY}'
     holes = []
@@ -310,7 +310,7 @@ def build(theme):
         dx, dy = zx - CX, zy - CY
         import math as m
         d = m.hypot(dx, dy)
-        sx, sy = CX + dx / d * 112, CY + dy / d * (138 if k == 'E' else 98)
+        sx, sy = CX + dx / d * 96, CY + dy / d * (114 if k == 'E' else 86)
         ex, ey = zx - dx / d * 118, zy - dy / d * (88 if k == 'E' else 84)
         p = f'M {sx:.0f} {sy:.0f} L {ex:.0f} {ey:.0f}'
         c = col(k, theme)
@@ -331,7 +331,7 @@ def build(theme):
         o.append(f'<text x="{zx - 74}" y="{ty - 1}" text-anchor="middle" font-size="16" font-weight="800" fill="{'#FFFFFF' if theme == 'light' else '#0D1117'}">{k}</text>')
         o.append(f'<text x="{zx - 51}" y="{ty - 1}" font-size="19" font-weight="750" fill="{t["ink"]}">{name}<tspan font-size="14.5" font-weight="400" fill="{t["soft"]}" dx="8">{phrase}</tspan></text>')
     # robot at the centre
-    o.append(f'<g transform="translate({CX},{CY + 8})">{robot(t)}</g>')
+    o.append(f'<g transform="translate({CX},{CY + 6}) scale(0.85)">{robot(t)}</g>')
     o.append('</svg>')
     return '\n'.join(o)
 
