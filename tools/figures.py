@@ -227,5 +227,4 @@ def research_map(theme):
 
 for th in THEMES:
     open(f'{OUT}/banner-{th}.svg', 'w').write(banner(th))
-    open(f'{OUT}/research-map-{th}.svg', 'w').write(research_map(th))
     print(th, 'ok')

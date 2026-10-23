@@ -60,6 +60,8 @@ We study one question from four sides: **what does it take for AI to work in the
   <img alt="REAL research map: how Reasoning, Embodied, Agentic, and Lifelong-learning AI connect" src="assets/research-map-light.svg" width="100%">
 </picture>
 
+<sub>Four capabilities, one loop around the real world: each hands something to the next, and every interaction flows back into a better model.</sub>
+
 ## Research lines
 
 ### R · Reasoning: think longer, leaner, and verifiably
