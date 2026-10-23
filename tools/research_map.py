@@ -195,28 +195,27 @@ def scene_lifelong(c, theme='light'):
 
 
 def robot(t):
-    # a friendly robot: gradient head, dark visor with glowing eyes, mint antenna (REAL logo dot), Qiushi eagle above
-    glow = '#7DF0FF'
+    # a flat, friendly robot in ZJU blue: light face plate, dark eyes, soft cheeks, mint antenna (REAL logo dot), Qiushi eagle above
+    body, face, eye = '#004EA2', '#F4F7FC', '#1B2A4A'
     return (
         '<defs>'
-        '<linearGradient id="botg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6A97FF"/><stop offset="1" stop-color="#2C59E0"/></linearGradient>'
-        '<linearGradient id="visor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14224A"/><stop offset="1" stop-color="#0B1430"/></linearGradient>'
         '<radialGradient id="tipg"><stop offset="0" stop-color="#19D3A7" stop-opacity=".55"/><stop offset="1" stop-color="#19D3A7" stop-opacity="0"/></radialGradient>'
         '</defs>'
         f'<ellipse class="shadow" cx="0" cy="80" rx="48" ry="7" fill="{t["ink"]}" fill-opacity="0.10"/>'
         '<g class="botf">'
         f'<g transform="translate(-198,-274.6) scale(0.9)"><g transform="translate(175, 118) scale(1.0225)"><path d="{EAGLE}" fill="{t["eagle"]}" fill-rule="evenodd"/></g></g>'
-        '<line x1="0" y1="-62" x2="0" y2="-80" stroke="#3E6BEA" stroke-width="5" stroke-linecap="round"/>'
+        f'<line x1="0" y1="-62" x2="0" y2="-80" stroke="{body}" stroke-width="5" stroke-linecap="round"/>'
         '<circle class="tip" cx="0" cy="-84" r="16" fill="url(#tipg)"/>'
         '<circle cx="0" cy="-84" r="7" fill="#19D3A7"/>'
-        '<rect x="-86" y="-22" width="16" height="40" rx="8" fill="#2C59E0"/>'
-        '<rect x="70" y="-22" width="16" height="40" rx="8" fill="#2C59E0"/>'
-        '<rect x="-74" y="-62" width="148" height="122" rx="36" fill="url(#botg)"/>'
-        '<rect x="-58" y="-55" width="116" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.22"/>'
-        '<rect x="-56" y="-34" width="112" height="72" rx="24" fill="url(#visor)"/>'
-        f'<rect class="blink" x="-31" y="-16" width="16" height="24" rx="8" fill="{glow}"/>'
-        f'<rect class="blink" x="15" y="-16" width="16" height="24" rx="8" fill="{glow}"/>'
-        f'<path d="M -14 17 Q 0 27 14 17" fill="none" stroke="{glow}" stroke-width="3.6" stroke-linecap="round"/>'
+        f'<rect x="-86" y="-22" width="16" height="40" rx="8" fill="{body}"/>'
+        f'<rect x="70" y="-22" width="16" height="40" rx="8" fill="{body}"/>'
+        f'<rect x="-74" y="-62" width="148" height="122" rx="30" fill="{body}"/>'
+        f'<rect x="-58" y="-44" width="116" height="86" rx="22" fill="{face}"/>'
+        f'<circle class="blink" cx="-22" cy="-6" r="9" fill="{eye}"/>'
+        f'<circle class="blink" cx="22" cy="-6" r="9" fill="{eye}"/>'
+        '<circle cx="-36" cy="12" r="6" fill="#FF9DB0" fill-opacity="0.5"/>'
+        '<circle cx="36" cy="12" r="6" fill="#FF9DB0" fill-opacity="0.5"/>'
+        f'<path d="M -12 14 Q 0 24 12 14" fill="none" stroke="{eye}" stroke-width="3.6" stroke-linecap="round"/>'
         '</g>')
 
 
