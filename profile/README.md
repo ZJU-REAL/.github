@@ -19,7 +19,7 @@
 
 </div>
 
-We study one question from four sides: **what does it take for AI to work in the real world?** A model first learns to **reason**, then to **ground itself in the physical world**, then to **act** as an agent on screens, in software, and in real environments, and finally to **keep growing** from the experience those actions produce. Each capability builds on the one before it, and a shared engine of agentic RL, self-distillation, and verifiable rewards runs through all of them.
+We study one question from four sides: **what does it take for AI to work in the real world?** It has to **reason** well enough to plan and check its own work, **act** as an agent across screens, software, and open-ended tasks, carry that ability **into the physical world**, and **keep improving** from everything it experiences along the way. These capabilities feed one another rather than standing alone, and a shared engine of agentic RL, self-distillation, and verifiable rewards runs through all of them.
 
 
 ## Open-source systems
