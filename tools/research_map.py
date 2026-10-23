@@ -325,7 +325,7 @@ def build(theme):
         lx, ly = CX + RX * 1.08 * math.cos(th), CY + RY * 1.1 * math.sin(th)
         ly += -18 if my < CY else 6
         lx += (-1 if anchor == 'end' else 1) * max(map(len, lines)) * 7.3 / 2   # keep the block in place, centre its lines
-        marks.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="middle"font-size="15" font-style="italic" fill="{t["soft"]}">'
+        marks.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="middle" font-size="15" font-style="italic" fill="{t["soft"]}">'
                      + ''.join(f'<tspan x="{lx:.0f}" dy="{0 if i == 0 else 19}">{escape(line)}</tspan>' for i, line in enumerate(lines)) + '</text>')
     o.append('<defs>' + ''.join(defs) + '</defs>')
     o.append('<g mask="url(#titles)">' + ''.join(paths) + '</g>')
