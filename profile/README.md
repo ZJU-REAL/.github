@@ -15,7 +15,7 @@
   <a href="https://www.xiaohongshu.com/user/profile/67d84bef000000000d008f18"><img alt="RedNote" src="assets/badge-rednote.svg" align="top"></a>
   <img alt="" src="assets/spacer.svg" width="1" height="30" align="top">
   <br>
-  <a href="https://github.com/ZJU-REAL"><img alt="Total stars" src="https://img.shields.io/github/stars/ZJU-REAL?style=social&label=Stars" align="absbottom"></a>
+  <a href="https://github.com/ZJU-REAL"><img alt="Total stars" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FZJU-REAL%2F.github%2Fmain%2Fprofile%2Fassets%2Fstars.json&style=social&logo=github&label=Stars" align="absbottom"></a>
   &nbsp;
   <a href="https://github.com/ZJU-REAL"><img alt="Follow ZJU-REAL" src="https://img.shields.io/github/followers/ZJU-REAL?style=social&label=Follow" align="absbottom"></a>
 </p>
