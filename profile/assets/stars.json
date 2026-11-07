@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "label": "Stars",
-  "message": "35.9k",
+  "message": "36k",
   "color": "blue",
   "namedLogo": "github",
-  "total": 35934,
-  "org": 10362,
+  "total": 35976,
+  "org": 10390,
   "extra": {
-    "microsoft/JARVIS": 25572
+    "microsoft/JARVIS": 25586
   }
 }
