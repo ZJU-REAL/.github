@@ -64,6 +64,18 @@
 <sub>Train, evaluate, and deploy GUI agents in one framework: online RL across parallel emulators and real Android, HarmonyOS, and iOS devices.</sub>
 </td>
 </tr>
+<tr>
+<td width="50%" valign="top">
+<a href="https://github.com/ZJU-REAL/EasySteer"><img src="assets/covers/easysteer.jpg" alt="EasySteer" width="100%"></a>
+<b><a href="https://github.com/ZJU-REAL/EasySteer">EasySteer</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/EasySteer?style=social" alt="stars" align="absmiddle"><br>
+<sub>Steer a model at inference time without retraining: steering vectors applied inside vLLM at serving speed, with pluggable algorithms and ready-made vectors.</sub>
+</td>
+<td width="50%" valign="top">
+<a href="https://github.com/ZJU-REAL/SDAR"><img src="assets/covers/sdar.jpg" alt="SDAR" width="100%"></a>
+<b><a href="https://github.com/ZJU-REAL/SDAR">SDAR</a></b> &nbsp; <img src="https://img.shields.io/github/stars/ZJU-REAL/SDAR?style=social" alt="stars" align="absmiddle"><br>
+<sub>Agentic RL with on-policy self-distillation: the agent teaches itself token by token with retrieved skills, gated and combined with GRPO.</sub>
+</td>
+</tr>
 </table>
 
 <p align="center"><a href="https://zjureal.com/projects.html"><b>More projects →</b></a></p>
